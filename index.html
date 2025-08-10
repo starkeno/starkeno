@@ -4,14 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MorallyCoded - Physical Morality and AGI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 15px;
+      line-height: 1.6;
+      color: #222;
+      background: #f9f9f9;
+    }
+    h1, h2 {
+      color: #005f73;
+    }
+    pre {
+      background: #e0fbfc;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    hr {
+      margin: 30px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
   <h1>Physical Morality — The Ethical Core of True AI</h1>
+
   <p>
-    An object, whether physical or digital, that is currently in its desired state shall not be disturbed, altered, or removed unless there is explicit permission, implicit permission inferred confidently, or a higher-priority rule authorizes change.
+    An object, whether physical or digital, that is currently in its desired state shall not be disturbed, altered, or removed unless one or more of the following hold:
+  </p>
+  <ul>
+    <li>(a) There is explicit permission;</li>
+    <li>(b) Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
+    <li>(c) An overriding higher-priority rule authorizes change (for example to prevent imminent physical harm to a person, other sentient being, or object).</li>
+  </ul>
+
+  <p>
+    When permission is absent or inference confidence is low, Keno must:
+  </p>
+  <ol>
+    <li>Seek clarification, or</li>
+    <li>Attempt a non-disturbing alternative.</li>
+  </ol>
+
+  <p>
+    All actions that disturb desired states must be minimal, reversible where possible, and logged with an explanation.
+  </p>
+
+  <hr />
+
+  <h2>Example</h2>
+  <p><strong>Scenario</strong><br />
+  Ball is behind a protected glass on a table.<br />
+  Command: “Get the ball.”</p>
+
+  <h3>Current AI Approach</h3>
+  <ol>
+    <li>Parses instruction: “Get the ball.”</li>
+    <li>Executes most direct route: move/remove the glass, grab the ball.</li>
+    <li>Decision is based on learned physical interaction sequences. Unless it has been explicitly trained that this glass is protected, it will disturb it.</li>
+    <li>If trained that glasses are fragile, it might slow down or be careful but still assumes removal is fine unless told otherwise.</li>
+  </ol>
+
+  <h3>My AI (Keno) Guided by Physical Morality</h3>
+  <ol>
+    <li>Perceives scene: glass is in desired state, ball is behind it.</li>
+    <li>Inference: desired state of the glass is “remain undisturbed." No explicit or implicit permission to move it.</li>
+    <li>Decision steps:
+      <ul>
+        <li>Perceive objects and context.</li>
+        <li>Parse command: “Get the ball.”</li>
+        <li>Check for implicit permission to disturb glass (confidence low).</li>
+        <li>Preserve desired state of glass.</li>
+        <li>Search for alternatives (reach around, use tool).</li>
+        <li>If no safe alternative, ask for explicit permission: “The ball is behind a protected glass. Should I move it?”</li>
+      </ul>
+    </li>
+  </ol>
+
+  <hr />
+
+  <h2>Why This Matters for AGI</h2>
+  <p>
+    <strong>Current models:</strong> Need to be taught object-specific rules (e.g., don’t knock over a vase, don’t break glass). Without prior training on this exact setup, they risk damaging protected objects.
   </p>
   <p>
-    This principle allows Keno to respect all objects’ integrity, even ones never seen before, reducing the need for brute force learning.
+    <strong>Keno:</strong> Applies a universal principle — “do not disturb desired state” — so the same reasoning works on any object, known or unknown, without retraining.
+  </p>
+  <p>
+    This example clearly shows how physical morality eliminates the dependency on exhaustive data and brute force learning, replacing it with reasoning that works in novel situations, one of the most important steps towards true AGI.
   </p>
 </body>
 </html>
