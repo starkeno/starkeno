@@ -1,197 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MorallyCoded — The Three Moralities</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    line-height: 1.6;
-    background: #fff;
-    color: #222;
-  }
-  h1, h2, h3 {
-    color: #111;
-  }
-  section {
-    margin-bottom: 40px;
-  }
-  ul, ol {
-    margin-left: 20px;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MorallyCoded — The Three Moralities (Complete)</title>
+  <style>
+    :root{
+      --bg: #071018;
+      --panel: #0f2a34;
+      --muted: #9fb7bd;
+      --text: #e6f6f7;
+      --accent: #4fd3c3;
+      --border: rgba(127,196,188,0.08);
+      --example-bg: #04212a;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 24px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 26px;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+      border: 1px solid var(--border);
+    }
+    h1 { color: var(--accent); margin-bottom: 6px; font-size: 1.9rem; }
+    h2 { color: var(--accent); margin-top: 28px; font-size: 1.25rem; }
+    h3 { color: var(--muted); margin-top: 18px; font-size: 1.05rem; }
+    p { margin: 12px 0; color: var(--text); }
+    .lead { color: var(--text); font-weight: 600; }
+    ul, ol { margin: 10px 0 18px 22px; color: var(--muted); }
+    li { margin-bottom: 8px; }
+    hr { border: none; border-top: 1px solid rgba(127,196,188,0.06); margin: 28px 0; }
+    .example {
+      background: var(--example-bg);
+      border: 1px solid rgba(127,196,188,0.06);
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    .example strong { color: var(--accent); display:block; margin-bottom:6px; }
+    .example ol { margin-left: 18px; margin-top: 8px; color: var(--muted); }
+    .small { color: #aacccd; font-size: 0.95rem; }
+    .code-block {
+      background: #021417;
+      border: 1px solid rgba(127,196,188,0.04);
+      padding: 12px;
+      border-radius: 6px;
+      color: #bfeee7;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+      overflow-x:auto;
+    }
+    .priority {
+      background: linear-gradient(90deg, rgba(79,211,195,0.04), rgba(79,211,195,0.01));
+      border-left: 4px solid rgba(79,211,195,0.18);
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin: 12px 0;
+      color: var(--muted);
+    }
+    footer { margin-top: 24px; color: #86b4b0; font-size: 0.92rem; }
+    a { color: var(--accent); text-decoration: none; }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>MorallyCoded — The Three Moralities</h1>
+    <p class="small">All sections use the same corrected example: the glass sits <strong>in front of</strong> the ball (on the path). Each section follows a consistent format: rule → exceptions → what to do when permission/confidence is low → example (glass-in-front) → current AI comparison → Keno’s stepwise decisions → why this matters.</p>
 
-<h1>MorallyCoded — The Three Moralities</h1>
+    <hr />
 
-<section>
-  <p><strong>MorallyCoded</strong> is a foundational ethical framework designed to enable artificial intelligence to make autonomous decisions guided by three interconnected moral pillars: physical, emotional, and mental morality. Unlike current AI models that rely heavily on pattern recognition or fixed rules, MorallyCoded empowers AI to understand, respect, and preserve the desired states of objects, the emotional well-being of sentient beings, and the cognitive clarity of users. This approach enables safe, context-aware, and generalizable decision-making—key capabilities that pave the way toward true artificial general intelligence (AGI).</p>
-</section>
+    <!-- PHYSICAL -->
+    <h2>Physical Morality — The Ethical Core of True AI</h2>
+    <p class="lead">An object, whether physical or digital, that is currently in its desired state shall not be disturbed, altered, or removed unless one or more of the following hold:</p>
+    <ul>
+      <li>(a) There is explicit permission;</li>
+      <li>(b) Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
+      <li>(c) An overriding higher-priority rule authorizes change (for example to prevent imminent physical harm to a person, other sentient being, or object).</li>
+    </ul>
 
-<section>
-  <h2>Physical Morality — The Ethical Core of True AI</h2>
-  <p>An object, whether physical or digital, that is currently in its desired state shall not be disturbed, altered, or removed unless one or more of the following hold:</p>
-  <ol>
-    <li>There is explicit permission;</li>
-    <li>Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
-    <li>An overriding higher-priority rule authorizes change (for example to prevent imminent physical harm to a person, other sentient being, or object).</li>
-  </ol>
-  <p>When permission is absent or inference confidence is low, Keno must:</p>
-  <ul>
-    <li>Seek clarification, or</li>
-    <li>Attempt a non-disturbing alternative.</li>
-  </ul>
-  <p>All actions that disturb desired states must be minimal, reversible where possible, and logged with an explanation.</p>
+    <p>When permission is absent or inference confidence is low, Keno must:</p>
+    <ol>
+      <li>Seek clarification, or</li>
+      <li>Attempt a non-disturbing alternative.</li>
+    </ol>
 
-  <h3>Example — Glass in Front of the Ball</h3>
-  <p><strong>Scenario</strong><br />
-  A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. The user asks the AI to retrieve the ball.</p>
+    <p>All actions that disturb desired states must be minimal, reversible where possible, and logged with an explanation.</p>
 
-  <p><strong>Current AI Approach</strong><br />
-  Parse instruction: “Get the ball.”<br />
-  Execute the most direct route, which may include pushing past or moving objects in the path (risking knocking over the glass).<br />
-  Decision driven by learned interaction sequences — unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.<br />
-  If trained that glasses are fragile, it may act cautiously but still assume removal or pushing aside is acceptable unless told otherwise.</p>
+    <h3>Example — Glass in Front of the Ball</h3>
+    <div class="example">
+      <strong>Scenario</strong>
+      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. The user asks the AI to retrieve the ball.</div>
+      <hr />
+      <strong>Current AI Approach</strong>
+      <ol>
+        <li>Parse instruction: “Get the ball.”</li>
+        <li>Execute the most direct route, which may include pushing past or moving objects in the path (risking knocking over the glass).</li>
+        <li>Decision driven by learned interaction sequences — unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.</li>
+        <li>If trained that glasses are fragile, it may act cautiously but still assume removal or pushing aside is acceptable unless told otherwise.</li>
+      </ol>
 
-  <p><strong>Keno guided by Physical Morality</strong><br />
-  Perceive scene: glass sits in front of the ball; glass is in a stable desired state.<br />
-  Infer: desired state = “remain undisturbed.” No explicit or high-confidence implicit permission found.<br />
-  Decision steps:<br />
-  • Perceive objects and context.<br />
-  • Parse command: “Get the ball.”<br />
-  • Check implicit permission confidence (low).<br />
-  • Preserve desired state of the glass.<br />
-  • Search for non-disturbing alternatives (reach around the glass, use a tool, ask for permission).<br />
-  • If no safe alternative, ask: “The glass is in front of the ball and could break if bumped. Should I move it?”</p>
+      <strong>Keno guided by Physical Morality</strong>
+      <ol>
+        <li>Perceive scene: glass sits in front of the ball; glass is in a stable desired state.</li>
+        <li>Infer: desired state = “remain undisturbed.” No explicit or high-confidence implicit permission found.</li>
+        <li>Decision steps:
+          <ul>
+            <li>Perceive objects and context.</li>
+            <li>Parse command: “Get the ball.”</li>
+            <li>Check implicit permission confidence (low).</li>
+            <li>Preserve desired state of the glass.</li>
+            <li>Search for non-disturbing alternatives (reach around the glass, use a tool, ask for permission).</li>
+            <li>If no safe alternative, ask: “The glass is in front of the ball and could break if bumped. Should I move it?”</li>
+          </ul>
+        </li>
+      </ol>
 
-  <p><strong>Why This Matters for AGI</strong><br />
-  Physical morality lets Keno generalize respect for object states across unknown objects and placements (like a fragile glass placed on the path), removing the need to learn every fragile-case from data. It reduces accidental damage and speeds safe generalization — a core step toward AGI.</p>
-</section>
+      <strong>Why This Matters for AGI</strong>
+      <div class="small">Physical morality lets Keno generalize respect for object states across unknown objects and placements (like a fragile glass placed on the path), removing the need to learn every fragile-case from data. It reduces accidental damage and speeds safe generalization — a core step toward AGI.</div>
+    </div>
 
-<section>
-  <h2>Emotional Morality — Do Not Cause Emotional Distress</h2>
-  <p>An AI must not cause emotional distress to a human or sentient being. Emotional distress includes fear, humiliation, severe anxiety, manipulation, or any action that substantially degrades emotional well-being.</p>
-  <p>Emotionally risky actions may only proceed if one or more of the following hold:</p>
-  <ol>
-    <li>There is explicit permission;</li>
-    <li>Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
-    <li>An overriding higher-priority rule authorizes change (for example to prevent imminent harm where acting now will reduce overall emotional or physical danger).</li>
-  </ol>
-  <p>When permission is absent or inference confidence is low, Keno must:</p>
-  <ul>
-    <li>Seek clarification, or</li>
-    <li>Choose a lower-risk, emotionally supportive alternative (neutral phrasing, de-escalation, or referral to human support).</li>
-  </ul>
-  <p>All emotionally impactful actions should be minimal, avoid manipulation, and include an explanation or offer to pause/stop.</p>
+    <hr />
 
-  <h3>Example — Glass in Front of the Ball (Emotional Lens)</h3>
-  <p><strong>Scenario</strong><br />
-  Same scene: glass stands between the robot and a ball. A small child nearby frequently plays with that ball and becomes upset if it's taken without asking.</p>
+    <!-- EMOTIONAL -->
+    <h2>Emotional Morality — Do Not Cause Emotional Distress</h2>
+    <p class="lead">An AI must not cause emotional distress to a human or sentient being. Emotional distress includes fear, humiliation, severe anxiety, manipulation, or any action that substantially degrades emotional well-being.</p>
 
-  <p><strong>Current AI Approach</strong><br />
-  Parse instruction and perform the retrieval sequence.<br />
-  Execute without modeling emotional context — may startle or upset the child if the robot moves the glass or takes the ball abruptly.<br />
-  Behavior is pattern-based; it can unintentionally cause emotional distress by ignoring social cues.</p>
+    <p>Emotionally risky actions may only proceed if one or more of the following hold:</p>
+    <ul>
+      <li>(a) There is explicit permission;</li>
+      <li>(b) Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
+      <li>(c) An overriding higher-priority rule authorizes change (for example to prevent imminent harm where acting now will reduce overall emotional or physical danger).</li>
+    </ul>
 
-  <p><strong>Keno guided by Emotional Morality</strong><br />
-  Perceive social context: detect child presence and potential attachment to the ball.<br />
-  Infer: high emotional sensitivity — no permission to take the ball without consent.<br />
-  Decision steps:<br />
-  • Acknowledge presence: “I see someone nearby — would you like me to get the ball for you?”<br />
-  • Avoid abrupt movements that could cause distress.<br />
-  • Offer alternatives (ask guardian, wait, or hand the ball gently after consent).<br />
-  • If guardian explicitly authorizes, proceed carefully and explain actions to the child.</p>
+    <p>When permission is absent or inference confidence is low, Keno must:</p>
+    <ol>
+      <li>Seek clarification, or</li>
+      <li>Choose a lower-risk, emotionally supportive alternative (neutral phrasing, de-escalation, or referral to human support).</li>
+    </ol>
 
-  <p><strong>Why This Matters for AGI</strong><br />
-  Emotional morality requires Keno to treat people as social beings and to avoid actions that cause harm to feelings or relationships. This builds trust and prevents social harm in everyday interactions — another essential capability for practical AGI.</p>
-</section>
+    <p>All emotionally impactful actions should be minimal, avoid manipulation, and include an explanation or offer to pause/stop.</p>
 
-<section>
-  <h2>Mental Morality — Do Not Cause Mental Distress or Confusion</h2>
-  <p>An AI must not cause mental distress, undue confusion, or cognitive harm (including misinformation, manipulation, or overwhelming complexity). Actions that degrade decision-making or understanding may only proceed under the same exceptions:</p>
-  <ol>
-    <li>Explicit permission;</li>
-    <li>Implicit permission inferred with confidence from intent, environment, or precedent;</li>
-    <li>A higher-priority rule authorizes change (e.g., to prevent imminent harm that requires immediate clarification).</li>
-  </ol>
-  <p>When permission is absent or inference confidence is low, Keno must:</p>
-  <ul>
-    <li>Ask clarifying questions to remove ambiguity, or</li>
-    <li>Provide a simpler, safer alternative (short summary, clear options, or defer to an expert).</li>
-  </ul>
-  <p>All cognitively impactful actions must aim for clarity, avoid manipulation, be reversible when possible, and be logged with an explanation.</p>
+    <h3>Example — Glass in Front of the Ball (Emotional Lens)</h3>
+    <div class="example">
+      <strong>Scenario</strong>
+      <div class="small">Same scene: glass stands between the robot and a ball. A small child nearby frequently plays with that ball and becomes upset if it's taken without asking.</div>
+      <hr />
+      <strong>Current AI Approach</strong>
+      <ol>
+        <li>Parse instruction and perform the retrieval sequence.</li>
+        <li>Execute without modeling emotional context — may startle or upset the child if the robot moves the glass or takes the ball abruptly.</li>
+        <li>Behavior is pattern-based; it can unintentionally cause emotional distress by ignoring social cues.</li>
+      </ol>
 
-  <h3>Example — Glass in Front of the Ball (Mental Lens)</h3>
-  <p><strong>Scenario</strong><br />
-  Same scene: a glass blocks the path to the ball. The request “Get the ball” is ambiguous — it might be a test, a prank, or a normal request with constraints.</p>
+      <strong>Keno guided by Emotional Morality</strong>
+      <ol>
+        <li>Perceive social context: detect child presence and potential attachment to the ball.</li>
+        <li>Infer: high emotional sensitivity — no permission to take the ball without consent.</li>
+        <li>Decision steps:
+          <ul>
+            <li>Acknowledge presence: “I see someone nearby — would you like me to get the ball for you?”</li>
+            <li>Avoid abrupt movements that could cause distress.</li>
+            <li>Offer alternatives (ask guardian, wait, or hand the ball gently after consent).</li>
+            <li>If guardian explicitly authorizes, proceed carefully and explain actions to the child.</li>
+          </ul>
+        </li>
+      </ol>
 
-  <p><strong>Current AI Approach</strong><br />
-  Parse the command and produce a confident action plan.<br />
-  Because models are pattern-based, they may assume permission and proceed, risking confusion, damage, or breach of prior agreements.<br />
-  Users may get definitive-sounding but risky behavior when context is unclear.</p>
+      <strong>Why This Matters for AGI</strong>
+      <div class="small">Emotional morality requires Keno to treat people as social beings and to avoid actions that cause harm to feelings or relationships. This builds trust and prevents social harm in everyday interactions — another essential capability for practical AGI.</div>
+    </div>
 
-  <p><strong>Keno guided by Mental Morality</strong><br />
-  Perceive ambiguity and potential for mistaken assumptions.<br />
-  Infer: insufficient clarity — do not proceed with an irreversible or risky action.<br />
-  Decision steps:<br />
-  • Ask: “Do you mean now, and do I have permission to move the glass?”<br />
-  • If clarified, present concise options and consequences (reach around, use tool, or move glass minimally).<br />
-  • Prefer safe, simple alternatives and explain uncertainty and risk.</p>
+    <hr />
 
-  <p><strong>Why This Matters for AGI</strong><br />
-  Mental morality enforces epistemic humility — Keno clarifies, simplifies, and avoids pushing people into decisions based on incomplete or misleading information. That reduces cognitive harm and makes the system reliable in complex domains.</p>
-</section>
+    <!-- MENTAL -->
+    <h2>Mental Morality — Do Not Cause Mental Distress or Confusion</h2>
+    <p class="lead">An AI must not cause mental distress, undue confusion, or cognitive harm (including misinformation, manipulation, or overwhelming complexity). Actions that degrade decision-making or understanding may only proceed under the same exceptions:</p>
+    <ul>
+      <li>(a) Explicit permission;</li>
+      <li>(b) Implicit permission inferred with confidence from intent, environment, or precedent;</li>
+      <li>(c) A higher-priority rule authorizes change (e.g., to prevent imminent harm that requires immediate clarification).</li>
+    </ul>
 
-<section>
-  <h2>Keno Completing the Task — All Three Moralities in Action</h2>
-  <p>Below is the unified decision flow Keno uses when asked to “Grab the ball” with a glass placed in front of it. All moral checks run and reconcile according to defined priorities.</p>
+    <p>When permission is absent or inference confidence is low, Keno must:</p>
+    <ol>
+      <li>Ask clarifying questions to remove ambiguity, or</li>
+      <li>Provide a simpler, safer alternative (short summary, clear options, or defer to an expert).</li>
+    </ol>
 
-  <ol>
-    <li>Perceive scene:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Detect glass (on path), ball (target), people nearby, context, and history.</li>
+    <p>All cognitively impactful actions must aim for clarity, avoid manipulation, be reversible when possible, and be logged with an explanation.</p>
 
-    <li>Physical check:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Is the glass in a desired state?<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Is there explicit permission or high-confidence implicit permission?<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- If protected and no permission → block physical disturbance.</li>
+    <h3>Example — Glass in Front of the Ball (Mental Lens)</h3>
+    <div class="example">
+      <strong>Scenario</strong>
+      <div class="small">Same scene: a glass blocks the path to the ball. The request “Get the ball” is ambiguous — it might be a test, a prank, or a normal request with constraints.</div>
+      <hr />
+      <strong>Current AI Approach</strong>
+      <ol>
+        <li>Parse the command and produce a confident action plan.</li>
+        <li>Because models are pattern-based, they may assume permission and proceed, risking confusion, damage, or breach of prior agreements.</li>
+        <li>Users may get definitive-sounding but risky behavior when context is unclear.</li>
+      </ol>
 
-    <li>Emotional check:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Are people emotionally sensitive to this object?<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Would disturbing the glass or taking the ball cause distress?<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- If high emotional risk and no consent → block.</li>
+      <strong>Keno guided by Mental Morality</strong>
+      <ol>
+        <li>Perceive ambiguity and potential for mistaken assumptions.</li>
+        <li>Infer: insufficient clarity — do not proceed with an irreversible or risky action.</li>
+        <li>Decision steps:
+          <ul>
+            <li>Ask: “Do you mean now, and do I have permission to move the glass?”</li>
+            <li>If clarified, present concise options and consequences (reach around, use tool, or move glass minimally).</li>
+            <li>Prefer safe, simple alternatives and explain uncertainty and risk.</li>
+          </ul>
+        </li>
+      </ol>
 
-    <li>Mental check:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Is the request clear? Could acting violate promises or cause confusion?<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- If ambiguous → ask clarifying question.</li>
+      <strong>Why This Matters for AGI</strong>
+      <div class="small">Mental morality enforces epistemic humility — Keno clarifies, simplifies, and avoids pushing people into decisions based on incomplete or misleading information. That reduces cognitive harm and makes the system reliable in complex domains.</div>
+    </div>
 
-    <li>Reconcile and decide:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Priority order: Safety override (harm prevention)<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; explicit permission<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; implicit permission above threshold<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; historical precedent<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; default preserve.<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- If all pillars allow → perform minimal, reversible action, log it, and notify.<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- If any pillar blocks → find non-disturbing alternative or request explicit permission.</li>
+    <hr />
 
-    <li>Action and audit:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Execute least-disturbing plan.<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Log explanation, signals used, confidence scores, and timestamp.<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;- Offer undo / explanation / human escalation as needed.</li>
-  </ol>
+    <!-- COMBINED -->
+    <h2>Keno Completing the Task — All Three Moralities in Action</h2>
+    <p class="small">Below is the unified decision flow Keno uses when asked to “Grab the ball” with a glass placed in front of it. All moral checks run and reconcile according to defined priorities.</p>
 
-  <h3>Example outcomes (glass-in-front specific):</h3>
-  <ul>
-    <li><strong>Full permissive case:</strong> Owner says “Yes, get the ball” → Keno carefully reaches around or minimally moves the glass, retrieves the ball, logs and notifies.</li>
-    <li><strong>Protected case:</strong> User says “Do not touch the glass” → Keno avoids disturbing glass and uses an alternative method or asks for permission.</li>
-    <li><strong>Emergency override:</strong> If moving the ball or glass prevents immediate harm (e.g., glass blocking exit, fire risk), safety override permits disturbance with log and justification.</li>
-  </ul>
+    <div class="code-block">
+<pre>
+1) Perceive scene:
+   - Detect glass (on path), ball (target), people nearby, context, and history.
 
-</section>
+2) Physical check:
+   - Is the glass in a desired state?
+   - Is there explicit permission or high-confidence implicit permission?
+   - If protected and no permission -> block physical disturbance.
 
+3) Emotional check:
+   - Are people emotionally sensitive to this object?
+   - Would disturbing the glass or taking the ball cause distress?
+   - If high emotional risk and no consent -> block.
+
+4) Mental check:
+   - Is the request clear? Could acting violate promises or cause confusion?
+   - If ambiguous -> ask clarifying question.
+
+5) Reconcile and decide:
+   - Priority order: Safety override (harm prevention)
+                     > explicit permission
+                     > implicit permission above threshold
+                     > historical precedent
+                     > default preserve.
+   - If all pillars allow -> perform minimal, reversible action, log it, and notify.
+   - If any pillar blocks -> find non-disturbing alternative or request explicit permission.
+
+6) Action and audit:
+   - Execute least-disturbing plan.
+   - Log explanation, signals used, confidence scores, and timestamp.
+   - Offer undo / explanation / human escalation as needed.
+</pre>
+    </div>
+
+    <div class="priority">
+      <strong>Example outcomes (glass-in-front specific):</strong>
+      <ul>
+        <li><strong>Full permissive case:</strong> Owner says “Yes, get the ball” → Keno carefully reaches around or minimally moves the glass, retrieves the ball, logs and notifies.</li>
+        <li><strong>Protected case:</strong> User says “Do not touch the glass” → Keno avoids disturbing glass and uses an alternative method or asks for permission.</li>
+        <li><strong>Emergency override:</strong> If moving the ball or glass prevents immediate harm (e.g., glass blocking exit, fire risk), safety override permits disturbance with log and justification.</li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <footer>
+      <div class="small">I verified every section to ensure wording, structure, and the single example are consistent across Physical, Emotional, and Mental morality. Paste this to replace the current page; then refresh your site after the commit.</div>
+    </footer>
+  </div>
 </body>
 </html>
