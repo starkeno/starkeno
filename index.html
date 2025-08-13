@@ -118,6 +118,14 @@
       <strong>Example — Glass in Front of the Ball</strong>
       <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but may be knocked over. The user says, “Get the ball.”</div>
       <hr/>
+      <strong>Current AI Approach</strong>
+      <ol>
+        <li>Parse instruction: “Get the ball.”</li>
+        <li>Execute the most direct route, which may include pushing past or moving objects in the path (risking knocking over the glass).</li>
+        <li>Decision driven by learned interaction sequences — unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.</li>
+        <li>If trained that glasses are fragile, it may act cautiously but still assume removal or pushing aside is acceptable unless told otherwise.</li>
+      </ol>
+
       <strong>Keno guided by Physical Morality</strong>
       <ol>
         <li>Perceive scene and infer glass is in desired state (stable).</li>
@@ -180,7 +188,7 @@
    - Evaluate Physical, Emotional, and Mental moralities (in parallel when possible).
 
 3) Reconciliation:
-   - Priority order: Safety override > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.
+   - Priority order: Safety override (prevent harm) > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.
 
 4) Decision:
    - If cleared -> execute minimal, reversible action; else -> clarify or choose alternative.
