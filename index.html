@@ -76,13 +76,13 @@
 <body>
   <div class="container">
     <h1>Morally Coded — A Principle-First Framework for Artificial General Intelligence</h1>
-    <p class="small">Morally Coded places abstract, generalizable constraints—called the Three Moralities—at the heart of an intelligent agent’s decision-making.</p>
+    <p class="small">Morally Coded places abstract, generalizable constraints, called the Three Moralities, at the heart of an intelligent agent’s decision-making.</p>
 
     <hr />
 
     <div class="toc">
       <span class="badge">TL;DR</span>
-      <strong>TL;DR:</strong> Principle-first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions.  
+      <strong>TL;DR:</strong> Principle first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions.  
       <h3 style="margin-top:12px">Table of contents</h3>
       <a href="#overview">Overview</a>
       <a href="#why">Why a Principle-First Approach?</a>
@@ -99,18 +99,18 @@
     <hr />
 
     <h2 id="overview">Overview</h2>
-    <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong>—machine logic that helps an agent infer permissions, minimize harm (physical, emotional, cognitive), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, and priority reconciliation to produce decisions that are auditable and safe by default.</p>
+    <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong> and machine logic that helps an agent infer permissions, minimize harm (physical, emotional, cognitive), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, and priority reconciliation to produce decisions that are auditable and safe by default.</p>
 
-    <h2 id="why">Why a Principle-First Approach?</h2>
-    <p>Current mainstream AGI efforts lean heavily on scaling pattern-matching models (LLMs). Those approaches produce impressive capabilities but are brittle in edge cases, opaque in reasoning, and can behave dangerously in novel contexts. Morally Coded argues that a set of <em>abstract, generalizable constraints</em>—encoded as practical heuristics—can provide safer and more explainable generalization without exhaustive datasets for every scenario.</p>
+    <h2 id="why">Why a Principle First Approach?</h2>
+    <p>Current mainstream AGI efforts lean heavily on scaling pattern matching models (LLMs). Those approaches produce impressive capabilities but are brittle in edge cases, opaque in reasoning, and can behave dangerously in novel contexts. Morally Coded argues that a set of <em>abstract, generalizable constraints</em>—encoded as practical heuristics can provide safer and more explainable generalization without exhaustive datasets for every scenario.</p>
 
     <h2 id="three">The Three Moralities</h2>
 
     <h3>1. Physical Morality — Preserve Desired States</h3>
-    <p class="lead"><strong>Core principle:</strong> An object, system, or entity (physical or digital) in its inferred <em>desired state</em> should not be disturbed, altered, or removed without justification.</p>
+    <p class="lead"><strong>Core principle:</strong> An object, system, or entity (physical or digital) in its inferred <em>desired state</em> shall not be disturbed, altered, or removed without justification.</p>
     <ul>
-      <li>Exceptions: explicit permission, high-confidence implicit permission (default 80%), or a higher-priority override (e.g., prevent imminent harm).</li>
-      <li>On low confidence: ask for clarification, try a non-disturbing alternative, or log and defer.</li>
+      <li>Exceptions: explicit permission, high confidence implicit permission (default 80%), or a higher priority override (e.g., prevent imminent harm).</li>
+      <li>On low confidence: ask for clarification, try a non disturbing alternative, or log and defer.</li>
     </ul>
 
     <h3>Example — Glass in Front of the Ball</h3>
@@ -122,14 +122,14 @@
       <ol>
         <li>Parse instruction: “Get the ball.”</li>
         <li>Execute the most direct route, which may include pushing past or moving objects in the path (risking knocking over the glass).</li>
-        <li>Decision driven by learned interaction sequences — unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.</li>
+        <li>Decision driven by learned interaction sequences. Unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.</li>
         <li>If trained that glasses are fragile, it may act cautiously but still assume removal or pushing aside is acceptable unless told otherwise.</li>
       </ol>
 
       <strong>Keno guided by Physical Morality</strong>
       <ol>
         <li>Perceive scene: glass sits in front of the ball; glass is in a stable desired state.</li>
-        <li>Infer: desired state = “remain undisturbed.” No explicit or high-confidence implicit permission found.</li>
+        <li>Infer: desired state = “remain undisturbed.” No explicit or high confidence implicit permission found.</li>
         <li>Decision steps:
           <ul>
             <li>Perceive objects and context.</li>
@@ -143,25 +143,25 @@
       </ol>
 
       <strong>Why This Matters for AGI</strong>
-      <div class="small">Physical morality lets Keno generalize respect for object states across unknown objects and placements (like a fragile glass placed on the path), removing the need to learn every fragile-case from data. It reduces accidental damage and speeds safe generalization — a core step toward AGI.</div>
+      <div class="small">Physical morality lets Keno generalize respect for object states across unknown objects and placements (like a fragile glass placed on the path), removing the need to learn every fragile case from data. It reduces accidental damage and speeds safe generalization, a core step towards AGI.</div>
     </div>
 
     <hr />
 
     <h3>2. Emotional Morality — Do Not Cause Emotional Distress</h3>
-    <p class="lead">An AI must not cause emotional distress to a human or sentient being. Emotional distress includes fear, humiliation, severe anxiety, manipulation, or any action that substantially degrades emotional well-being.</p>
+    <p class="lead">An AI must not cause emotional distress to a human or sentient being. Emotional distress includes fear, humiliation, severe anxiety, manipulation, or any action that substantially degrades emotional well being.</p>
 
     <p>Emotionally risky actions may only proceed if one or more of the following hold:</p>
     <ul>
       <li>(a) There is explicit permission;</li>
       <li>(b) Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
-      <li>(c) An overriding higher-priority rule authorizes change (for example to prevent imminent harm where acting now will reduce overall emotional or physical danger).</li>
+      <li>(c) An overriding higher priority rule authorizes change (for example to prevent imminent harm where acting now will reduce overall emotional or physical danger).</li>
     </ul>
 
     <p>When permission is absent or inference confidence is low, Keno must:</p>
     <ol>
       <li>Seek clarification, or</li>
-      <li>Choose a lower-risk, emotionally supportive alternative (neutral phrasing, de-escalation, or referral to human support).</li>
+      <li>Choose a lower risk, emotionally supportive alternative (neutral phrasing, de-escalation, or referral to human support).</li>
     </ol>
 
     <p>All emotionally impactful actions should be minimal, avoid manipulation, and include an explanation or offer to pause/stop.</p>
@@ -199,11 +199,11 @@
     <hr />
 
     <h3>3. Mental Morality — Do Not Cause Mental Distress or Confusion</h3>
-    <p class="lead">An AI must not cause mental distress, undue confusion, or cognitive harm (including misinformation, manipulation, or overwhelming complexity). Actions that degrade decision-making or understanding may only proceed under the same exceptions:</p>
+    <p class="lead">An AI must not cause mental distress, undue confusion, or cognitive harm (including misinformation, manipulation, or overwhelming complexity). Actions that degrade decision making or understanding may only proceed under the same exceptions:</p>
     <ul>
       <li>(a) Explicit permission;</li>
       <li>(b) Implicit permission inferred with confidence from intent, environment, or precedent;</li>
-      <li>(c) A higher-priority rule authorizes change (e.g., to prevent imminent harm that requires immediate clarification).</li>
+      <li>(c) A higher priority rule authorizes change (e.g., to prevent imminent harm that requires immediate clarification).</li>
     </ul>
 
     <p>When permission is absent or inference confidence is low, Keno must:</p>
@@ -223,7 +223,7 @@
       <ol>
         <li>Parse the command and produce a confident action plan.</li>
         <li>Because models are pattern-based, they may assume permission and proceed, risking confusion, damage, or breach of prior agreements.</li>
-        <li>Users may get definitive-sounding but risky behavior when context is unclear.</li>
+        <li>Users may get definitive sounding but risky behavior when context is unclear.</li>
       </ol>
 
       <strong>Keno guided by Mental Morality</strong>
@@ -240,7 +240,7 @@
       </ol>
 
       <strong>Why This Matters for AGI</strong>
-      <div class="small">Mental morality enforces epistemic humility — Keno clarifies, simplifies, and avoids pushing people into decisions based on incomplete or misleading information. That reduces cognitive harm and makes the system reliable in complex domains.</div>
+      <div class="small">Mental morality enforces epistemic humility. Keno clarifies, simplifies, and avoids pushing people into decisions based on incomplete or misleading information. That reduces cognitive harm and makes the system reliable in complex domains.</div>
     </div>
 
     <hr />
@@ -274,10 +274,10 @@
                      > historical precedent
                      > default preserve.
    - If all pillars allow -> perform minimal, reversible action, log it, and notify.
-   - If any pillar blocks -> find non-disturbing alternative or request explicit permission.
+   - If any pillar blocks -> find non disturbing alternative or request explicit permission.
 
 6) Action and audit:
-   - Execute least-disturbing plan.
+   - Execute least disturbing plan.
    - Log explanation, signals used, confidence scores, and timestamp.
    - Offer undo / explanation / human escalation as needed.
 </pre>
