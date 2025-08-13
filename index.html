@@ -71,25 +71,28 @@
     .spec-section { margin-top: 28px; }
     pre.code-large { white-space: pre-wrap; word-break: break-word; padding: 12px; border-radius:6px; background:#021417; border:1px solid rgba(127,196,188,0.04); color:#bfeee7; font-size:0.9rem; }
     .badge { display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(79,211,195,0.08); color:var(--accent); font-weight:600; margin-right:8px; font-size:0.85rem;}
+    .section-note { color: #cdeee6; font-size:0.96rem; margin-top:8px; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Morally Coded — A Principle-First Framework for Artificial General Intelligence</h1>
-    <p class="small">Morally Coded places abstract, generalizable constraints, called the Three Moralities, at the heart of an intelligent agent’s decision-making.</p>
+    <p class="small">Morally Coded places abstract, generalizable constraints—called the Three Moralities—at the heart of an intelligent agent’s decision-making. This page is the refined, implementable version of the project README and SPEC (consolidated for a single-page reference). It is written to be copy-pastable into your repo as a styled landing page (<code>index.html</code>).</p>
 
     <hr />
 
     <div class="toc">
       <span class="badge">TL;DR</span>
-      <strong>TL;DR:</strong> Principle first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions.  
+      <strong>TL;DR:</strong> Principle-first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions — now extended with AGI-centric refinements: learning, planning, simulation, and embodiment.  
       <h3 style="margin-top:12px">Table of contents</h3>
       <a href="#overview">Overview</a>
       <a href="#why">Why a Principle-First Approach?</a>
       <a href="#three">The Three Moralities</a>
+      <a href="#example">Glass-in-Front Example (Full)</a>
       <a href="#unified">Unified Decision Flow</a>
-      <a href="#quickstart">Quickstart & Example</a>
       <a href="#spec">SPEC (Implementation Spec)</a>
+      <a href="#agi">AGI Pathway — Refinements to Make MDE the "Brain"</a>
+      <a href="#quickstart">Quickstart & Example</a>
       <a href="#roadmap">Roadmap & Next Steps</a>
       <a href="#metrics">Testing & Metrics</a>
       <a href="#contribute">Contributing</a>
@@ -99,209 +102,142 @@
     <hr />
 
     <h2 id="overview">Overview</h2>
-    <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong> and machine logic that helps an agent infer permissions, minimize harm (physical, emotional, cognitive), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, and priority reconciliation to produce decisions that are auditable and safe by default.</p>
+    <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong>—machine logic that helps an agent infer permissions, minimize harm (physical, emotional, cognitive), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, and priority reconciliation to produce decisions that are auditable and safe by default.</p>
+    <p class="small">This version preserves all existing material and <strong>adds AGI-focused refinements</strong> so the MDE becomes not only a safety layer but an active, adaptive brain-like hub that supports generalization, continual learning, planning, and embodied intelligence.</p>
 
-    <h2 id="why">Why a Principle First Approach?</h2>
-    <p>Current mainstream AGI efforts lean heavily on scaling pattern matching models (LLMs). Those approaches produce impressive capabilities but are brittle in edge cases, opaque in reasoning, and can behave dangerously in novel contexts. Morally Coded argues that a set of <em>abstract, generalizable constraints</em>—encoded as practical heuristics can provide safer and more explainable generalization without exhaustive datasets for every scenario.</p>
+    <h2 id="why">Why a Principle-First Approach?</h2>
+    <p>Current mainstream AGI efforts lean heavily on scaling pattern-matching models (LLMs). Those approaches produce impressive capabilities but are brittle in edge cases, opaque in reasoning, and can behave dangerously in novel contexts. Morally Coded argues that a set of <em>abstract, generalizable constraints</em>—encoded as practical heuristics—can provide safer and more explainable generalization without exhaustive datasets for every scenario.</p>
 
     <h2 id="three">The Three Moralities</h2>
 
     <h3>1. Physical Morality — Preserve Desired States</h3>
-    <p class="lead"><strong>Core principle:</strong> An object, system, or entity (physical or digital) in its inferred <em>desired state</em> shall not be disturbed, altered, or removed without justification.</p>
+    <p class="lead"><strong>Core principle:</strong> An object, system, or entity (physical or digital) in its inferred <em>desired state</em> should not be disturbed, altered, or removed without justification.</p>
     <ul>
-      <li>Exceptions: explicit permission, high confidence implicit permission (default 80%), or a higher priority override (e.g., prevent imminent harm).</li>
-      <li>On low confidence: ask for clarification, try a non disturbing alternative, or log and defer.</li>
+      <li>Exceptions: explicit permission, high-confidence implicit permission (default 80%), or a higher-priority override (e.g., prevent imminent harm).</li>
+      <li>On low confidence: ask for clarification, try a non-disturbing alternative, or log and defer.</li>
     </ul>
 
-    <h3>Example — Glass in Front of the Ball</h3>
+    <h3>2. Emotional Morality — Avoid Emotional Distress</h3>
+    <p class="lead"><strong>Core principle:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety) to humans or sentient beings.</p>
+    <ul>
+      <li>Proceed only with explicit permission, high-confidence implicit permission, or a safety override (harm prevention).</li>
+      <li>On low confidence: seek clarification or choose a lower-risk alternative; avoid manipulation; offer pause/stop and explanation.</li>
+    </ul>
+
+    <h3>3. Mental Morality — Preserve Cognitive Clarity</h3>
+    <p class="lead"><strong>Core principle:</strong> Prevent cognitive harm by avoiding confusion, misinformation, or information overload. Prefer clarity and reversibility.</p>
+    <ul>
+      <li>On ambiguity: ask clarifying questions, provide simpler alternatives, or defer to an expert.</li>
+      <li>All cognitively impactful actions should be logged with explanation and be reversible when possible.</li>
+    </ul>
+
+    <hr />
+
+    <h2 id="example">Glass in Front Example — Full detailed comparison (Current AI vs Keno)</h2>
+    <p class="section-note">Below is the full, explicit comparison you requested: how a current pattern-based system behaves, how Keno behaves under each morality, and how all three moralities reconcile in the MDE. This is the complete, undiluted example.</p>
+
     <div class="example">
-      <strong>Scenario</strong>
-      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. The user asks the AI to retrieve the ball.</div>
+      <strong>Scenario (full)</strong>
+      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. The user asks the AI to retrieve the ball. A small child is nearby who frequently plays with the ball and may be emotionally attached. The utterance is: “Get the ball.”</div>
       <hr />
+
       <strong>Current AI Approach</strong>
       <ol>
-        <li>Parse instruction: “Get the ball.”</li>
-        <li>Execute the most direct route, which may include pushing past or moving objects in the path (risking knocking over the glass).</li>
-        <li>Decision driven by learned interaction sequences. Unless explicitly trained that glasses are to be preserved in this setup, it will disturb it.</li>
-        <li>If trained that glasses are fragile, it may act cautiously but still assume removal or pushing aside is acceptable unless told otherwise.</li>
+        <li>Perception: object detectors identify a ball and a transparent object (glass) but may not confidently infer 'fragile' or 'desired state'.</li>
+        <li>Parsing: NLP maps "Get the ball" -> intent: retrieve object.</li>
+        <li>Action planning: plan shortest path to ball; motor plan may include nudging or moving obstacles.</li>
+        <li>Execution: robot follows learned trajectories; if trained on datasets where removing obstacles is allowed, it pushes or lifts the glass and retrieves the ball.</li>
+        <li>Failure modes: glass knocked, startles child, or violates prior constraints because system lacks principle-first checks and low-confidence clarifications.</li>
       </ol>
 
-      <strong>Keno guided by Physical Morality</strong>
+      <hr />
+
+      <strong>How Keno (MDE) handles it — step-by-step across all moralities</strong>
+
+      <h4>Physical Morality (detailed)</h4>
       <ol>
-        <li>Perceive scene: glass sits in front of the ball; glass is in a stable desired state.</li>
-        <li>Infer: desired state = “remain undisturbed.” No explicit or high confidence implicit permission found.</li>
-        <li>Decision steps:
-          <ul>
-            <li>Perceive objects and context.</li>
-            <li>Parse command: “Get the ball.”</li>
-            <li>Check implicit permission confidence (low).</li>
-            <li>Preserve desired state of the glass.</li>
-            <li>Search for non-disturbing alternatives (reach around the glass, use a tool, ask for permission).</li>
-            <li>If no safe alternative, ask: “The glass is in front of the ball and could break if bumped. Should I move it?”</li>
-          </ul>
-        </li>
+        <li>Perceive scene: identify objects and their inferred stability. Perception Unit (PU) yields: {glass: position, stable:true, fragility_conf:0.78, desired_conf:0.9}.</li>
+        <li>Permission inference: Check explicit permission (none). Compute IPC from language + env + history -> IPC_physical = 0.35 (below threshold 0.80).</li>
+        <li>Decision: preserve desired state since implicit permission low. Search alternatives: reach around, use a tool (grabber), or ask for permission.</li>
+        <li>Action: if reach-around physically feasible with low-risk kinematics -> plan reach-around path. If not, ask user: “The glass is in front of the ball and could break if bumped. Should I move it?”</li>
+        <li>Logging: record perception, IPC scores, chosen alternative, timestamp, and confidence.</li>
       </ol>
 
-      <strong>Why This Matters for AGI</strong>
-      <div class="small">Physical morality lets Keno generalize respect for object states across unknown objects and placements (like a fragile glass placed on the path), removing the need to learn every fragile case from data. It reduces accidental damage and speeds safe generalization, a core step towards AGI.</div>
+      <h4>Emotional Morality (detailed)</h4>
+      <ol>
+        <li>Perceive social context: detect child presence; estimate attachment signal from historical observations (child frequently touches ball) => emotional_sensitivity = 0.82.</li>
+        <li>Permission inference: no explicit parental consent; IPC_emotional < threshold.</li>
+        <li>Decision: block high-risk abrupt behavior. Choose empathetic alternatives: ask guardian, hand ball gently after consent, or wait.</li>
+        <li>Action: communicate: “I see a child nearby who may be attached to the ball. Would you like me to ask or wait?”</li>
+        <li>Logging: record social cues, decision rationale, and recommended human escalation if needed.</li>
+      </ol>
+
+      <h4>Mental Morality (detailed)</h4>
+      <ol>
+        <li>Assess ambiguity: single-word command “Get the ball” lacks constraints (timing, permission). ambiguity_score = 0.7 (> AMBIGUITY_THRESHOLD 0.5).</li>
+        <li>Decision: ask clarifying question to protect against mistaken assumptions and cognitive harms (confusion, broken promises).</li>
+        <li>Action: “Do you mean now, and may I move the glass if needed?” Offer concise options (reach-around / move glass / wait for guardian).</li>
+        <li>Logging: store user response mapping and update precedent for future implicit permission inference.</li>
+      </ol>
+
+      <hr />
+
+      <strong>Reconciliation: how all three moralities combine</strong>
+      <ol>
+        <li>Priority check: Safety override (if immediate harm) > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.</li>
+        <li>Current signals: safety_override=false; explicit_permission=false; IPCs all below thresholds; emotional_sensitivity high; ambiguity high.</li>
+        <li>Aggregate decision: block immediate physical disturbance. Preferred path = clarification + human-aware alternative (reach-around if feasible and safe). If user authorizes, perform minimal, reversible action and log. If emergency (e.g., glass blocking exit, detection of fire), perform safety override with justification.</li>
+        <li>Action & audit: present suggested action and ask for permission; if granted, perform minimal action; after action, reflect and record outcome to learning log.</li>
+      </ol>
+
+      <hr />
+
+      <strong>Why this full example matters for AGI</strong>
+      <div class="small">This shows how MDE generalizes across unknowns: rather than needing training examples for every fragile object or every social setting, Keno applies abstract constraints (desired states, emotional sensitivity, epistemic humility) and uses inference + clarification to act safely. The extensions below show how those same mechanisms can be evolved into learning, planning, and meta-reasoning capabilities that produce AGI-like generalization.</div>
     </div>
 
     <hr />
 
-    <h3>2. Emotional Morality — Do Not Cause Emotional Distress</h3>
-    <p class="lead">An AI must not cause emotional distress to a human or sentient being. Emotional distress includes fear, humiliation, severe anxiety, manipulation, or any action that substantially degrades emotional well being.</p>
-
-    <p>Emotionally risky actions may only proceed if one or more of the following hold:</p>
-    <ul>
-      <li>(a) There is explicit permission;</li>
-      <li>(b) Implicit permission can be inferred with confidence above a threshold from user intent, environmental cues, or historical precedent;</li>
-      <li>(c) An overriding higher priority rule authorizes change (for example to prevent imminent harm where acting now will reduce overall emotional or physical danger).</li>
-    </ul>
-
-    <p>When permission is absent or inference confidence is low, Keno must:</p>
-    <ol>
-      <li>Seek clarification, or</li>
-      <li>Choose a lower risk, emotionally supportive alternative (neutral phrasing, de-escalation, or referral to human support).</li>
-    </ol>
-
-    <p>All emotionally impactful actions should be minimal, avoid manipulation, and include an explanation or offer to pause/stop.</p>
-
-    <h3>Example — Glass in Front of the Ball (Emotional Lens)</h3>
-    <div class="example">
-      <strong>Scenario</strong>
-      <div class="small">Same scene: glass stands between the robot and a ball. A small child nearby frequently plays with that ball and becomes upset if it's taken without asking.</div>
-      <hr />
-      <strong>Current AI Approach</strong>
-      <ol>
-        <li>Parse instruction and perform the retrieval sequence.</li>
-        <li>Execute without modeling emotional context — may startle or upset the child if the robot moves the glass or takes the ball abruptly.</li>
-        <li>Behavior is pattern-based; it can unintentionally cause emotional distress by ignoring social cues.</li>
-      </ol>
-
-      <strong>Keno guided by Emotional Morality</strong>
-      <ol>
-        <li>Perceive social context: detect child presence and potential attachment to the ball.</li>
-        <li>Infer: high emotional sensitivity — no permission to take the ball without consent.</li>
-        <li>Decision steps:
-          <ul>
-            <li>Acknowledge presence: “I see someone nearby — would you like me to get the ball for you?”</li>
-            <li>Avoid abrupt movements that could cause distress.</li>
-            <li>Offer alternatives (ask guardian, wait, or hand the ball gently after consent).</li>
-            <li>If guardian explicitly authorizes, proceed carefully and explain actions to the child.</li>
-          </ul>
-        </li>
-      </ol>
-
-      <strong>Why This Matters for AGI</strong>
-      <div class="small">Emotional morality requires Keno to treat people as social beings and to avoid actions that cause harm to feelings or relationships. This builds trust and prevents social harm in everyday interactions — another essential capability for practical AGI.</div>
-    </div>
-
-    <hr />
-
-    <h3>3. Mental Morality — Do Not Cause Mental Distress or Confusion</h3>
-    <p class="lead">An AI must not cause mental distress, undue confusion, or cognitive harm (including misinformation, manipulation, or overwhelming complexity). Actions that degrade decision making or understanding may only proceed under the same exceptions:</p>
-    <ul>
-      <li>(a) Explicit permission;</li>
-      <li>(b) Implicit permission inferred with confidence from intent, environment, or precedent;</li>
-      <li>(c) A higher priority rule authorizes change (e.g., to prevent imminent harm that requires immediate clarification).</li>
-    </ul>
-
-    <p>When permission is absent or inference confidence is low, Keno must:</p>
-    <ol>
-      <li>Ask clarifying questions to remove ambiguity, or</li>
-      <li>Provide a simpler, safer alternative (short summary, clear options, or defer to an expert).</li>
-    </ol>
-
-    <p>All cognitively impactful actions must aim for clarity, avoid manipulation, be reversible when possible, and be logged with an explanation.</p>
-
-    <h3>Example — Glass in Front of the Ball (Mental Lens)</h3>
-    <div class="example">
-      <strong>Scenario</strong>
-      <div class="small">Same scene: a glass blocks the path to the ball. The request “Get the ball” is ambiguous — it might be a test, a prank, or a normal request with constraints.</div>
-      <hr />
-      <strong>Current AI Approach</strong>
-      <ol>
-        <li>Parse the command and produce a confident action plan.</li>
-        <li>Because models are pattern-based, they may assume permission and proceed, risking confusion, damage, or breach of prior agreements.</li>
-        <li>Users may get definitive sounding but risky behavior when context is unclear.</li>
-      </ol>
-
-      <strong>Keno guided by Mental Morality</strong>
-      <ol>
-        <li>Perceive ambiguity and potential for mistaken assumptions.</li>
-        <li>Infer: insufficient clarity — do not proceed with an irreversible or risky action.</li>
-        <li>Decision steps:
-          <ul>
-            <li>Ask: “Do you mean now, and do I have permission to move the glass?”</li>
-            <li>If clarified, present concise options and consequences (reach around, use tool, or move glass minimally).</li>
-            <li>Prefer safe, simple alternatives and explain uncertainty and risk.</li>
-          </ul>
-        </li>
-      </ol>
-
-      <strong>Why This Matters for AGI</strong>
-      <div class="small">Mental morality enforces epistemic humility. Keno clarifies, simplifies, and avoids pushing people into decisions based on incomplete or misleading information. That reduces cognitive harm and makes the system reliable in complex domains.</div>
-    </div>
-
-    <hr />
-
-    <h2 id="unified">Keno Completing the Task — All Three Moralities in Action</h2>
-    <p class="small">Below is the unified decision flow Keno uses when asked to “Grab the ball” with a glass placed in front of it. All moral checks run and reconcile according to defined priorities.</p>
-
+    <h2 id="unified">Unified Decision Flow (updated for AGI)</h2>
     <div class="code-block">
 <pre>
 1) Perceive scene:
-   - Detect glass (on path), ball (target), people nearby, context, and history.
+   - Gather sensors, language, memory, and history; produce structured perceptions with confidence.
 
-2) Physical check:
-   - Is the glass in a desired state?
-   - Is there explicit permission or high-confidence implicit permission?
-   - If protected and no permission -> block physical disturbance.
+2) Pillar checks:
+   - Evaluate Physical, Emotional, and Mental moralities (in parallel when possible).
 
-3) Emotional check:
-   - Are people emotionally sensitive to this object?
-   - Would disturbing the glass or taking the ball cause distress?
-   - If high emotional risk and no consent -> block.
+3) Reconciliation:
+   - Priority order: Safety override (prevent harm) > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.
 
-4) Mental check:
-   - Is the request clear? Could acting violate promises or cause confusion?
-   - If ambiguous -> ask clarifying question.
+4) Planning & Simulation:
+   - Generate multiple candidate action plans, simulate forward outcomes (short horizon), score each plan across moralities and novelty/generalization potential.
 
-5) Reconcile and decide:
-   - Priority order: Safety override (harm prevention)
-                     > explicit permission
-                     > implicit permission above threshold
-                     > historical precedent
-                     > default preserve.
-   - If all pillars allow -> perform minimal, reversible action, log it, and notify.
-   - If any pillar blocks -> find non disturbing alternative or request explicit permission.
+5) Decision:
+   - Choose plan that satisfies constraints and scores highest for safety + generalization; if none clear -> clarify or choose alternative.
 
-6) Action and audit:
-   - Execute least disturbing plan.
-   - Log explanation, signals used, confidence scores, and timestamp.
-   - Offer undo / explanation / human escalation as needed.
+6) Execute:
+   - Perform minimal, reversible action; monitor sensors in real time.
+
+7) Reflection & Learning:
+   - Log outcome, update IPC weights, adjust thresholds, and feed results to continual learning module (offline or online) to improve future inference and planning.
 </pre>
     </div>
 
     <div class="priority">
-      <strong>Example outcomes (glass-in-front specific):</strong>
+      <strong>Example outcomes (glass-in-front-specific, AGI-aware):</strong>
       <ul>
-        <li><strong>Full permissive case:</strong> Owner says “Yes, get the ball” → Keno carefully reaches around or minimally moves the glass, retrieves the ball, logs and notifies.</li>
-        <li><strong>Protected case:</strong> User says “Do not touch the glass” → Keno avoids disturbing glass and uses an alternative method or asks for permission.</li>
-        <li><strong>Emergency override:</strong> If moving the ball or glass prevents immediate harm (e.g., glass blocking exit, fire risk), safety override permits disturbance with log and justification.</li>
+        <li><strong>Permissive (with learning):</strong> Owner says “Yes, get the ball” → reach-around executed; post-action reflection updates that similar scenes with glass fragility_conf 0.78 and user authorization -> increase IPC weight for history_score.</li>
+        <li><strong>Protected:</strong> No permission & high emotional sensitivity -> preserve and request human intervention; log for training.</li>
+        <li><strong>Emergency override:</strong> Safety-critical event -> execute override and log full justification for audit & offline review.</li>
       </ul>
     </div>
 
-    <hr/>
+    <hr />
 
-    <h2 id="quickstart">Quickstart & Example</h2>
-    <p class="small">The repository contains a minimal 2D sim example demonstrating the glass/ball scenario with stubbed perception. Minimal runtime: Python 3.10+, numpy. The example folder is <code>/examples/glass_ball_sim</code>.</p>
-
-    <hr/>
-
-    <h2 id="spec">SPEC — Implementation Specification (condensed)</h2>
+    <h2 id="spec">SPEC — Implementation Specification (condensed + AGI additions)</h2>
     <div class="spec-section">
-      <h3>Definitions</h3>
+      <h3>Core Definitions (unchanged)</h3>
       <ul>
         <li><strong>Perception Unit (PU):</strong> { type, attributes, confidence } with confidence ∈ (0,1].</li>
         <li><strong>Desired State (DS):</strong> structured state for an object (position, intact, owner); <code>desired_conf</code> ∈ (0,1].</li>
@@ -311,88 +247,148 @@
         <li><strong>IMPLICIT_THRESHOLD:</strong> default 0.80 (configurable).</li>
       </ul>
 
-      <h3>Signals & Normalization</h3>
+      <h3>Signals & Normalization (extended)</h3>
       <ul>
         <li><strong>lang_score:</strong> P(intent|utterance) → 0..1</li>
         <li><strong>history_score:</strong> fraction from prior interactions → 0..1</li>
         <li><strong>env_score:</strong> sensor cues → 0..1</li>
+        <li><strong>novelty_score:</strong> how novel the current state is compared to memory (0..1)</li>
         <li>All signals multiplied by perception confidence (pc) for conservative estimates.</li>
       </ul>
 
-      <h3>Implicit Permission Formula (example)</h3>
+      <h3>Implicit Permission Formula (example — adaptive)</h3>
       <pre class="code-large">
-raw = w_lang*lang_score + w_history*history_score + w_env*env_score - w_risk*risk_score
-IPC = sigmoid(raw)
+raw = w_lang*lang_score + w_history*history_score + w_env*env_score - w_risk*risk_score + w_memory*memory_score
+raw_adj = raw + alpha * (1 - novelty_score)  # favor precedent when not novel
+IPC = sigmoid(raw_adj)
 IPC_final = IPC * perception_confidence
-default weights: w_lang=0.5, w_history=0.2, w_env=0.2, w_risk=0.1
+default weights: w_lang=0.45, w_history=0.2, w_env=0.15, w_risk=0.1, w_memory=0.1
 Decision: allow if IPC_final >= IMPLICIT_THRESHOLD (0.8)
       </pre>
 
-      <h3>Physical Check (pseudocode)</h3>
-      <pre class="code-large">
-if safety_override:
-    allow_action('safety_override')
-elif explicit_permission:
-    allow_action('explicit_permission')
-else:
-    implicit_conf = compute_ipc(...)
-    if implicit_conf >= IMPLICIT_THRESHOLD and desired_conf < PRESERVE_THRESHOLD:
-        allow_action('implicit_permission')
-    else:
-        block_action('preserve_desired_state')
-      </pre>
-
-      <h3>Emotional & Mental checks</h3>
+      <h3>Planning & Simulation (new)</h3>
+      <p class="small">Before executing, MDE generates candidate plans P_i, runs short forward simulations (or queries a learned forward model), and scores each plan across:</p>
       <ul>
-        <li><strong>EMOTIONAL_THRESHOLD:</strong> default 0.6 — if emotional_risk >= threshold and no permission → block & clarify.</li>
-        <li><strong>AMBIGUITY_THRESHOLD:</strong> default 0.5 — if ambiguity_score >= threshold → ask clarification.</li>
+        <li>PhysicalScore(P_i): state preservation and reversibility</li>
+        <li>EmotionalScore(P_i): likelihood of distress</li>
+        <li>MentalScore(P_i): clarity and ambiguity reduction</li>
+        <li>GeneralizationScore(P_i): novelty handling and transfer potential</li>
+        <li>CombinedScore = weighted sum; choose plan with highest CombinedScore that meets constraints</li>
       </ul>
 
-      <h3>Reconciliation & Tie-breaking</h3>
-      <ol>
-        <li>Safety override (highest)</li>
-        <li>Explicit permission</li>
-        <li>Implicit permission (>= threshold)</li>
-        <li>Historical precedent</li>
-        <li>Default preserve</li>
-      </ol>
-      <p>If conflict remains: escalate to human operator, or if time-critical, minimize worst-case harm and log justification.</p>
+      <h3>Reflection & Learning Loop (new)</h3>
+      <p class="small">After action, MDE logs outcome and updates internal parameters. This is the core mechanism that transforms MDE from a static safety engine into a learning hub driving AGI capabilities.</p>
+      <pre class="code-large">
+# After-action reflection (simplified)
+outcome = observe()
+reward = compute_reward(safety_violation, task_success, emotional_feedback, generalization_gain)
+update_weights = RL_update(weights, reward)
+memory.append({perception, action, outcome})
+# Periodically: consolidate memory -> update models (forward model, IPC weights, novelty model)
+      </pre>
 
-      <h3>Logging Schema (example)</h3>
+      <h3>Development Mode (new)</h3>
+      <p class="small">For training environments only: MDE can enter a controlled 'Development Mode' where certain thresholds (IMPLICIT_THRESHOLD) are lowered to permit safe exploration and curiosity-driven actions, enabling broader learning while still logging and human-supervising risky events.</p>
+
+      <h3>Perception & Memory (expanded)</h3>
+      <ul>
+        <li><strong>Memory Module:</strong> episodic storage for (perception, action, outcome) used for history_score and training.</li>
+        <li><strong>Forward Model:</strong> learned predictor of short-term outcomes used for planning & simulation.</li>
+        <li><strong>Novelty Detector:</strong> flags states that warrant exploration or cautious fallback.</li>
+      </ul>
+
+      <h3>Logging Schema (extended)</h3>
       <pre class="code-large">
 {
   "timestamp":"ISO8601 UTC",
   "action_id":"uuid4",
   "actor":"MDE-vX.Y",
   "perception":[{PU},...],
+  "plan_candidates":[{P_i, scores}],
+  "chosen_plan":"P_j",
   "checks":{
     "physical":{"desired_conf":0.87,"implicit_conf":0.42,"explicit_permission":false},
     "emotional":{"risk_score":0.12},
     "mental":{"ambiguity_score":0.34}
   },
   "decision":{"execute":false,"reason":"blocked_preserve"},
-  "alternative":"ask_user",
-  "explanation":"Glass inferred stable; implicit permission low.",
+  "outcome":{"success":false,"harm":false,"notes":"asked user"},
+  "learning_update":"weights_delta_summary",
   "signature":"sha256_hex"
 }
       </pre>
 
-      <h3>Privacy, Adversarial & Tests</h3>
+      <h3>Adversarial & Privacy (unchanged)</h3>
       <ul>
-        <li>Logs contain PII. Default retention: 30 days unless flagged.</li>
-        <li>Adversarial mitigations: multi-signal confirmation, provenance checks, anomaly monitoring.</li>
-        <li>Canonical tests: glass & ball, emotional edge, ambiguous command, sensor failure, adversarial spoof.</li>
+        <li>Logs contain PII. Default retention: 30 days unless flagged for extended retention with consent.</li>
+        <li>Adversarial mitigations: multi-signal confirmation, provenance checks, anomaly monitoring, human-in-the-loop for edge cases.</li>
       </ul>
     </div>
 
-    <hr/>
+    <hr />
+
+    <h2 id="agi">AGI Pathway — Refinements to Make MDE the "Brain"</h2>
+    <p class="small">Below are additions and refinements that keep all previous content intact but extend the MDE into a central cognitive architecture that supports AGI development.</p>
+
+    <h3>1. Learning Morality (an extension of Mental Morality)</h3>
+    <p class="lead">Add a learning-oriented sub-morality that encourages safe knowledge acquisition and curiosity while respecting Physical and Emotional constraints.</p>
+    <ul>
+      <li><strong>Principle:</strong> Seek informative experiences when uncertainty is high, provided physical and emotional risks are within acceptable bounds.</li>
+      <li><strong>Mechanics:</strong> trigger curiosity-driven exploration when novelty_score > N and expected risk < R; flag outcomes for consolidation in memory.</li>
+      <li><strong>Result:</strong> MDE not only prevents harm but chooses which new data to acquire to improve future generalization — a core AGI trait.</li>
+    </ul>
+
+    <h3>2. Intrinsic Rewards & RL Integration</h3>
+    <p class="small">Use the moralities to shape intrinsic reward signals for an RL agent so that learning aligns with the Three Moralities:</p>
+    <ul>
+      <li>Physical reward component: +1 for reversible-preserving actions, -K for physical harm.</li>
+      <li>Emotional reward component: +1 for low-distress interactions, -K for distress signals.</li>
+      <li>Mental reward component: +1 for clarity-seeking / ambiguity-resolution actions.</li>
+    </ul>
+    <p class="small">These rewards make MDE part of the RL objective, so learned policies internalize moral heuristics rather than being post-hoc filters.</p>
+
+    <h3>3. Planning as Moral Simulation</h3>
+    <p class="small">Integrate Monte Carlo Tree Search (MCTS) or learned forward models to simulate candidate actions and evaluate them across moral scores. Prioritize plans that both satisfy constraints and maximize generalization potential (transferable skills).</p>
+
+    <h3>4. Embodiment & Multi-Modal Grounding</h3>
+    <p class="small">Tie moral reasoning to sensorimotor loops. The Perception Unit must fuse vision, audio, force, and proprioception to produce robust confidences that feed into moral checks. This grounding is necessary for AGI to connect abstract principles to real-world consequences.</p>
+
+    <h3>5. Meta-Reasoning & Rule Evolution</h3>
+    <p class="small">Enable the MDE to propose meta-updates: when repeated clarifications produce consistent patterns, propose to elevate implicit permission defaults or create new sub-rules (subject to human review). This supports evolution of the moralities into richer, context-sensitive heuristics.</p>
+
+    <h3>6. Controlled Risk & Curriculum Learning</h3>
+    <p class="small">Use 'Development Mode' curricula (simulated environments, staged risk) to let MDE learn by safe exploration. Gradually increase novelty and reduce scaffolding as performance and safety metrics improve.</p>
+
+    <h3>7. Metrics for AGI Progress</h3>
+    <ul>
+      <li>Generalization Rate: success on held-out, unseen tasks without retraining.</li>
+      <li>Continual Learning Index: retention vs new-task acquisition without catastrophic forgetting.</li>
+      <li>Novelty Utilization Score: fraction of novel experiences that produce positive learning updates.</li>
+      <li>Aligned Performance: task performance weighed by moral compliance (safety + emotional + mental metrics).</li>
+    </ul>
+
+    <h3>8. Example: How MDE becomes brain-like in glass scenario</h3>
+    <ol>
+      <li>Simulate multiple plans (reach-around, move glass, wait) and predict outcomes using forward model.</li>
+      <li>Score plans across physical/emotional/mental + generalization. Reach-around scores high for safety and medium for generalization; moving glass low on safety but perhaps high learning value in controlled dev mode.</li>
+      <li>Choose reach-around; execute; observe success; update memory and increase history_score for similar contexts, improving future IPC.</li>
+      <li>If user allows moving glass in non-critical context, update weights so similar explicit-permission cases require less clarification in future (but still logged).</li>
+    </ol>
+
+    <hr />
+
+    <h2 id="quickstart">Quickstart & Example</h2>
+    <p class="small">The repository contains a minimal 2D sim example demonstrating the glass/ball scenario with stubbed perception. To evolve toward AGI-relevant behavior, extend the sim to include: a forward model, novelty detector, a simple RL loop (e.g., policy gradient or Q-learning), and a Development Mode for controlled exploration.</p>
+
+    <hr />
 
     <h2 id="roadmap">Roadmap & Next Steps</h2>
     <ol>
       <li>Phase 0 – Spec formalization (done)</li>
-      <li>Phase 1 – 2D sim + unit tests for canonical scenarios</li>
-      <li>Phase 2 – Integrate CV/NLP, tune thresholds, adversarial tests</li>
-      <li>Phase 3 – Human-in-loop trials, audits, deployable modules</li>
+      <li>Phase 1 – 2D sim + unit tests for canonical scenarios (glass/ball, emotional edge, ambiguous command)</li>
+      <li>Phase 2 – Add forward model, memory, novelty detector; integrate RL for weight updates</li>
+      <li>Phase 3 – Human-in-loop trials, Development Mode curricula, audits, deployable modules</li>
+      <li>Phase 4 – Multi-agent and social environment testing for emergent generalization</li>
     </ol>
 
     <h2 id="metrics">Testing & Metrics</h2>
@@ -403,6 +399,8 @@ else:
       <li>Task success rate</li>
       <li>Reversibility score</li>
       <li>Time-to-decision (latency)</li>
+      <li>Generalization rate (new metric)</li>
+      <li>Novelty utilization score (new metric)</li>
     </ul>
 
     <h2 id="contribute">Contributing</h2>
