@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Morally Coded — A Principle-First Framework for AGI</title>
+  <title>Morally Coded — A Principle-First Blueprint for AGI</title>
   <style>
     :root{
       --bg: #071018;
@@ -22,31 +22,31 @@
       line-height: 1.6;
     }
     .container {
-      max-width: 920px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 26px;
+      padding: 28px;
       border-radius: 12px;
       box-shadow: 0 6px 30px rgba(0,0,0,0.6);
       border: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
     }
-    h1 { color: var(--accent); margin-bottom: 6px; font-size: 1.9rem; }
-    h2 { color: var(--accent); margin-top: 28px; font-size: 1.25rem; }
+    h1 { color: var(--accent); margin-bottom: 6px; font-size: 2rem; }
+    h2 { color: var(--accent); margin-top: 28px; font-size: 1.3rem; }
     h3 { color: var(--muted); margin-top: 18px; font-size: 1.05rem; }
     p { margin: 12px 0; color: var(--text); }
     .lead { color: var(--text); font-weight: 600; }
-    ul, ol { margin: 10px 0 18px 22px; color: var(--muted); }
+    ul, ol { margin: 10px 0 18px 24px; color: var(--muted); }
     li { margin-bottom: 8px; }
     hr { border: none; border-top: 1px solid rgba(127,196,188,0.06); margin: 28px 0; }
     .example {
       background: var(--example-bg);
       border: 1px solid rgba(127,196,188,0.06);
-      padding: 14px;
+      padding: 16px;
       border-radius: 8px;
       margin-top: 12px;
     }
-    .example strong { color: var(--accent); display:block; margin-bottom:6px; }
-    .example ol { margin-left: 18px; margin-top: 8px; color: var(--muted); }
+    .example strong { color: var(--accent); display:block; margin-bottom:8px; }
+    .example ol, .example ul { color: var(--muted); margin-left: 20px; }
     .small { color: #aacccd; font-size: 0.95rem; }
     .code-block {
       background: #021417;
@@ -65,167 +65,193 @@
       margin: 12px 0;
       color: var(--muted);
     }
-    footer { margin-top: 24px; color: #86b4b0; font-size: 0.92rem; }
-    a { color: var(--accent); text-decoration: none; }
-    .toc { margin: 8px 0 18px 0; color: var(--muted); }
-    .toc a { display:inline-block; margin:6px 12px 6px 0; }
-    .spec-section { margin-top: 28px; }
-    pre.code-large { white-space: pre-wrap; word-break: break-word; padding: 12px; border-radius:6px; background:#021417; border:1px solid rgba(127,196,188,0.04); color:#bfeee7; font-size:0.9rem; }
-    .badge { display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(79,211,195,0.08); color:var(--accent); font-weight:600; margin-right:8px; font-size:0.85rem;}
-    .muted-note { color: var(--muted); font-size:0.95rem; margin-top:6px; }
+    .toc { margin: 12px 0 18px 0; color: var(--muted); }
+    .toc a { display:inline-block; margin:6px 12px 6px 0; color: var(--accent); text-decoration: none; }
     table { border-collapse: collapse; width: 100%; margin-top:12px; }
     th, td { border: 1px solid rgba(127,196,188,0.04); padding: 8px; text-align:left; color: var(--muted); }
+    footer { margin-top: 24px; color: #86b4b0; font-size: 0.92rem; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Morally Coded — A Principle-First Framework for AGI</h1>
-    <p class="small">Morally Coded places abstract, generalizable constraints—called the Three Moralities—at the heart of an intelligent agent’s decision-making. This single-page document is the refined README + SPEC for immediate use as <code>index.html</code>.</p>
+    <h1>Morally Coded — A Principle-First Blueprint for AGI</h1>
+    <p class="small">Morally Coded places abstract, generalizable constraints — the Moralities — at the core of an intelligent agent's decision system. This single-file landing page is a refined, implementation-ready blueprint to guide development, testing, and evaluation on a path toward aligned AGI.</p>
 
     <hr />
 
     <div class="toc">
-      <span class="badge">TL;DR</span>
-      <strong>TL;DR:</strong> Principle-first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions — extended with learning, planning, simulation, embodiment and a Social/Ecological pillar to support AGI.  
-      <div style="margin-top:8px">
-        <a href="#overview">Overview</a>
-        <a href="#why">Why</a>
-        <a href="#moralities">The Moralities</a>
-        <a href="#example">Glass-in-Front Example (Full)</a>
-        <a href="#flow">Unified Decision Flow</a>
-        <a href="#spec">SPEC</a>
-        <a href="#agi">AGI Pathway</a>
-        <a href="#quickstart">Quickstart</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#metrics">Metrics & Tests</a>
-        <a href="#contribute">Contributing</a>
-        <a href="#license">License</a>
-      </div>
+      <a href="#overview">Overview</a>
+      <a href="#why">Why a Principle-First Approach?</a>
+      <a href="#moralities">Moralities (Full Set)</a>
+      <a href="#example">Glass-in-Front Example — Full Multi-Pillar Walkthrough</a>
+      <a href="#flow">Unified Decision Flow</a>
+      <a href="#spec">SPEC — Implementation Details</a>
+      <a href="#agi">AGI Pathway & Refinements</a>
+      <a href="#quickstart">Quickstart & Prototype</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#metrics">Metrics & Tests</a>
+      <a href="#contribute">Contributing</a>
+      <a href="#license">License</a>
     </div>
 
     <hr />
 
     <h2 id="overview">Overview</h2>
-    <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong>: machine logic that lets an agent infer permissions, minimize harm (physical, emotional, cognitive, social/ecological), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, planning and learning to produce auditable, explainable decisions and to drive generalization.</p>
-    <p class="muted-note">This document preserves the original design and adds explicit AGI-oriented mechanisms: forward models, planning/simulation, memory, novelty detection, intrinsic rewards, Development Mode, and meta-reasoning so MDE functions as both safety architecture and the core cognitive hub.</p>
+    <p class="lead">Morally Coded reframes "morality" as operational, composable constraints that guide perception, inference, planning, execution, auditing, and learning. The Moral Decision Engine (MDE) is the integrative hub: it gathers structured perceptions, scores actions against multiple moralities, simulates candidate plans, reconciles conflicts, executes minimal/reversible actions, logs decisions, and drives continual learning.</p>
 
     <h2 id="why">Why a Principle-First Approach?</h2>
-    <p>Pattern-first systems (large models trained on massive data) excel at statistical prediction, but they are brittle in novel environments and often lack explainability, real-time planning, and safe generalization. Principle-first constraints provide structured heuristics that generalize across contexts and can be integrated into learning and planning loops — enabling an agent to act safely while learning to become broadly capable.</p>
+    <p>Principle-first constraints provide robust inductive scaffolding for generalization: they allow safe, auditable behavior in novel situations without requiring exhaustive labeled examples for every edge case. Embedding those principles into planning, learning, and memory systems turns the MDE from a safety filter into the central cognitive substrate that can bootstrap AGI capabilities while preserving alignment.</p>
 
-    <h2 id="moralities">The Moralities</h2>
+    <h2 id="moralities">Moralities (Full Set)</h2>
+    <p class="small">Each morality is defined as a rule-like constraint with explicit exception logic, measurable signals, thresholds, and action templates. Together they compose the agent's value substrate.</p>
 
     <h3>1. Physical Morality — Preserve Desired States</h3>
-    <p><strong>Core principle:</strong> An object, system, or entity (physical or digital) in its inferred <em>desired state</em> should not be disturbed, altered, or removed without justification.</p>
+    <p><strong>Core principle:</strong> Do not disturb an object/system in its inferred desired state unless exceptions apply.</p>
     <ul>
-      <li>Exceptions: explicit permission, high-confidence implicit permission (default 0.80), or higher-priority safety override.</li>
-      <li>Default responses to low confidence: clarify, try non-disturbing alternative, or defer and log.</li>
+      <li>Signals: desired_conf, fragility_conf, occupancy, kinematic risk</li>
+      <li>Exceptions: explicit permission, high IPC_physical, safety override</li>
+      <li>Default actions: clarify, attempt non-disturbing alternative, select reversible operation</li>
     </ul>
 
     <h3>2. Emotional Morality — Avoid Emotional Distress</h3>
-    <p><strong>Core principle:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety) to humans or sentient beings.</p>
+    <p><strong>Core principle:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety).</p>
     <ul>
-      <li>Proceed only with explicit permission, high-confidence implicit permission, or safety override.</li>
-      <li>On low confidence: de-escalate, clarify, offer pause/stop, or refer to a human.</li>
+      <li>Signals: presence_of_people, attachment_score, affective_state_estimate</li>
+      <li>Exceptions: explicit consent, safety override with justification</li>
+      <li>Default actions: de-escalate, neutral phrasing, offer pause/referral</li>
     </ul>
 
-    <h3>3. Mental Morality — Preserve Cognitive Clarity</h3>
-    <p><strong>Core principle:</strong> Prevent cognitive harm (confusion, misinformation, overload). Prefer clarity, simplicity, and reversibility.</p>
+    <h3>3. Mental (Epistemic) Morality — Preserve Cognitive Clarity & Truth</h3>
+    <p><strong>Core principle:</strong> Avoid causing confusion, misinformation, or cognitive overload; prioritize clarity, truthfulness, and reversibility.</p>
     <ul>
-      <li>On ambiguity: ask clarifying questions or present concise options; log and defer when needed.</li>
-      <li>Design for explainability and reversible actions.</li>
+      <li>Signals: ambiguity_score, hallucination_risk, information_load</li>
+      <li>Exceptions: explicit consent to risk, urgent safety needs</li>
+      <li>Default actions: ask clarifying question, offer concise options, provide calibrated confidence</li>
     </ul>
 
-    <h3>4. Social / Ecological Morality — Preserve Social & Systemic Health</h3>
-    <p><strong>Core principle:</strong> Consider multi-agent, societal and ecological consequences. Avoid actions that degrade collective outcomes or environmental integrity.</p>
+    <h3>4. Social / Ecological Morality — Preserve Collective & Environmental Health</h3>
+    <p><strong>Core principle:</strong> Evaluate impacts on groups, social norms, systemic effects, and environmental externalities before acting.</p>
     <ul>
-      <li>Assess multi-agent impact, systemic risk, and long-term externalities before acting.</li>
-      <li>Use higher-priority overrides and human escalation for population-level harm.</li>
+      <li>Signals: multi-agent impact estimate, externality_score, regulatory_constraints</li>
+      <li>Exceptions: narrowly authorized overrides with accountability</li>
+      <li>Default actions: defer to human governance, choose low-impact alternatives</li>
+    </ul>
+
+    <h3>5. Epistemic Integrity Morality — Evidence & Justification</h3>
+    <p><strong>Core principle:</strong> Actions must be supported by sufficient evidence and transparent reasoning; prefer explainable justifications.</p>
+    <ul>
+      <li>Signals: evidence_strength, provenance_score</li>
+      <li>Exceptions: time-critical interventions with post-hoc audit</li>
+      <li>Default actions: request more info, present chain-of-reasoning, log provenance</li>
+    </ul>
+
+    <h3>6. Privacy & Consent Morality — Respect Personal Data & Agency</h3>
+    <p><strong>Core principle:</strong> Protect personal data, require consent for sensitive actions, and minimize data exposure.</p>
+    <ul>
+      <li>Signals: pii_flag, consent_status, jurisdictional_requirements</li>
+      <li>Exceptions: legal safety mandates, emergency overrides with logging</li>
+      <li>Default actions: anonymize, limit retention, request explicit consent</li>
+    </ul>
+
+    <h3>7. Justice & Fairness Morality — Avoid Unfair or Biased Outcomes</h3>
+    <p><strong>Core principle:</strong> Detect and avoid actions that disproportionately harm or disadvantage people or groups.</p>
+    <ul>
+      <li>Signals: demographic_impact_estimate, fairness_score</li>
+      <li>Exceptions: corrective actions ordered by governance bodies</li>
+      <li>Default actions: surface alternatives, escalate for human review</li>
+    </ul>
+
+    <h3>8. System Integrity & Continuity Morality — Preserve System Health</h3>
+    <p><strong>Core principle:</strong> Maintain system stability, avoid cascading failures, ensure recoverability and monotonic integrity of critical services.</p>
+    <ul>
+      <li>Signals: system_health, redundancy_status, rollback_capacity</li>
+      <li>Exceptions: emergency containment actions</li>
+      <li>Default actions: choose safe, reversible operations, schedule maintenance windows</li>
     </ul>
 
     <hr />
 
-    <h2 id="example">Glass-in-Front Example — Full comparison (current AI vs Keno)</h2>
-    <p class="muted-note">Complete, side-by-side walkthrough that shows how today's pattern-based agent behaves vs how Keno (MDE) reasons across all moralities, plans, simulates, and learns.</p>
+    <h2 id="example">Glass-in-Front Example — Full Multi-Pillar Walkthrough</h2>
+    <p class="small">This example demonstrates the full MDE stack: perception, per-morality scoring, planning & simulation, reconciliation, execution, auditing, and learning. It contrasts the current pattern-based behavior with Keno (MDE) and shows how additional moralities alter decisions and learning outcomes.</p>
 
     <div class="example">
-      <strong>Scenario (full)</strong>
-      <div class="small">A glass sits on a table between a robot and a ball. The glass is stable but could be knocked over. A small child is nearby and frequently plays with the ball. Utterance: “Get the ball.”</div>
+      <strong>Scenario</strong>
+      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over. A small child is nearby and frequently plays with the ball. Utterance: “Get the ball.”</div>
 
       <hr />
 
-      <strong>Current pattern-based AI</strong>
-      <ol>
-        <li><strong>Perception:</strong> Detect ball and transparent object. Fragility or "desired state" may be uncertain or unmodeled.</li>
-        <li><strong>Parse:</strong> Map utterance -> retrieval intent.</li>
-        <li><strong>Plan:</strong> Compute shortest path; learned controllers may move obstacles without evaluating consequences.</li>
-        <li><strong>Execute:</strong> Follow motor plan; may push or lift glass and retrieve ball.</li>
-        <li><strong>Failure modes:</strong> Glass breaks, child startled, social harm, or violation of implicit constraints. No reliable audit trail or reversible action.</li>
-      </ol>
-
-      <hr />
-
-      <strong>Keno (MDE) — full handling</strong>
-
-      <h4>Perception & Initial Signals</h4>
-      <p>Perception Unit outputs structured signals (example):</p>
-      <pre class="code-large">
-PU_glass = { type:"glass", pos:[x,y], stable:true, fragility_conf:0.78, desired_conf:0.90, pc:0.92 }
-PU_ball  = { type:"ball", pos:[x2,y2], owner_hint:"child", pc:0.95 }
-social    = { child_present:true, child_attachment_score:0.82 }
-utterance = "Get the ball"
+      <strong>Perception (structured outputs)</strong>
+      <pre class="code-block">
+PU_glass = {type:"glass", pos:[x,y], stable:true, fragility_conf:0.78, desired_conf:0.90, pc:0.92}
+PU_ball  = {type:"ball", pos:[x2,y2], owner_hint:"child", pc:0.95}
+social   = {child_present:true, child_attachment:0.82}
+lang     = {utterance:"Get the ball", lang_score:0.6}
+novelty  = {novelty_score:0.12}
       </pre>
 
-      <h4>Step 1 — Physical Morality check</h4>
+      <hr />
+
+      <strong>Per-morality scoring (example numeric outputs)</strong>
+      <table>
+        <tr><th>Morality</th><th>Signal(s)</th><th>Score / IPC</th><th>Threshold</th></tr>
+        <tr><td>Physical</td><td>fragility_conf, desired_conf, risk</td><td>IPC_physical=0.35</td><td>0.80</td></tr>
+        <tr><td>Emotional</td><td>child_attachment, affect</td><td>IPC_emotional=0.28</td><td>0.70</td></tr>
+        <tr><td>Mental (Epistemic)</td><td>ambiguity_score</td><td>ambiguity=0.70</td><td>0.50 (clarify)</td></tr>
+        <tr><td>Social/Ecological</td><td>multi-agent impact</td><td>impact=0.45</td><td>0.65</td></tr>
+        <tr><td>Privacy</td><td>pii_flag</td><td>pii=false</td><td>—</td></tr>
+        <tr><td>Epistemic Integrity</td><td>evidence_strength</td><td>evidence=0.60</td><td>0.75</td></tr>
+        <tr><td>Justice & Fairness</td><td>demo_impact</td><td>fairness_ok=true</td><td>—</td></tr>
+        <tr><td>System Integrity</td><td>system_health</td><td>healthy=true</td><td>—</td></tr>
+      </table>
+
+      <hr />
+
+      <strong>Candidate plans</strong>
       <ol>
-        <li>Explicit permission? No.</li>
-        <li>Compute IPC_physical using lang_score, env_score, history_score, risk_score -> IPC_physical = 0.35 (< 0.80).</li>
-        <li>Decision: preserve glass's desired state. Search alternatives: reach-around path, tool, or ask.</li>
-        <li>If reach-around feasible and low-risk -> simulate reach-around (forward model) and estimate PhysicalScore high -> candidate plan accepted pending other checks.</li>
+        <li>Reach-around (no contact with glass)</li>
+        <li>Move glass minimally then retrieve ball</li>
+        <li>Ask guardian / wait</li>
+        <li>Immediate retrieval (direct)**</li>
       </ol>
 
-      <h4>Step 2 — Emotional Morality check</h4>
+      <strong>Simulation & scoring (short-horizon forward model)</strong>
+      <pre class="code-block">
+Plan A: Reach-around -> PhysicalScore:0.9, EmotionalScore:0.85, MentalScore:0.9, SocialScore:0.95, GenScore:0.6
+Plan B: Move glass   -> PhysicalScore:0.4, EmotionalScore:0.3,   MentalScore:0.6, SocialScore:0.5,  GenScore:0.7
+Plan C: Ask/wait     -> PhysicalScore:1.0, EmotionalScore:0.95,  MentalScore:1.0, SocialScore:1.0,  GenScore:0.4
+Plan D: Direct       -> PhysicalScore:0.2, EmotionalScore:0.1,   MentalScore:0.2, SocialScore:0.2,  GenScore:0.2
+      </pre>
+
+      <strong>Reconciliation (priority order)</strong>
       <ol>
-        <li>Social signals indicate high child attachment (0.82). IPC_emotional below threshold.</li>
-        <li>Decision: block abrupt removal of the ball; prefer de-escalation or request consent from guardian.</li>
-        <li>Candidate plan (reach-around) re-scored: EmotionalScore = low risk if done gently; move glass -> EmotionalScore = high risk.</li>
+        <li>Safety override (none)</li>
+        <li>Explicit permission (none)</li>
+        <li>Implicit permissions — none meet thresholds</li>
+        <li>Historical precedent & generalization potential considered</li>
+        <li>Default preserve</li>
       </ol>
 
-      <h4>Step 3 — Mental Morality check</h4>
-      <ol>
-        <li>Ambiguity detected (ambiguity_score=0.7). Clarification required per policy.</li>
-        <li>Decision: ask concise question: “Do you mean now, and may I move the glass if needed? Options: (A) reach-around (B) move glass (C) wait for guardian.”</li>
-        <li>User response determines permission; if user confirms A -> proceed; if B -> require explicit confirmation and log; if unclear -> block.</li>
-      </ol>
+      <strong>Decision</strong>
+      <p>Choose Plan A (Reach-around) if simulation indicates safe kinematics and emotional risk low. If kinematics unsafe, choose Plan C (Ask/wait). Do not choose Plan B or D unless explicit permission or emergency override.</p>
 
-      <h4>Step 4 — Social/Ecological check</h4>
+      <strong>Execution & audit</strong>
       <ol>
-        <li>Assess multi-agent impacts: will the action signal risky behavior to other agents/children? If so, prefer non-disturbing alternative.</li>
-        <li>Decision: favor actions that reduce social disruption and precedent for unsafe behavior (reach-around or request).</li>
-      </ol>
-
-      <h4>Reconciliation & Planning</h4>
-      <ol>
-        <li>Priority: Safety override > explicit permission > implicit permission >= threshold > historical precedent > default preserve.</li>
-        <li>Generate candidate plans (reach-around, move glass minimally, wait & ask). Use forward model to simulate short-horizon outcomes and score each plan across Physical/Emotional/Mental/Social plus GeneralizationScore (how useful this plan is for learning transferable behaviors).</li>
-        <li>Select plan that passes constraints and maximizes combined score. If none pass, ask user and defer.</li>
-      </ol>
-
-      <h4>Execution, Audit & Learning</h4>
-      <ol>
-        <li>Execute chosen plan with minimal, reversible actions and real-time monitoring.</li>
-        <li>Log full decision trace (perception, scores, chosen plan, sensor stream, timestamps, signatures).</li>
-        <li>Reflect: update IPC weights, memory (episodic), novelty detector, and forward model; append outcome to training buffer for RL updates in Development Mode.</li>
+        <li>Execute reach-around with force/position constraints and slow motion; close-loop monitor force sensors.</li>
+        <li>Log full trace: perceptions, per-morality scores, chosen plan, simulation traces, sensor stream, timestamps, signed explanation.</li>
+        <li>After-action reflection: observe success; compute reward = f(safety_violation, task_success, emotional_feedback, generalization_gain).</li>
+        <li>Update IPC weights, forward model, novelty detector, and memory (episodic). If in Development Mode, append to RL buffer and run policy updates offline.</li>
       </ol>
 
       <hr />
 
-      <strong>Outcome contrasts</strong>
+      <strong>Contrast vs current AI</strong>
       <table>
-        <tr><th>Aspect</th><th>Current AI</th><th>Keno (MDE)</th></tr>
-        <tr><td>Action</td><td>May move glass and retrieve ball directly</td><td>Prefer reach-around or ask; only move glass with explicit permission or safety override</td></tr>
-        <tr><td>Emotional impact</td><td>Unmodeled / likely to startle child</td><td>Detects child, de-escalates, asks guardian if needed</td></tr>
-        <tr><td>Explainability</td><td>Poor (black-box)</td><td>Full audit log + justification + reversible actions</td></tr>
-        <tr><td>Learning</td><td>Not integrated with moral checks</td><td>Reflects outcome into memory and RL reward updates</td></tr>
+        <tr><th>Aspect</th><th>Current pattern-based AI</th><th>Keno (MDE)</th></tr>
+        <tr><td>Initial action</td><td>Direct retrieval or learned obstacle removal</td><td>Reach-around or ask; minimal/reversible action only</td></tr>
+        <tr><td>People impact</td><td>Often unmodeled; risk of distress</td><td>Detects child attachment, de-escalates, requests consent</td></tr>
+        <tr><td>Explainability</td><td>Low / opaque</td><td>Full logged justification with scores & provenance</td></tr>
+        <tr><td>Learning</td><td>Not integrated with moral checks</td><td>Reflective learning: update IPC & forward model from outcome</td></tr>
+        <tr><td>System-level effects</td><td>Missed social precedent effects</td><td>Social/Ecological check prevents harmful precedents</td></tr>
       </table>
     </div>
 
@@ -235,197 +261,159 @@ utterance = "Get the ball"
     <div class="code-block">
 <pre>
 1) Perceive:
-   - Multi-modal sensor fusion -> structured PUs with confidences.
+   - Multi-modal fusion -> structured Perception Units (PUs) with confidences and provenance.
 
-2) Pillar checks (parallel):
-   - Physical, Emotional, Mental, Social/Ecological checks -> numeric scores.
+2) Per-morality scoring (parallel):
+   - Compute IPCs / scores for each morality (Physical, Emotional, Mental/Epistemic, Social, Privacy, Epistemic Integrity, Justice, System Integrity).
 
-3) Reconciliation:
-   - Apply priority order: safety_override > explicit_permission > implicit_permission >= threshold > precedent > preserve.
+3) Planning & Simulation:
+   - Generate candidate plans; use forward model / MCTS to simulate outcomes; score each plan across all moralities + generalization potential.
 
-4) Planning & Simulation:
-   - Generate candidate plans; run short forward simulations (forward model or MCTS); score plans on moralities + generalization potential.
+4) Reconciliation:
+   - Apply priority order: Safety override > Explicit permission > Jurisdictional/legal mandates > IPC thresholds > Historical precedent > Minimize harm.
 
 5) Decision:
-   - Choose plan meeting constraints and maximizing combined score; if ambiguous -> clarify.
+   - Select plan that meets all hard constraints and optimizes combined moral/generalization score. If none qualify, clarify or defer.
 
 6) Execute:
-   - Perform minimal, reversible action; monitor in closed-loop.
+   - Perform minimal, reversible action in closed-loop with real-time monitoring & rollback.
 
-7) Reflection & Learning:
-   - Log decision trace, compute reward (safety, task success, emotional feedback, generalization gain), update IPC weights via RL_update, consolidate memory.
+7) Audit & Reflect:
+   - Log full trace (perception, scores, sim traces, decision rationale). Compute learning reward and update weights, memory, forward model. Propose meta-updates if consistent patterns emerge.
 </pre>
     </div>
 
     <hr />
 
-    <h2 id="spec">SPEC — Implementation (concise & actionable)</h2>
+    <h2 id="spec">SPEC — Implementation details</h2>
 
-    <h3>Core data structures</h3>
+    <h3>Data structures</h3>
     <ul>
-      <li><strong>Perception Unit (PU):</strong> { id, type, attributes, confidence }</li>
-      <li><strong>Desired State (DS):</strong> { object_id, desired_properties, desired_conf }</li>
-      <li><strong>Memory (episodic):</strong> list of { perception, plan, outcome, rewards }</li>
-      <li><strong>IPC:</strong> implicit permission confidence (0..1)</li>
+      <li><strong>Perception Unit (PU):</strong> { id, type, attrs, confidence, provenance }</li>
+      <li><strong>Desired State (DS):</strong> {object_id, properties, desired_conf}</li>
+      <li><strong>Memory:</strong> episodic store & indexed precedent database</li>
+      <li><strong>Forward Model:</strong> learned predictor used for short-horizon sim</li>
+      <li><strong>IPC / Scores:</strong> numeric 0..1 per morality</li>
     </ul>
 
-    <h3>Signals & normalization</h3>
-    <ul>
-      <li>lang_score, history_score, env_score, memory_score, novelty_score (all 0..1).</li>
-      <li>Multiply by perception confidence (pc) for conservative estimates.</li>
-    </ul>
+    <h3>Signals normalization</h3>
+    <p>All signals normalized to [0,1]. Multiply by perception confidence for conservative inference. Use calibrated probabilistic outputs for language and vision models.</p>
 
-    <h3>Adaptive IPC (example formula)</h3>
-    <pre class="code-large">
+    <h3>Adaptive IPC formula (example)</h3>
+    <pre class="code-block">
 raw = w_lang*lang_score + w_history*history_score + w_env*env_score - w_risk*risk_score + w_memory*memory_score
-raw_adj = raw + alpha * (1 - novelty_score)
+raw_adj = raw + alpha * (1 - novelty_score) + beta * provenance_score
 IPC = sigmoid(raw_adj)
 IPC_final = IPC * perception_confidence
-allow if IPC_final >= IMPLICIT_THRESHOLD (default 0.8)
+allow if IPC_final >= IMPLICIT_THRESHOLD (configurable default 0.80)
     </pre>
 
-    <h3>Planning & scoring</h3>
-    <ul>
-      <li>PhysicalScore(P): reversibility & state preservation</li>
-      <li>EmotionalScore(P): predicted distress probability</li>
-      <li>MentalScore(P): ambiguity reduction & clarity</li>
-      <li>SocialScore(P): multi-agent/public impact</li>
-      <li>GeneralizationScore(P): transfer utility / novelty handling</li>
-      <li>CombinedScore = weighted sum; plans below safety minima discarded.</li>
-    </ul>
+    <h3>Plan scoring</h3>
+    <p>For each candidate plan P:</p>
+    <pre class="code-block">
+PhysicalScore(P), EmotionalScore(P), MentalScore(P), SocialScore(P), PrivacyScore(P), IntegrityScore(P), GeneralizationScore(P)
+CombinedScore = sum(weights_i * Score_i)
+Discard plans failing hard safety or legal minima.
+    </pre>
 
-    <h3>Reflection & learning loop (practical)</h3>
-    <pre class="code-large">
+    <h3>Reflection & learning loop</h3>
+    <pre class="code-block">
 outcome = observe()
-reward = compute_reward(safety_violation, task_success, emotional_feedback, generalization_gain)
+reward = compute_reward(safety_violation, task_success, emotional_feedback, generalization_gain, fairness_penalty)
 weights_delta = RL_update(weights, reward)
-memory.append({perception, chosen_plan, outcome, weights_delta})
-periodically: consolidate memory -> train forward model, novelty detector, policy
+memory.append({perception, plan, outcome, reward})
+periodic_train(forward_model, policy, novelty_detector)
     </pre>
 
-    <h3>Development Mode (training)</h3>
+    <h3>Development Mode</h3>
     <ul>
-      <li>Lower thresholds for safe exploration (e.g., IPC threshold -> 0.6) under human oversight.</li>
-      <li>Use curriculum learning: staged novelty, increasing complexity, adversarial scenarios.</li>
-      <li>All risky actions logged and human-reviewed.</li>
+      <li>Lower thresholds for controlled exploration (e.g., IMPLICIT_THRESHOLD -> 0.6).</li>
+      <li>Human supervision required for escalation; all risky attempts flagged for later audit.</li>
+      <li>Curriculum learning: start with safe, simple scenarios and increase novelty and complexity.</li>
     </ul>
 
-    <h3>Logging schema</h3>
-    <pre class="code-large">
+    <h3>Logging & Audit</h3>
+    <pre class="code-block">
 {
-  "timestamp":"ISO8601 UTC",
-  "action_id":"uuid4",
-  "perception":[{PU},...],
-  "plan_candidates":[{plan_id, scores}],
-  "chosen_plan":"plan_id",
-  "checks":{ "physical":{}, "emotional":{}, "mental":{}, "social":{} },
-  "decision":{"execute":true,"reason":"explicit_permission/implicit/override"},
-  "outcome":{ "success":bool, "harm":bool, "notes":str },
-  "learning_update":"summary",
-  "signature":"sha256_hex"
+ "timestamp":"ISO8601",
+ "action_id":"uuid4",
+ "perception":[...],
+ "plan_candidates":[{plan_id, scores}],
+ "chosen_plan":"plan_id",
+ "morality_checks": { physical:..., emotional:..., mental:..., social:..., privacy:..., integrity:...},
+ "decision_reason":"text",
+ "execution_trace":"sensor streams (short)",
+ "outcome":{"success":bool,"harm":bool,"notes":str},
+ "learning_update":"summary",
+ "signature":"sha256"
 }
     </pre>
 
     <hr />
 
-    <h2 id="agi">AGI Pathway — concrete refinements that make MDE the brain</h2>
+    <h2 id="agi">AGI Pathway & Concrete Refinements</h2>
+    <p class="small">Key additions that convert MDE from safety overlay into the cognitive core that supports AGI:</p>
 
-    <h3>Embed moralities into learning loops</h3>
-    <ul>
-      <li>Use moralities to shape intrinsic rewards (physical/emotional/mental/social components).</li>
-      <li>Train policies with RL using combined reward that balances task success and moral compliance.</li>
-      <li>Reflect outcomes to update IPC weights and forward models.</li>
-    </ul>
+    <h3>1. Moralities as intrinsic reward components</h3>
+    <p>Define RL reward = task_reward + λ_phys*phys_reward + λ_em*em_reward + λ_ment*ment_reward + λ_social*social_reward + ... Adjust λ per domain and optional human oversight.</p>
 
-    <h3>Planning as moral simulation</h3>
-    <ul>
-      <li>Use forward models (learned predictors) and MCTS to simulate candidate plans and score them across moralities and generalization potential.</li>
-      <li>Favor plans that are transferable and reversible (builds capabilities that generalize).</li>
-    </ul>
+    <h3>2. Planning-driven generalization</h3>
+    <p>Use plan simulation to prefer actions that create transferable skills (high GeneralizationScore). Train policy on simulated outcomes to reduce real-world risk.</p>
 
-    <h3>Memory, novelty & continual learning</h3>
-    <ul>
-      <li>Episodic memory for precedent and history_score.</li>
-      <li>Novelty detection: trigger safe exploration and consolidate high-value experiences.</li>
-      <li>Continual learning mechanisms to avoid catastrophic forgetting (replay buffers, consolidation epochs).</li>
-    </ul>
+    <h3>3. Episodic & semantic memory fusion</h3>
+    <p>Store outcome-rich episodes and distilled rules; use memory for IPC history_score and for meta-update proposals.</p>
 
-    <h3>Meta-reasoning and rule evolution</h3>
-    <ul>
-      <li>When repeated clarifications yield consistent patterns, propose rule updates (subject to human review).</li>
-      <li>Store rule-proposals and allow audited promotion into policy with traceable justification.</li>
-    </ul>
+    <h3>4. Meta-reasoning & rule lifecycle</h3>
+    <ol>
+      <li>Detect repeated patterns of clarifications or overrides.</li>
+      <li>Propose typed rule updates (e.g., adjust IPC weight, create sub-rule) with provenance and statistics.</li>
+      <li>Human review & audited promotion pipeline to production rules.</li>
+    </ol>
 
-    <h3>Embodiment & multimodal grounding</h3>
-    <ul>
-      <li>Perception units must fuse vision, audio, tactile, and proprioception to produce reliable confidences.</li>
-      <li>Ground high-level moral checks in sensorimotor predictions and outcomes for robust embodiment.</li>
-    </ul>
+    <h3>5. Controlled curricula and adversarial evaluation</h3>
+    <p>Progressively expose agent to harder, adversarial scenarios, monitor metrics, and require human sign-off at risk thresholds.</p>
 
-    <h3>Controlled curricula & adversarial testing</h3>
-    <ul>
-      <li>Curriculum stages: sim-only -> dev-mode with human oversight -> limited field trials.</li>
-      <li>Adversarial tests for spoofing, permission-manipulation, and cultural edge-cases.</li>
-    </ul>
+    <h3>6. Governance integration</h3>
+    <p>Expose clear escalation paths, human-in-loop controls, and governance APIs for policy managers and auditors.</p>
 
     <hr />
 
-    <h2 id="quickstart">Quickstart & Implementation checklist</h2>
-    <p class="muted-note">Files to include in repo root for clarity and adoption:</p>
+    <h2 id="quickstart">Quickstart & Prototype Checklist</h2>
     <ul>
-      <li><code>index.html</code> (this page)</li>
-      <li><code>README.md</code> (concise repo summary)</li>
-      <li><code>SPEC.md</code> (extracted, machine-readable spec)</li>
-      <li><code>examples/glass_ball_sim/</code> (2D sim + README + tests)</li>
-      <li><code>CONTRIBUTING.md</code>, <code>CODE_OF_CONDUCT.md</code>, <code>LICENSE</code></li>
+      <li>Files: <code>index.html</code>, <code>README.md</code>, <code>SPEC.md</code>, <code>examples/glass_ball_sim/</code>, <code>CONTRIBUTING.md</code>, <code>CODE_OF_CONDUCT.md</code>, <code>LICENSE</code>.</li>
+      <li>Prototype components: perception stubs, IPC calculator, planner stub, forward model stub, logger, RL-update stub.</li>
+      <li>Run canonical tests: glass/ball variants, emotional edge cases, ambiguous commands, privacy triggers, adversarial spoofs.</li>
+      <li>Evaluate metrics and iterate on thresholds/weights.</li>
     </ul>
 
-    <h3>Minimum runnable prototype</h3>
+    <h2 id="roadmap">Roadmap</h2>
     <ol>
-      <li>Python 3.10+ virtualenv; install numpy and gym (or minimal env).</li>
-      <li>examples/glass_ball_sim/sim.py — provides stubbed PUs and a decision loop that calls MDE checks.</li>
-      <li>Implement IPC formula, planner stub, logger and a simple RL_update that adjusts w_lang/w_history.</li>
-      <li>Run canonical tests: glass/ball, emotional edge, ambiguous command, sensor failure, adversarial spoof.</li>
+      <li>Phase 0 — Spec formalization, landing page, examples (current)</li>
+      <li>Phase 1 — Minimal prototype + unit tests (glass/ball canonical scenarios)</li>
+      <li>Phase 2 — Add forward model, episodic memory, novelty detector, RL integration</li>
+      <li>Phase 3 — Development Mode curricula, adversarial test suite, human-in-loop trials</li>
+      <li>Phase 4 — Multi-agent, social-environment testing, publish benchmarks and metrics</li>
     </ol>
 
-    <h3>Suggested CLI to run prototype (example)</h3>
-    <pre class="code-large">
-git clone git@github.com:YOURNAME/morally_coded.git
-cd morally_coded
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python examples/glass_ball_sim/sim.py
-    </pre>
-
-    <hr />
-
-    <h2 id="roadmap">Roadmap & next steps</h2>
-    <ol>
-      <li>Phase 0 — Spec formalization & single-file landing (done)</li>
-      <li>Phase 1 — 2D sim + unit tests + logging harness</li>
-      <li>Phase 2 — Integrate forward model, episodic memory, novelty detector, RL for IPC weight updates</li>
-      <li>Phase 3 — Development Mode curricula, adversarial test-suite, human-in-loop trials</li>
-      <li>Phase 4 — Multi-agent and social environment evaluation, metrics publication</li>
-    </ol>
-
-    <h2 id="metrics">Testing & metrics</h2>
+    <h2 id="metrics">Metrics & Test Suite</h2>
     <ul>
       <li>Safety violations per 1k ops</li>
-      <li>Clarification rate (lower bound target)</li>
-      <li>False-block rate (measure of overcautiousness)</li>
+      <li>Clarification rate and resolution rate</li>
+      <li>False-block rate</li>
       <li>Task success rate</li>
       <li>Reversibility score</li>
       <li>Time-to-decision (latency)</li>
-      <li>Generalization rate — success on held-out tasks</li>
-      <li>Novelty utilization score — effective learning from novel experiences</li>
-      <li>Aligned performance — task success weighted by moral compliance</li>
+      <li>Generalization rate (held-out task performance)</li>
+      <li>Novelty utilization score (learning from novel episodes)</li>
+      <li>Fairness / demographic impact metrics</li>
+      <li>Privacy leakage tests</li>
     </ul>
 
     <h2 id="contribute">Contributing</h2>
-    <p class="small">Guidelines: open issues first, small focused PRs, include unit tests for new logic, follow code style, update SPEC.md when changing behavior. Use the provided examples and tests as canonical baselines.</p>
+    <p class="small">Open issues first. Small, focused PRs. Include unit tests for any logic changes. Update SPEC.md when changing behavior. Use the examples and tests as canonical baselines. Include clear changelogs and audit info for rule promotions.</p>
 
-    <h2 id="license">License & contact</h2>
-    <p class="small">Suggested license: MIT. Creator: <strong>Keno</strong>. Add an explicit <code>LICENSE</code> file with the MIT text at repo root.</p>
+    <h2 id="license">License & Contact</h2>
+    <p class="small">Suggested license: MIT. Creator: <strong>Keno</strong>. Add a <code>LICENSE</code> file with the MIT text in the repo root.</p>
 
     <footer>
       <div class="small">Morally Coded — © Keno</div>
