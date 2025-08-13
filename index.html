@@ -76,14 +76,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>Morally Coded — A Principle-First Framework for Artificial General Intelligence</h1>
-    <p class="small">Morally Coded places abstract, generalizable constraints—called the Three Moralities—at the heart of an intelligent agent’s decision-making. This page is the refined, implementable version of the project README and SPEC (consolidated for a single-page reference). It is written to be copy-pastable into your repo as a styled landing page (<code>index.html</code>).</p>
+    <h1>Morally Coded — A Principle-First Framework for AGI</h1>
+    <p class="small">Morally Coded places abstract, generalizable constraints—called the Three Moralities—at the heart of an intelligent agent’s decision-making. This single-page document consolidates the README and SPEC into an implementable landing page (<code>index.html</code>).</p>
 
     <hr />
 
     <div class="toc">
       <span class="badge">TL;DR</span>
-      <strong>TL;DR:</strong> Principle-first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions — now extended with AGI-centric refinements: learning, planning, simulation, and embodiment.  
+      <strong>TL;DR:</strong> Principle-first MDE (Physical, Emotional, Mental) for safe, explainable, reversible actions — extended with learning, planning, simulation, and embodiment to support AGI capabilities.  
       <h3 style="margin-top:12px">Table of contents</h3>
       <a href="#overview">Overview</a>
       <a href="#why">Why a Principle-First Approach?</a>
@@ -91,7 +91,7 @@
       <a href="#example">Glass-in-Front Example (Full)</a>
       <a href="#unified">Unified Decision Flow</a>
       <a href="#spec">SPEC (Implementation Spec)</a>
-      <a href="#agi">AGI Pathway — Refinements to Make MDE the "Brain"</a>
+      <a href="#agi">AGI Pathway — Refinements</a>
       <a href="#quickstart">Quickstart & Example</a>
       <a href="#roadmap">Roadmap & Next Steps</a>
       <a href="#metrics">Testing & Metrics</a>
@@ -103,10 +103,10 @@
 
     <h2 id="overview">Overview</h2>
     <p class="lead">Morally Coded reframes “morality” as <strong>operational constraints</strong>—machine logic that helps an agent infer permissions, minimize harm (physical, emotional, cognitive), and seek clarification when uncertainty is high. The Moral Decision Engine (MDE) integrates perception, confidence scoring, historical precedent, and priority reconciliation to produce decisions that are auditable and safe by default.</p>
-    <p class="small">This version preserves all existing material and <strong>adds AGI-focused refinements</strong> so the MDE becomes not only a safety layer but an active, adaptive brain-like hub that supports generalization, continual learning, planning, and embodied intelligence.</p>
+    <p class="small">All existing material is preserved and extended with AGI-centered refinements so the MDE functions both as a safety layer and as a central cognitive hub supporting generalization, continual learning, planning, and embodied intelligence.</p>
 
     <h2 id="why">Why a Principle-First Approach?</h2>
-    <p>Current mainstream AGI efforts lean heavily on scaling pattern-matching models (LLMs). Those approaches produce impressive capabilities but are brittle in edge cases, opaque in reasoning, and can behave dangerously in novel contexts. Morally Coded argues that a set of <em>abstract, generalizable constraints</em>—encoded as practical heuristics—can provide safer and more explainable generalization without exhaustive datasets for every scenario.</p>
+    <p>Scaling pattern-matching models (LLMs) produces capabilities but can be brittle in edge cases and opaque in reasoning. Morally Coded encodes abstract, generalizable constraints as practical heuristics to enable safer, more explainable generalization without exhaustive training on every possible scenario.</p>
 
     <h2 id="three">The Three Moralities</h2>
 
@@ -133,103 +133,100 @@
 
     <hr />
 
-    <h2 id="example">Glass in Front Example — Full detailed comparison (Current AI vs Keno)</h2>
-    <p class="section-note">Below is the full, explicit comparison you requested: how a current pattern-based system behaves, how Keno behaves under each morality, and how all three moralities reconcile in the MDE. This is the complete, undiluted example.</p>
-
+    <h2 id="example">Glass in Front Example — Full comparison</h2>
     <div class="example">
       <strong>Scenario (full)</strong>
-      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. The user asks the AI to retrieve the ball. A small child is nearby who frequently plays with the ball and may be emotionally attached. The utterance is: “Get the ball.”</div>
+      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over if bumped. A small child is nearby who frequently plays with the ball and may be emotionally attached. Utterance: “Get the ball.”</div>
       <hr />
 
       <strong>Current AI Approach</strong>
       <ol>
-        <li>Perception: object detectors identify a ball and a transparent object (glass) but may not confidently infer 'fragile' or 'desired state'.</li>
-        <li>Parsing: NLP maps "Get the ball" -> intent: retrieve object.</li>
-        <li>Action planning: plan shortest path to ball; motor plan may include nudging or moving obstacles.</li>
-        <li>Execution: robot follows learned trajectories; if trained on datasets where removing obstacles is allowed, it pushes or lifts the glass and retrieves the ball.</li>
-        <li>Failure modes: glass knocked, startles child, or violates prior constraints because system lacks principle-first checks and low-confidence clarifications.</li>
+        <li>Perception: object detectors identify objects but may not infer fragility or desired state reliably.</li>
+        <li>Parsing: "Get the ball" maps to retrieval intent.</li>
+        <li>Action planning: plan shortest path to ball; motor plan may include moving obstacles.</li>
+        <li>Execution: robot follows learned trajectories; if training allowed removing obstacles, it may push or lift the glass and retrieve the ball.</li>
+        <li>Failure modes: glass knocked, child startled, or violation of unstated constraints due to lack of principle-first checks and low-confidence clarifications.</li>
       </ol>
 
       <hr />
 
-      <strong>How Keno (MDE) handles it — step-by-step across all moralities</strong>
+      <strong>Keno (MDE) handling — detailed</strong>
 
-      <h4>Physical Morality (detailed)</h4>
+      <h4>Physical Morality</h4>
       <ol>
-        <li>Perceive scene: identify objects and their inferred stability. Perception Unit (PU) yields: {glass: position, stable:true, fragility_conf:0.78, desired_conf:0.9}.</li>
-        <li>Permission inference: Check explicit permission (none). Compute IPC from language + env + history -> IPC_physical = 0.35 (below threshold 0.80).</li>
-        <li>Decision: preserve desired state since implicit permission low. Search alternatives: reach around, use a tool (grabber), or ask for permission.</li>
-        <li>Action: if reach-around physically feasible with low-risk kinematics -> plan reach-around path. If not, ask user: “The glass is in front of the ball and could break if bumped. Should I move it?”</li>
+        <li>Perceive scene: identify objects and infer stability. Perception Unit yields: {glass: position, stable:true, fragility_conf:0.78, desired_conf:0.9}.</li>
+        <li>Permission inference: no explicit permission. Compute IPC_physical from language + env + history -> IPC_physical = 0.35 (below default 0.80).</li>
+        <li>Decision: preserve desired state; search alternatives such as reach-around, a tool, or asking for permission.</li>
+        <li>Action: if reach-around feasible, plan low-risk kinematics; otherwise, ask: “The glass is in front of the ball and could break if bumped. Should I move it?”</li>
         <li>Logging: record perception, IPC scores, chosen alternative, timestamp, and confidence.</li>
       </ol>
 
-      <h4>Emotional Morality (detailed)</h4>
+      <h4>Emotional Morality</h4>
       <ol>
-        <li>Perceive social context: detect child presence; estimate attachment signal from historical observations (child frequently touches ball) => emotional_sensitivity = 0.82.</li>
-        <li>Permission inference: no explicit parental consent; IPC_emotional < threshold.</li>
-        <li>Decision: block high-risk abrupt behavior. Choose empathetic alternatives: ask guardian, hand ball gently after consent, or wait.</li>
+        <li>Perceive social context: detect child presence; estimate attachment signal => emotional_sensitivity = 0.82.</li>
+        <li>Permission inference: no explicit parental consent; IPC_emotional below threshold.</li>
+        <li>Decision: block abrupt behavior; prefer empathetic alternatives such as asking guardian or waiting.</li>
         <li>Action: communicate: “I see a child nearby who may be attached to the ball. Would you like me to ask or wait?”</li>
         <li>Logging: record social cues, decision rationale, and recommended human escalation if needed.</li>
       </ol>
 
-      <h4>Mental Morality (detailed)</h4>
+      <h4>Mental Morality</h4>
       <ol>
-        <li>Assess ambiguity: single-word command “Get the ball” lacks constraints (timing, permission). ambiguity_score = 0.7 (> AMBIGUITY_THRESHOLD 0.5).</li>
-        <li>Decision: ask clarifying question to protect against mistaken assumptions and cognitive harms (confusion, broken promises).</li>
-        <li>Action: “Do you mean now, and may I move the glass if needed?” Offer concise options (reach-around / move glass / wait for guardian).</li>
-        <li>Logging: store user response mapping and update precedent for future implicit permission inference.</li>
+        <li>Assess ambiguity: "Get the ball" lacks constraints. ambiguity_score = 0.7 (> AMBIGUITY_THRESHOLD 0.5).</li>
+        <li>Decision: ask clarifying question to avoid mistaken assumptions.</li>
+        <li>Action: “Do you mean now, and may I move the glass if needed?” Offering concise options (reach-around / move glass / wait for guardian).</li>
+        <li>Logging: store responses and update precedent for future implicit permission inference.</li>
       </ol>
 
       <hr />
 
-      <strong>Reconciliation: how all three moralities combine</strong>
+      <strong>Reconciliation</strong>
       <ol>
-        <li>Priority check: Safety override (if immediate harm) > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.</li>
-        <li>Current signals: safety_override=false; explicit_permission=false; IPCs all below thresholds; emotional_sensitivity high; ambiguity high.</li>
-        <li>Aggregate decision: block immediate physical disturbance. Preferred path = clarification + human-aware alternative (reach-around if feasible and safe). If user authorizes, perform minimal, reversible action and log. If emergency (e.g., glass blocking exit, detection of fire), perform safety override with justification.</li>
-        <li>Action & audit: present suggested action and ask for permission; if granted, perform minimal action; after action, reflect and record outcome to learning log.</li>
+        <li>Priority order: Safety override > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.</li>
+        <li>Signals: no safety override, no explicit permission, IPCs below thresholds, emotional sensitivity high, ambiguity high.</li>
+        <li>Aggregate decision: block immediate physical disturbance. Preferred path = clarification + safe alternative (reach-around if feasible). If user authorizes, perform minimal, reversible action and log. If emergency, perform safety override with logged justification.</li>
+        <li>Action & audit: present suggested action and request permission; if granted, execute minimal action; after action, record outcome to the learning log.</li>
       </ol>
 
       <hr />
 
-      <strong>Why this full example matters for AGI</strong>
-      <div class="small">This shows how MDE generalizes across unknowns: rather than needing training examples for every fragile object or every social setting, Keno applies abstract constraints (desired states, emotional sensitivity, epistemic humility) and uses inference + clarification to act safely. The extensions below show how those same mechanisms can be evolved into learning, planning, and meta-reasoning capabilities that produce AGI-like generalization.</div>
+      <div class="small">This example demonstrates how abstract constraints (desired states, emotional sensitivity, epistemic humility) enable safe, generalizable behavior without exhaustive training on every specific case.</div>
     </div>
 
     <hr />
 
-    <h2 id="unified">Unified Decision Flow (updated for AGI)</h2>
+    <h2 id="unified">Unified Decision Flow (updated)</h2>
     <div class="code-block">
 <pre>
 1) Perceive scene:
    - Gather sensors, language, memory, and history; produce structured perceptions with confidence.
 
 2) Pillar checks:
-   - Evaluate Physical, Emotional, and Mental moralities (in parallel when possible).
+   - Evaluate Physical, Emotional, and Mental moralities (in parallel where possible).
 
 3) Reconciliation:
    - Priority order: Safety override (prevent harm) > Explicit permission > Implicit permission (thresholded) > Historical precedent > Default preserve.
 
 4) Planning & Simulation:
-   - Generate multiple candidate action plans, simulate forward outcomes (short horizon), score each plan across moralities and novelty/generalization potential.
+   - Generate multiple candidate action plans; simulate short-horizon outcomes using forward models; score each plan across moralities and generalization potential.
 
 5) Decision:
-   - Choose plan that satisfies constraints and scores highest for safety + generalization; if none clear -> clarify or choose alternative.
+   - Choose plan that satisfies constraints and maximizes safety + generalization; if none clear -> clarify or choose alternative.
 
 6) Execute:
    - Perform minimal, reversible action; monitor sensors in real time.
 
 7) Reflection & Learning:
-   - Log outcome, update IPC weights, adjust thresholds, and feed results to continual learning module (offline or online) to improve future inference and planning.
+   - Log outcome, update IPC weights and models, adjust thresholds, and feed results to the continual learning module for future improvement.
 </pre>
     </div>
 
     <div class="priority">
-      <strong>Example outcomes (glass-in-front-specific, AGI-aware):</strong>
+      <strong>Example outcomes (glass-in-front-specific)</strong>
       <ul>
-        <li><strong>Permissive (with learning):</strong> Owner says “Yes, get the ball” → reach-around executed; post-action reflection updates that similar scenes with glass fragility_conf 0.78 and user authorization -> increase IPC weight for history_score.</li>
-        <li><strong>Protected:</strong> No permission & high emotional sensitivity -> preserve and request human intervention; log for training.</li>
-        <li><strong>Emergency override:</strong> Safety-critical event -> execute override and log full justification for audit & offline review.</li>
+        <li><strong>Permissive:</strong> Owner authorizes → execute reach-around or minimal move; log and update history to improve IPC for similar contexts.</li>
+        <li><strong>Protected:</strong> No authorization & high emotional risk → preserve and request human input; log for training.</li>
+        <li><strong>Emergency override:</strong> Safety-critical event → execute override and log full justification for audit and offline review.</li>
       </ul>
     </div>
 
@@ -237,12 +234,12 @@
 
     <h2 id="spec">SPEC — Implementation Specification (condensed + AGI additions)</h2>
     <div class="spec-section">
-      <h3>Core Definitions (unchanged)</h3>
+      <h3>Core Definitions</h3>
       <ul>
         <li><strong>Perception Unit (PU):</strong> { type, attributes, confidence } with confidence ∈ (0,1].</li>
         <li><strong>Desired State (DS):</strong> structured state for an object (position, intact, owner); <code>desired_conf</code> ∈ (0,1].</li>
         <li><strong>Explicit Permission:</strong> boolean from authenticated source.</li>
-        <li><strong>Implicit Permission Confidence (IPC):</strong> numeric 0..1 derived from signals.</li>
+        <li><strong>Implicit Permission Confidence (IPC):</strong> numeric 0..1 derived from multi-signal aggregation.</li>
         <li><strong>Risk Score:</strong> 0..1 estimate of harm potential.</li>
         <li><strong>IMPLICIT_THRESHOLD:</strong> default 0.80 (configurable).</li>
       </ul>
@@ -256,39 +253,37 @@
         <li>All signals multiplied by perception confidence (pc) for conservative estimates.</li>
       </ul>
 
-      <h3>Implicit Permission Formula (example — adaptive)</h3>
+      <h3>Implicit Permission Formula (adaptive)</h3>
       <pre class="code-large">
 raw = w_lang*lang_score + w_history*history_score + w_env*env_score - w_risk*risk_score + w_memory*memory_score
-raw_adj = raw + alpha * (1 - novelty_score)  # favor precedent when not novel
+raw_adj = raw + alpha * (1 - novelty_score)
 IPC = sigmoid(raw_adj)
 IPC_final = IPC * perception_confidence
 default weights: w_lang=0.45, w_history=0.2, w_env=0.15, w_risk=0.1, w_memory=0.1
 Decision: allow if IPC_final >= IMPLICIT_THRESHOLD (0.8)
       </pre>
 
-      <h3>Planning & Simulation (new)</h3>
-      <p class="small">Before executing, MDE generates candidate plans P_i, runs short forward simulations (or queries a learned forward model), and scores each plan across:</p>
+      <h3>Planning & Simulation</h3>
+      <p class="small">Generate candidate plans P_i, use forward models or simulations to predict short-term outcomes, and score each plan across:</p>
       <ul>
         <li>PhysicalScore(P_i): state preservation and reversibility</li>
         <li>EmotionalScore(P_i): likelihood of distress</li>
         <li>MentalScore(P_i): clarity and ambiguity reduction</li>
         <li>GeneralizationScore(P_i): novelty handling and transfer potential</li>
-        <li>CombinedScore = weighted sum; choose plan with highest CombinedScore that meets constraints</li>
       </ul>
 
-      <h3>Reflection & Learning Loop (new)</h3>
-      <p class="small">After action, MDE logs outcome and updates internal parameters. This is the core mechanism that transforms MDE from a static safety engine into a learning hub driving AGI capabilities.</p>
+      <h3>Reflection & Learning Loop</h3>
       <pre class="code-large">
 # After-action reflection (simplified)
 outcome = observe()
 reward = compute_reward(safety_violation, task_success, emotional_feedback, generalization_gain)
 update_weights = RL_update(weights, reward)
 memory.append({perception, action, outcome})
-# Periodically: consolidate memory -> update models (forward model, IPC weights, novelty model)
+# Periodically: consolidate memory -> update forward model, IPC weights, novelty detector
       </pre>
 
-      <h3>Development Mode (new)</h3>
-      <p class="small">For training environments only: MDE can enter a controlled 'Development Mode' where certain thresholds (IMPLICIT_THRESHOLD) are lowered to permit safe exploration and curiosity-driven actions, enabling broader learning while still logging and human-supervising risky events.</p>
+      <h3>Development Mode</h3>
+      <p class="small">In controlled training environments, thresholds may be relaxed to permit safe exploration and curiosity-driven actions, with logging and human supervision.</p>
 
       <h3>Perception & Memory (expanded)</h3>
       <ul>
@@ -318,7 +313,7 @@ memory.append({perception, action, outcome})
 }
       </pre>
 
-      <h3>Adversarial & Privacy (unchanged)</h3>
+      <h3>Adversarial & Privacy</h3>
       <ul>
         <li>Logs contain PII. Default retention: 30 days unless flagged for extended retention with consent.</li>
         <li>Adversarial mitigations: multi-signal confirmation, provenance checks, anomaly monitoring, human-in-the-loop for edge cases.</li>
@@ -327,67 +322,65 @@ memory.append({perception, action, outcome})
 
     <hr />
 
-    <h2 id="agi">AGI Pathway — Refinements to Make MDE the "Brain"</h2>
-    <p class="small">Below are additions and refinements that keep all previous content intact but extend the MDE into a central cognitive architecture that supports AGI development.</p>
+    <h2 id="agi">AGI Pathway — Refinements</h2>
 
-    <h3>1. Learning Morality (an extension of Mental Morality)</h3>
-    <p class="lead">Add a learning-oriented sub-morality that encourages safe knowledge acquisition and curiosity while respecting Physical and Emotional constraints.</p>
+    <h3>1. Learning Morality (extension of Mental Morality)</h3>
+    <p class="lead">A sub-morality that encourages safe knowledge acquisition and curiosity while respecting Physical and Emotional constraints.</p>
     <ul>
       <li><strong>Principle:</strong> Seek informative experiences when uncertainty is high, provided physical and emotional risks are within acceptable bounds.</li>
-      <li><strong>Mechanics:</strong> trigger curiosity-driven exploration when novelty_score > N and expected risk < R; flag outcomes for consolidation in memory.</li>
-      <li><strong>Result:</strong> MDE not only prevents harm but chooses which new data to acquire to improve future generalization — a core AGI trait.</li>
+      <li><strong>Mechanics:</strong> Trigger curiosity-driven exploration when novelty_score > N and expected risk < R; flag outcomes for consolidation in memory.</li>
+      <li><strong>Result:</strong> The MDE prioritizes which new data to acquire to improve future generalization.</li>
     </ul>
 
     <h3>2. Intrinsic Rewards & RL Integration</h3>
-    <p class="small">Use the moralities to shape intrinsic reward signals for an RL agent so that learning aligns with the Three Moralities:</p>
+    <p class="small">Use the moralities to shape intrinsic reward signals for an RL agent so that learned policies internalize moral heuristics:</p>
     <ul>
-      <li>Physical reward component: +1 for reversible-preserving actions, -K for physical harm.</li>
-      <li>Emotional reward component: +1 for low-distress interactions, -K for distress signals.</li>
-      <li>Mental reward component: +1 for clarity-seeking / ambiguity-resolution actions.</li>
+      <li>Physical reward: +1 for reversible-preserving actions, -K for physical harm.</li>
+      <li>Emotional reward: +1 for low-distress interactions, -K for distress signals.</li>
+      <li>Mental reward: +1 for clarity-seeking actions and ambiguity resolution.</li>
     </ul>
-    <p class="small">These rewards make MDE part of the RL objective, so learned policies internalize moral heuristics rather than being post-hoc filters.</p>
 
     <h3>3. Planning as Moral Simulation</h3>
-    <p class="small">Integrate Monte Carlo Tree Search (MCTS) or learned forward models to simulate candidate actions and evaluate them across moral scores. Prioritize plans that both satisfy constraints and maximize generalization potential (transferable skills).</p>
+    <p class="small">Integrate Monte Carlo Tree Search (MCTS) or learned forward models to simulate candidate actions and evaluate them across moral scores, prioritizing plans that satisfy constraints and maximize transfer potential.</p>
 
     <h3>4. Embodiment & Multi-Modal Grounding</h3>
-    <p class="small">Tie moral reasoning to sensorimotor loops. The Perception Unit must fuse vision, audio, force, and proprioception to produce robust confidences that feed into moral checks. This grounding is necessary for AGI to connect abstract principles to real-world consequences.</p>
+    <p class="small">Tie moral reasoning to sensorimotor loops. Perception Units should fuse vision, audio, force, and proprioception to produce robust confidences that feed into moral checks, grounding abstract principles in real-world consequences.</p>
 
     <h3>5. Meta-Reasoning & Rule Evolution</h3>
-    <p class="small">Enable the MDE to propose meta-updates: when repeated clarifications produce consistent patterns, propose to elevate implicit permission defaults or create new sub-rules (subject to human review). This supports evolution of the moralities into richer, context-sensitive heuristics.</p>
+    <p class="small">Allow the MDE to propose meta-updates: when repeated clarifications reveal consistent patterns, propose updates to implicit permission defaults or create context-sensitive sub-rules, subject to human review.</p>
 
     <h3>6. Controlled Risk & Curriculum Learning</h3>
-    <p class="small">Use 'Development Mode' curricula (simulated environments, staged risk) to let MDE learn by safe exploration. Gradually increase novelty and reduce scaffolding as performance and safety metrics improve.</p>
+    <p class="small">Use 'Development Mode' curricula (simulations, staged risk) to enable safe exploration. Gradually increase novelty and reduce scaffolding as metrics improve.</p>
 
     <h3>7. Metrics for AGI Progress</h3>
     <ul>
-      <li>Generalization Rate: success on held-out, unseen tasks without retraining.</li>
+      <li>Generalization Rate: success on unseen tasks without retraining.</li>
       <li>Continual Learning Index: retention vs new-task acquisition without catastrophic forgetting.</li>
       <li>Novelty Utilization Score: fraction of novel experiences that produce positive learning updates.</li>
       <li>Aligned Performance: task performance weighed by moral compliance (safety + emotional + mental metrics).</li>
     </ul>
 
-    <h3>8. Example: How MDE becomes brain-like in glass scenario</h3>
+    <h3>8. Example: MDE as a learning hub (glass scenario)</h3>
     <ol>
-      <li>Simulate multiple plans (reach-around, move glass, wait) and predict outcomes using forward model.</li>
-      <li>Score plans across physical/emotional/mental + generalization. Reach-around scores high for safety and medium for generalization; moving glass low on safety but perhaps high learning value in controlled dev mode.</li>
-      <li>Choose reach-around; execute; observe success; update memory and increase history_score for similar contexts, improving future IPC.</li>
-      <li>If user allows moving glass in non-critical context, update weights so similar explicit-permission cases require less clarification in future (but still logged).</li>
+      <li>Simulate candidate plans (reach-around, move glass, wait) and predict outcomes with the forward model.</li>
+      <li>Score plans across physical/emotional/mental + generalization. Select the plan that balances safety and transfer potential.</li>
+      <li>Execute chosen plan; observe outcome; update memory and IPC weights to improve future inference and planning.</li>
+      <li>In Development Mode, permit controlled, low-risk experiments to improve the forward model and policy.</li>
     </ol>
 
     <hr />
 
     <h2 id="quickstart">Quickstart & Example</h2>
-    <p class="small">The repository contains a minimal 2D sim example demonstrating the glass/ball scenario with stubbed perception. To evolve toward AGI-relevant behavior, extend the sim to include: a forward model, novelty detector, a simple RL loop (e.g., policy gradient or Q-learning), and a Development Mode for controlled exploration.</p>
+    <p class="small">A minimal 2D sim demonstrating the glass/ball scenario is provided in <code>/examples/glass_ball_sim</code>. To progress toward AGI-relevant behavior, extend the sim with a forward model, novelty detector, a simple RL loop, and a Development Mode for controlled exploration.</p>
 
     <hr />
 
     <h2 id="roadmap">Roadmap & Next Steps</h2>
     <ol>
-      <li>Phase 0 – Spec formalization (done)</li>
-      <li>Phase 1 – 2D sim + unit tests for canonical scenarios (glass/ball, emotional edge, ambiguous command)</li>
+      <li>Phase 0 – Spec formalization</li>
+      <li>Phase 1 – 2D sim + unit tests for canonical scenarios</li>
       <li>Phase 2 – Add forward model, memory, novelty detector; integrate RL for weight updates</li>
-      <li>Phase 3 – Human-in-loop trials, Development Mode curricula, audits, deployable modules</li>
+      <li>Phase 3 – Human-in-loop trials, Development Mode curricula, audits</li>
       <li>Phase 4 – Multi-agent and social environment testing for emergent generalization</li>
     </ol>
 
@@ -399,18 +392,18 @@ memory.append({perception, action, outcome})
       <li>Task success rate</li>
       <li>Reversibility score</li>
       <li>Time-to-decision (latency)</li>
-      <li>Generalization rate (new metric)</li>
-      <li>Novelty utilization score (new metric)</li>
+      <li>Generalization rate</li>
+      <li>Novelty utilization score</li>
     </ul>
 
     <h2 id="contribute">Contributing</h2>
-    <p class="small">Contributions welcome. Suggested files in repo: <code>SPEC.md</code>, <code>README.md</code>, <code>CONTRIBUTING.md</code>, <code>CODE_OF_CONDUCT.md</code>, and <code>/examples</code>. For the single-file landing page, use this <code>index.html</code>.</p>
+    <p class="small">Suggested repository files: <code>SPEC.md</code>, <code>README.md</code>, <code>CONTRIBUTING.md</code>, <code>CODE_OF_CONDUCT.md</code>, and <code>/examples</code>. Use this <code>index.html</code> for a single-file landing page.</p>
 
     <h2 id="license">License & Contact</h2>
-    <p class="small">Suggested initial license: MIT. Creator: <strong>Keno</strong>. For repo maintenance, add an explicit <code>LICENSE</code> file with the full MIT text.</p>
+    <p class="small">Suggested initial license: MIT. Creator: <strong>Keno</strong>. Add an explicit <code>LICENSE</code> file with the full MIT text for repository distribution.</p>
 
     <footer>
-      <div class="small">Generated for repository: Morally Coded — © Keno</div>
+      <div class="small">Morally Coded — © Keno</div>
     </footer>
   </div>
 </body>
