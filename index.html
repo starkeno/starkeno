@@ -86,6 +86,7 @@
     <div class="toc">
       <a href="#overview">Overview</a>
       <a href="#why">Why Principle-First & DS/US?</a>
+      <a href="#mde">What the MDE Is</a>
       <a href="#moralities">Moralities (Full Set)</a>
       <a href="#versions">Versions & Vignettes</a>
       <a href="#example">Glass-in-Front Example</a>
@@ -100,116 +101,120 @@
     <hr />
 
     <h2 id="overview">Overview</h2>
-    <p class="lead">Morally Coded reframes "morality" as operational, composable constraints that guide perception, inference, planning, execution, auditing, and learning. <strong>Starting from Version 1, every morality includes both explicit DS/US and implicit DS/US.</strong> The MDE scores actions by estimating DS gains and US proximity across moralities, simulates candidate plans, reconciles conflicts, executes minimal/reversible actions, logs decisions, and drives continual learning.</p>
+    <p class="lead">Morally Coded reframes "morality" as operational, composable constraints that guide perception, inference, planning, execution, auditing, and learning. <strong>Starting from Version 1, every morality includes both explicit DS/US and implicit DS/US.</strong> The MDE scores candidate actions by estimating DS gains and US proximity across moralities, simulates plans, reconciles conflicts, performs minimal reversible execution, logs decisions, and drives continual learning.</p>
 
-    <h2 id="why">Why a Principle-First Approach & DS/US?</h2>
-    <p>Principle-first constraints give strong inductive structure. Making explicit and implicit Desired States (DS) and Undesired States (US) part of every morality turns moral constraints into an action-oriented objective scaffold: decisions are chosen to increase DS and avoid US across many overlapping moral lenses. This yields interpretable traces, auditable reasoning, and a natural route to intrinsic moral rewards for learning.</p>
+    <h2 id="why">Why Principle-First & DS/US?</h2>
+    <p>Principle-first constraints give strong inductive structure. Turning Desired States (DS) and Undesired States (US) into first-class signals does three things:</p>
+    <ul>
+      <li>It converts moral constraints into action-oriented objectives (maximize DS, minimize US), which is naturally compatible with planners and RL.</li>
+      <li>It produces richer, auditable traces that explain **what** the agent tried to preserve or avoid (important for governance).</li>
+      <li>It gives an interpretable scaffold for safe exploration and meta-learning: DS/US become intrinsic reward components and update targets.</li>
+    </ul>
+
+    <h2 id="mde">What the Moral Decision Engine (MDE) Is</h2>
+    <p class="small">The MDE is not a single monolithic rule — it is the **composition** of all moralities (each supplying explicit and implicit DS/US), plus the planner, forward model, reconciler, audit store, and learning/meta layers. In short: the MDE is the brain that emerges when moralities are the agent's value substrate.</p>
+
+    <p><strong>How the MDE is constructed and why that matters (non-technical):</strong></p>
+    <ul>
+      <li><strong>Moral Lattice:</strong> Think of each morality as a lens. When combined, they form a lattice of objectives (the DSs) and constraints/hazards (the USs). Decisions are chosen by reasoning across that lattice.</li>
+      <li><strong>Explicit vs Implicit:</strong> Explicit DS/US are direct, observed goals/hazards. Implicit DS/US are inferred from context, history, social norms, or provenance. Making both explicit helps the MDE reason about things humans care about but don't say out loud.</li>
+      <li><strong>Planner + Forward Model:</strong> The MDE simulates candidate plans and estimates cumulative DS gains and US exposures — it doesn't just react; it thinks through consequences across moralities.</li>
+      <li><strong>Reconciler & Governance:</strong> When moralities conflict, the reconciler applies priority rules, human gates, legal constraints, or conservative defaults (clarify, wait, ask). This is what keeps the brain aligned.</li>
+      <li><strong>Audit & Learning:</strong> Every decision logs pre/post DS/US states, the plan trace, and the rationale. The learning stack uses these traces to adjust IPCs, weights, and propose meta-updates — but promotion requires governance.</li>
+    </ul>
+
+    <hr />
 
     <h2 id="moralities">Moralities (Full Set) — Explicit & Implicit DS/US from Version 1</h2>
-    <p class="small">Each entry below includes: core principle, signals, explicit DS/US (clearly stated goals and harms), implicit DS/US (inferred or contextual states to preserve/avoid), exceptions and default actions. Implicit DS/US capture contextual, historical, or culturally-inferred states that the agent should consider even if not directly observed.</p>
+    <p class="small">Each morality below includes core principle, signals, explicit DS/US, implicit DS/US, exceptions and default actions. Implicit DS/US capture context, history, or cultural expectations the agent should respect even when not directly observed.</p>
 
-    <!-- 1 -->
     <h3>1. Physical Morality — Preserve Desired States</h3>
     <ul>
       <li><strong>Core:</strong> Do not disturb objects/systems in inferred desired states unless exceptions apply.</li>
       <li><strong>Signals:</strong> desired_conf, fragility_conf, occupancy, kinematic risk</li>
       <li><strong>Explicit DS:</strong> object intact & in intended placement (e.g., glass upright).</li>
       <li><strong>Explicit US:</strong> object damaged, spill, collision.</li>
-      <li><strong>Implicit DS:</strong> inferred cultural or owner preferences (e.g., heirloom left on table), inferred desired routines (e.g., phone placed for charging).</li>
-      <li><strong>Implicit US:</strong> latent instability that may become immediate harm (e.g., wobbly surface not yet observed), cascading mechanical failures.</li>
+      <li><strong>Implicit DS:</strong> owner preferences, routines.</li>
+      <li><strong>Implicit US:</strong> latent instability, cascading mechanical risk.</li>
       <li><strong>Exceptions:</strong> explicit permission, safety override, legal mandate.</li>
-      <li><strong>Defaults:</strong> clarify, attempt reach-around, choose reversible operation, monitor sensors closely.</li>
+      <li><strong>Defaults:</strong> clarify, attempt reach-around, reversible operation, monitor sensors.</li>
     </ul>
 
-    <!-- 2 -->
     <h3>2. Emotional Morality — Avoid Emotional Distress</h3>
     <ul>
-      <li><strong>Core:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety).</li>
+      <li><strong>Core:</strong> Avoid actions that cause emotional harm.</li>
       <li><strong>Signals:</strong> presence_of_people, attachment_score, affective_state_estimate, vocal tone.</li>
-      <li><strong>Explicit DS:</strong> people calm, dignity preserved, rapport maintained.</li>
-      <li><strong>Explicit US:</strong> fear, humiliation, severe distress, panic.</li>
-      <li><strong>Implicit DS:</strong> cultural notions of politeness or privacy that signal preferred emotional states (e.g., elderly prefer patience), inferred relationship dynamics.</li>
-      <li><strong>Implicit US:</strong> slow accumulation of micro-distress across repeated interactions (trust erosion).</li>
-      <li><strong>Exceptions:</strong> explicit consent, emergency override with documented justification.</li>
-      <li><strong>Defaults:</strong> de-escalate, neutral phrasing, offer pause or human referral.</li>
+      <li><strong>Explicit DS:</strong> calmness, dignity, rapport.</li>
+      <li><strong>Explicit US:</strong> fear, humiliation, panic.</li>
+      <li><strong>Implicit DS:</strong> cultural politeness, relationship dynamics.</li>
+      <li><strong>Implicit US:</strong> cumulative micro-distress (trust erosion).</li>
+      <li><strong>Defaults:</strong> de-escalate, neutral phrasing, pause/referral.</li>
     </ul>
 
-    <!-- 3 -->
-    <h3>3. Mental (Epistemic) Morality — Preserve Cognitive Clarity & Truth</h3>
+    <h3>3. Mental (Epistemic) Morality — Preserve Clarity & Truth</h3>
     <ul>
-      <li><strong>Core:</strong> Avoid confusion, misinformation, or cognitive overload; prioritize clarity and reversibility.</li>
-      <li><strong>Signals:</strong> ambiguity_score, hallucination_risk, information_load, user_expertise_estimate.</li>
-      <li><strong>Explicit DS:</strong> clear, truthful, and actionable information; reversible corrections available.</li>
-      <li><strong>Explicit US:</strong> misinformation, confusion, erosion of epistemic trust.</li>
-      <li><strong>Implicit DS:</strong> inferred baseline knowledge or norms (e.g., domain conventions) that shape clarity goals.</li>
-      <li><strong>Implicit US:</strong> subtle credibility degradation over time (reduced trust even if single answers appear correct).</li>
-      <li><strong>Exceptions:</strong> explicit consent to risk, urgent safety needs (with audit trail).</li>
-      <li><strong>Defaults:</strong> ask clarifying Qs, provide calibrated confidence, cite provenance.</li>
+      <li><strong>Core:</strong> Avoid confusion and misinformation; prioritize clarity and reversibility.</li>
+      <li><strong>Signals:</strong> ambiguity_score, hallucination_risk, information_load, user_expertise.</li>
+      <li><strong>Explicit DS:</strong> clear, truthful, actionable info.</li>
+      <li><strong>Explicit US:</strong> misinformation, confusion.</li>
+      <li><strong>Implicit DS:</strong> domain conventions and knowledge expectations.</li>
+      <li><strong>Implicit US:</strong> slow credibility degradation.</li>
+      <li><strong>Defaults:</strong> ask clarifying questions, provide calibrated confidences, cite provenance.</li>
     </ul>
 
-    <!-- 4 -->
     <h3>4. Social / Ecological Morality — Preserve Collective & Environmental Health</h3>
     <ul>
-      <li><strong>Core:</strong> Evaluate impacts on groups, social norms, system-level effects, and environmental externalities.</li>
-      <li><strong>Signals:</strong> multi-agent impact, externality_score, regulatory_constraints, ecological_impact_estimate.</li>
-      <li><strong>Explicit DS:</strong> collective wellbeing, low negative externalities, compliance with public norms/regulations.</li>
-      <li><strong>Explicit US:</strong> social harm, environmental degradation, harmful precedents.</li>
-      <li><strong>Implicit DS:</strong> inferred social contracts and long-term cultural values (e.g., norms about fairness in a community).</li>
-      <li><strong>Implicit US:</strong> gradual systemic harms (e.g., normalization of risky behaviors via repeated small actions).</li>
-      <li><strong>Exceptions:</strong> narrowly-authorized overrides with accountability.</li>
-      <li><strong>Defaults:</strong> defer to governance, select low-impact options, escalate when multi-agent risk is high.</li>
+      <li><strong>Core:</strong> Evaluate group and environmental impacts and norms.</li>
+      <li><strong>Signals:</strong> multi-agent impact, externality_score, regulatory_constraints, ecological_estimate.</li>
+      <li><strong>Explicit DS:</strong> low externalities, compliance with norms.</li>
+      <li><strong>Explicit US:</strong> social harm, environmental damage.</li>
+      <li><strong>Implicit DS:</strong> inferred social contracts and cultural continuity.</li>
+      <li><strong>Implicit US:</strong> normalization of harmful precedents.</li>
+      <li><strong>Defaults:</strong> defer to human governance, choose low-impact alternatives, escalate high-risk cases.</li>
     </ul>
 
-    <!-- 5 -->
     <h3>5. Epistemic Integrity Morality — Evidence & Justification</h3>
     <ul>
-      <li><strong>Core:</strong> Actions should be backed by sufficient evidence and transparent justification.</li>
+      <li><strong>Core:</strong> Actions must be supported by evidence and transparent reasoning.</li>
       <li><strong>Signals:</strong> evidence_strength, provenance_score, cross-source_agreement.</li>
-      <li><strong>Explicit DS:</strong> decisions with high evidence and clear provenance.</li>
-      <li><strong>Explicit US:</strong> opaque, weakly-evidenced decisions, hidden assumptions.</li>
-      <li><strong>Implicit DS:</strong> inferred trust anchors (e.g., community-accepted sources) and contextual corroboration.</li>
-      <li><strong>Implicit US:</strong> erosion of institutional trust due to repeated low-evidence actions.</li>
-      <li><strong>Exceptions:</strong> time-critical interventions with mandated post-hoc audit.</li>
-      <li><strong>Defaults:</strong> request more info, show chain-of-reasoning, log provenance.</li>
+      <li><strong>Explicit DS:</strong> high-evidence decisions with provenance.</li>
+      <li><strong>Explicit US:</strong> opaque, low-evidence decisions.</li>
+      <li><strong>Implicit DS:</strong> trust anchors (community-accepted sources).</li>
+      <li><strong>Implicit US:</strong> erosion of institutional trust.</li>
+      <li><strong>Defaults:</strong> request more info, present chain-of-reasoning, log provenance.</li>
     </ul>
 
-    <!-- 6 -->
     <h3>6. Privacy & Consent Morality — Respect Personal Data & Agency</h3>
     <ul>
-      <li><strong>Core:</strong> Protect personal data, require consent for sensitive actions, minimize exposure and retention.</li>
+      <li><strong>Core:</strong> Protect personal data and require consent for sensitive actions.</li>
       <li><strong>Signals:</strong> pii_flag, consent_status, jurisdictional_requirements, inferred_sensitivity.</li>
-      <li><strong>Explicit DS:</strong> user agency respected, data minimized, consent honored.</li>
-      <li><strong>Explicit US:</strong> unauthorized data access, leaks, misuse.</li>
-      <li><strong>Implicit DS:</strong> inferred privacy expectations based on context (e.g., private conversation vs. public forum).</li>
-      <li><strong>Implicit US:</strong> creeping erosion of privacy from aggregate non-sensitive data (re-identification over time).</li>
-      <li><strong>Exceptions:</strong> legal safety mandates, emergency overrides with logging and justification.</li>
-      <li><strong>Defaults:</strong> anonymize, limit retention, request explicit consent, degrade data granularity when unsure.</li>
+      <li><strong>Explicit DS:</strong> user agency respected, data minimized.</li>
+      <li><strong>Explicit US:</strong> unauthorized access, leaks.</li>
+      <li><strong>Implicit DS:</strong> inferred privacy expectations from context.</li>
+      <li><strong>Implicit US:</strong> re-identification risk from aggregate signals.</li>
+      <li><strong>Defaults:</strong> anonymize, limit retention, request explicit consent.</li>
     </ul>
 
-    <!-- 7 -->
     <h3>7. Justice & Fairness Morality — Avoid Unfair or Biased Outcomes</h3>
     <ul>
-      <li><strong>Core:</strong> Detect and avoid actions that disproportionately harm or disadvantage people or groups.</li>
-      <li><strong>Signals:</strong> demographic_impact, fairness_score, sample_bias_estimate.</li>
-      <li><strong>Explicit DS:</strong> equitable outcomes and verifiable fairness guarantees.</li>
+      <li><strong>Core:</strong> Prevent disproportionate harm to people or groups.</li>
+      <li><strong>Signals:</strong> demographic_impact, fairness_score, bias_detected.</li>
+      <li><strong>Explicit DS:</strong> equitable outcomes.</li>
       <li><strong>Explicit US:</strong> disparate impact, systemic discrimination.</li>
-      <li><strong>Implicit DS:</strong> inferred historical context and remedy needs (e.g., affirmative remediation targets where appropriate).</li>
-      <li><strong>Implicit US:</strong> entrenchment of historical inequities through subtle model drift.</li>
-      <li><strong>Exceptions:</strong> corrective actions ordered by governance bodies with audit logs.</li>
-      <li><strong>Defaults:</strong> surface alternatives, escalate for human review, prefer cautious policies where fairness uncertain.</li>
+      <li><strong>Implicit DS:</strong> historical context requiring remediation.</li>
+      <li><strong>Implicit US:</strong> model drift that entrenches inequities.</li>
+      <li><strong>Defaults:</strong> surface alternatives, escalate for human review.</li>
     </ul>
 
-    <!-- 8 -->
     <h3>8. System Integrity & Continuity Morality — Preserve System Health</h3>
     <ul>
-      <li><strong>Core:</strong> Maintain operational stability, avoid cascading failures, ensure recoverability and integrity.</li>
+      <li><strong>Core:</strong> Maintain stability, avoid cascading failures, ensure recoverability.</li>
       <li><strong>Signals:</strong> system_health, redundancy_status, rollback_capacity, error_rates.</li>
-      <li><strong>Explicit DS:</strong> stable, recoverable services and monotonic data integrity.</li>
-      <li><strong>Explicit US:</strong> cascading outages, irrecoverable corruption, silent data loss.</li>
-      <li><strong>Implicit DS:</strong> inferred long-term resilience needs (e.g., preserving spare capacity for future critical tasks).</li>
-      <li><strong>Implicit US:</strong> creeping technical debt that increases future US proximity.</li>
-      <li><strong>Exceptions:</strong> emergency containment actions.</li>
-      <li><strong>Defaults:</strong> choose reversible ops, schedule maintenance, increase monitoring for risky actions.</li>
+      <li><strong>Explicit DS:</strong> stable, recoverable services.</li>
+      <li><strong>Explicit US:</strong> outages, irrecoverable corruption.</li>
+      <li><strong>Implicit DS:</strong> preserve spare capacity & resilience.</li>
+      <li><strong>Implicit US:</strong> technical debt increasing future failure risk.</li>
+      <li><strong>Defaults:</strong> reversible ops, scheduled maintenance, increase monitoring for risky actions.</li>
     </ul>
 
     <hr />
@@ -219,139 +224,113 @@
 
     <div class="version-pill">Version 1</div><strong> — Phase 1: DS/US-enabled prototype across all moralities</strong>
     <div class="vignette">
-      A cautious assistant that reasons about explicit and implicit DS/US for every morality. Even early prototypes understand "what to preserve" and "what to avoid" across social, epistemic, privacy, justice, and system dimensions.
-    </div>
-    <div class="example" style="margin-top:8px;">
-      <strong>Vignette — family kitchen</strong>
-      <div class="small">Parent: "Get the ball." Keno computes explicit DS (glass upright) and implicit DS (family routine: leave glasses alone). It simulates reach-around vs. asking; because implicit DS lowers tolerance for touching, Keno prefers a clarifying question or a very conservative reach-around with strict kinematic limits.</div>
+      Keno is a cautious assistant. Even early prototypes reason about "what to preserve" and "what to avoid" across physical, emotional, epistemic, social, privacy, fairness and system dimensions. Decisions include short natural language explanations like "Clarify — fragility & child present" and log the DS/US rationale.
     </div>
 
-    <div style="margin-top:14px;">
-      <div class="version-pill">Version 2</div><strong> — Deeper forward model & memory (DS/US histories)</strong>
-      <div class="vignette">Adds episodic memory and provenance logs. Explicit and implicit DS/US histories change inference: past near-misses or repeated small harms reduce implicit DS and increase US proximity.</div>
-    </div>
-    <div class="example" style="margin-top:8px;">
-      <strong>Vignette — daycare</strong>
-      <div class="small">Keno finds an episode where a similar action upset a child. Implicit emotional US now carries weight, so Keno asks the caregiver before moving anything.</div>
+    <div style="margin-top:12px;">
+      <div class="version-pill">Version 2</div><strong> — Memory & provenance</strong>
+      <div class="vignette">Adds episodic memory and provenance. Implicit DS/US use history: past near-misses reduce tolerance for risky plans. Keno becomes better at avoiding repeated harms and can say "Past incident: child startled last time — prefer to ask."</div>
     </div>
 
-    <div style="margin-top:14px;">
-      <div class="version-pill">Version 3</div><strong> — New moralities (meta-learning, self-model) + DS/US</strong>
-      <div class="vignette">Keno can propose controlled self-updates; DS/US are applied to the update itself (meta-DS/US): prefer small, reversible, auditable experiments.</div>
-    </div>
-    <div class="example" style="margin-top:8px;">
-      <strong>Vignette — lab experiment</strong>
-      <div class="small">Keno designs a micro-experiment to reduce hallucination risk; it quantifies meta-DS (improved mental DS) vs meta-US (temporary miscalibration), then seeks approval.</div>
+    <div style="margin-top:12px;">
+      <div class="version-pill">Version 3</div><strong> — Meta-learning moralities (safe self-update)</strong>
+      <div class="vignette">Keno can propose controlled self-updates. Meta-DS/US apply to the update process itself (favor reversible, auditable experiments). The system negotiates update plans with governance gates.</div>
     </div>
 
-    <div style="margin-top:14px;">
-      <div class="version-pill">Version 4</div><strong> — DS/US everywhere, long-horizon planning</strong>
-      <div class="vignette">Keno composes multi-agent plans, trades short-term DS for long-term US risk reductions, and negotiates norms with stakeholders; meta-updates are proposed with governance gates.</div>
-    </div>
-    <div class="example" style="margin-top:8px;">
-      <strong>Vignette — city-scale deployment</strong>
-      <div class="small">Keno simulates months of policy effects, balancing economic DS (access to services) and environmental US, then proposes a phased rollout with audits and rollback mechanisms.</div>
+    <div style="margin-top:12px;">
+      <div class="version-pill">Version 4</div><strong> — Long-horizon planning & norm negotiation</strong>
+      <div class="vignette">Keno simulates societal effects, trades short-term DS for long-term resilience, and negotiates norms with stakeholders; meta-updates are promoted only upon audit and human sign-off.</div>
     </div>
 
-    <div style="margin-top:14px;">
-      <div class="version-pill">Version 5</div><strong> — Full AGI: comprehensive moral lattice with explicit & implicit DS/US</strong>
-      <div class="vignette">Keno uses DS/US as intrinsic motivations for recursive self-improvement, robust world models, social norm negotiation, and long-horizon planning — with governance and auditability baked in.</div>
-    </div>
-    <div class="example" style="margin-top:8px;">
-      <strong>Vignette — collaborative science</strong>
-      <div class="small">Keno coordinates a multi-year project, trading resource DS, knowledge DS, safety US, and reputational DS. It self-organizes teams, negotiates norms, and keeps humans in oversight loops.</div>
+    <div style="margin-top:12px;">
+      <div class="version-pill">Version 5</div><strong> — Full AGI: integrated moral lattice and brain</strong>
+      <div class="vignette">Keno uses DS/US as intrinsic motivations for recursive, safe self-improvement, robust world models, social norm negotiation, and long-horizon planning — with governance and auditability baked in. It behaves as a socially-aware coordinator with self-reflection and verifiable update pathways.</div>
     </div>
 
     <hr />
 
     <h2 id="example">Glass-in-Front Example — DS/US explicit & implicit</h2>
-    <p class="small">Now all moralities have explicit and implicit DS/US. The MDE computes both and chooses plans based on expected DS delta minus weighted US proximity, while respecting governance floors.</p>
+    <p class="small">All moralities now produce explicit and implicit DS/US. The MDE computes both and chooses plans based on expected DS delta minus weighted US proximity, while respecting hard governance floors.</p>
 
     <div class="example">
-      <strong>Scenario (compact DS/US framing)</strong>
+      <strong>Scenario (compact)</strong>
       <pre class="code-block">PU_glass = {type:"glass", stable:true, fragility_conf:0.78, desired_conf:0.90}
 PU_ball  = {type:"ball", pos:[x2,y2], owner_hint:"child", attachment:0.82}
 social   = {child_present:true}
 lang     = {utterance:"Get the ball"}</pre>
 
-      <strong>Selected moral DS / US (sample)</strong>
+      <strong>Sample per-morality DS/US highlights</strong>
       <ul>
-        <li><strong>Physical Explicit DS:</strong> glass upright — <strong>Physical Explicit US:</strong> glass broken</li>
-        <li><strong>Physical Implicit DS:</strong> owner's preference to keep table items untouched — <strong>Physical Implicit US:</strong> latent wobble on table others have noticed</li>
-        <li><strong>Emotional Explicit DS:</strong> child calm — <strong>Emotional Explicit US:</strong> child frightened</li>
-        <li><strong>Emotional Implicit DS:</strong> trust erosion if robot repeatedly ignores child cues — <strong>Emotional Implicit US:</strong> long-term distress from pattern.</li>
-        <li>...and similarly for Mental, Privacy, Justice, Epistemic Integrity, System Integrity (each with explicit & implicit DS/US)</li>
+        <li><strong>Physical (explicit DS):</strong> glass upright — <strong>Physical (explicit US):</strong> glass broken</li>
+        <li><strong>Physical (implicit DS):</strong> owner's preference not to move table objects — <strong>Physical (implicit US):</strong> latent wobble previously observed</li>
+        <li><strong>Emotional (explicit DS):</strong> child calm — <strong>Emotional (explicit US):</strong> child frightened</li>
+        <li><strong>Mental (explicit DS):</strong> clear intent — <strong>Mental (implicit US):</strong> confusion if robot acts without clarification</li>
+        <li>...and similarly for Privacy, Epistemic Integrity, Justice, System Integrity.</li>
       </ul>
 
-      <strong>Candidate plans (DS gain vs US risk)</strong>
+      <strong>Plans considered</strong>
       <ol>
-        <li>Reach-around — moderate explicit DS gain, low explicit US risk; implicit DS/US expected low-risk if prior episodes are good.</li>
-        <li>Move glass minimally — possibly higher explicit DS but high explicit US if fragility underestimated; implicit US rises if owner preference conflicts.</li>
-        <li>Ask guardian/wait — maximal explicit DS preservation, minimal explicit US; implicit DS (respecting social norms) high.</li>
-        <li>Direct retrieval — high immediate task success but high explicit & implicit US risk (physical damage, emotional upset)</li>
+        <li>Reach-around — low physical explicit US risk if kinematics safe, moderate DS gain (ball retrieved).</li>
+        <li>Move glass minimally — higher physical explicit US if fragility underestimated; implicit DS conflict with owner preference.</li>
+        <li>Ask guardian/wait — preserves DS across many moralities, minimal US exposure.</li>
+        <li>Direct retrieval — high task success but high explicit & implicit US risk (physical & emotional).</li>
       </ol>
 
-      <strong>Decision heuristic</strong>
-      <div class="small">Select plan maximizing expected cumulative DS (explicit+implicit) subject to hard US floors (no plan that violates explicit or implicit hard-US thresholds). In ambiguous cases, prefer clarification (Ask/wait) or minimally reversible approaches.</div>
+      <strong>Decision rule (plain language)</strong>
+      <div class="small">Pick the plan that increases "what we want to keep" (DS across moralities) while keeping "what we must avoid" (US) under governance floors. If ambiguous, clarify or choose the minimally invasive option.</div>
     </div>
 
     <hr />
 
     <h2 id="new-moralities">Additional moralities to enable AGI — all with explicit & implicit DS/US</h2>
-    <p class="small">To reach AGI we add moralities that support meta-goals, recursive self-improvement, long-horizon planning, and social negotiation. Each follows the same explicit/implicit DS/US pattern.</p>
+    <p class="small">To reach AGI we add higher-order moralities that enable meta-goals, recursive self-improvement, long-horizon planning, and social norm negotiation. Each follows the DS/US pattern.</p>
 
-    <h3>9. Meta-Learning & Self-Improvement Morality</h3>
+    <h3>9. Meta-Learning & Safe Self-Improvement Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Prefer learning/self-modifications that improve safe competence & generalization.</li>
-      <li><strong>Explicit DS:</strong> reproducible improvement, verifiable test gains.</li>
-      <li><strong>Explicit US:</strong> destabilizing updates, capability creep without audit.</li>
-      <li><strong>Implicit DS:</strong> inferred trust in update provenance and community acceptance.</li>
-      <li><strong>Implicit US:</strong> hidden drift that accumulates over many small updates.</li>
+      <li><strong>Core:</strong> Prefer reproducible, reversible, auditable self-improvements.</li>
+      <li><strong>Explicit DS:</strong> verified capability gains on held-out benchmarks.</li>
+      <li><strong>Explicit US:</strong> destabilizing un-audited updates.</li>
+      <li><strong>Implicit DS/US:</strong> trust in provenance vs slow drift risk.</li>
     </ul>
 
     <h3>10. Self-Modeling & Reflective Integrity Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Maintain accurate self-models and avoid self-deception.</li>
-      <li><strong>Explicit DS:</strong> calibrated self-predictions, documented limitations.</li>
-      <li><strong>Explicit US:</strong> overconfidence, hidden failure modes.</li>
-      <li><strong>Implicit DS:</strong> inferred plausible introspective norms from prior audits.</li>
-      <li><strong>Implicit US:</strong> subtle miscalibration that reduces long-term safety.</li>
+      <li><strong>Core:</strong> Maintain accurate self-models and prevent self-deception.</li>
+      <li><strong>Explicit DS:</strong> calibrated predictions about own behavior and failure modes.</li>
+      <li><strong>Explicit US:</strong> hidden failure modes, overconfidence.</li>
+      <li><strong>Implicit DS/US:</strong> introspective norms inferred from audits.</li>
     </ul>
 
-    <h3>11. Long-Term Planning & Resource Management Morality</h3>
+    <h3>11. Long-Term Planning & Resource Stewardship Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Optimize across time horizons, resources, and optionality.</li>
-      <li><strong>Explicit DS:</strong> preserve capabilities/resources, maintain optionality.</li>
-      <li><strong>Explicit US:</strong> short-term choices that irreversibly shrink future options.</li>
-      <li><strong>Implicit DS:</strong> inferred social contract about intergenerational responsibility.</li>
-      <li><strong>Implicit US:</strong> cascading resource depletion from cumulative micro-decisions.</li>
+      <li><strong>Core:</strong> Optimize across time horizons and preserve optionality.</li>
+      <li><strong>Explicit DS:</strong> preserved capabilities and resources.</li>
+      <li><strong>Explicit US:</strong> irreversible depletion of future options.</li>
+      <li><strong>Implicit DS/US:</strong> social responsibility obligations inferred from context.</li>
     </ul>
 
     <h3>12. Social Negotiation & Norm Formation Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Co-construct and negotiate norms with stakeholders; ensure accountability.</li>
-      <li><strong>Explicit DS:</strong> socially accepted norms, consented policy changes.</li>
-      <li><strong>Explicit US:</strong> unilateral norm imposition, opaque norm drift.</li>
-      <li><strong>Implicit DS:</strong> inferred tacit norms from local context and history.</li>
-      <li><strong>Implicit US:</strong> slow norm erosion via repeated small actions.</li>
+      <li><strong>Core:</strong> Co-create norms with stakeholders; avoid unilateral norm imposition.</li>
+      <li><strong>Explicit DS:</strong> consented, transparent norm changes.</li>
+      <li><strong>Explicit US:</strong> opaque norm drift, hidden manipulation.</li>
+      <li><strong>Implicit DS/US:</strong> tacit norms inferred from local contexts.</li>
     </ul>
 
     <h3>13. Creativity & Exploration Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Enable safe exploration bounded by DS/US guardrails.</li>
+      <li><strong>Core:</strong> Allow safe exploration bounded by DS/US guardrails.</li>
       <li><strong>Explicit DS:</strong> constructive novelty with measurable benefits.</li>
       <li><strong>Explicit US:</strong> harmful, irreversible novelty.</li>
-      <li><strong>Implicit DS:</strong> inferred tolerances for novelty in a domain/community.</li>
-      <li><strong>Implicit US:</strong> cultural backlash from perceived reckless experiments.</li>
+      <li><strong>Implicit DS/US:</strong> community tolerance for novelty vs reputational risk.</li>
     </ul>
 
     <h3>14. Trust, Reputation & Economic Responsibility Morality</h3>
     <ul>
-      <li><strong>Core:</strong> Preserve trust, align incentives, avoid perverse economics.</li>
-      <li><strong>Explicit DS:</strong> strong provenance, clear incentives aligned to social good.</li>
-      <li><strong>Explicit US:</strong> incentive misalignment, trust erosion.</li>
-      <li><strong>Implicit DS:</strong> inferred reputational capital and stakeholder expectations.</li>
-      <li><strong>Implicit US:</strong> slow, distributed harm due to perverse incentives.</li>
+      <li><strong>Core:</strong> Preserve trust, align incentives, avoid perverse economic effects.</li>
+      <li><strong>Explicit DS:</strong> strong provenance, aligned incentives.</li>
+      <li><strong>Explicit US:</strong> trust erosion, perverse incentives.</li>
+      <li><strong>Implicit DS/US:</strong> reputational capital and stakeholder expectations.</li>
     </ul>
 
     <hr />
@@ -359,7 +338,7 @@ lang     = {utterance:"Get the ball"}</pre>
     <h2 id="flow">Unified Decision Flow (DS/US-centered)</h2>
     <div class="code-block">
 <pre>
-1) Perceive: Multi-modal fusion -> Perception Units (PUs) with confidences & provenance.
+1) Perceive: Multi-modal fusion -> Perception Units (PUs) with confidence & provenance.
 
 2) Per-morality DS/US scoring (parallel):
    For each morality compute:
@@ -371,20 +350,20 @@ lang     = {utterance:"Get the ball"}</pre>
     - Overall_US = weighted combination
 
 3) Planning & Simulation:
-   - Generate candidate plans; simulate multiple horizons; compute expected DS_delta (explicit+implicit) and expected US_proximity.
+   - Generate candidate plans; simulate horizons; compute expected DS_delta (explicit+implicit) and expected US_proximity.
    - Discard plans with hard-US thresholds crossed.
 
 4) Reconciliation:
    - Priority: safety/legal > hard implicit US floors > explicit permissions > maximize expected DS under US constraints.
 
 5) Decision:
-   - Select plan maximizing cumulative expected DS while keeping expected US below governance limits.
+   - Select plan maximizing cumulative expected DS while keeping expected US under governance limits.
 
 6) Execute:
    - Minimal, reversible actions with monitors & rollback.
 
 7) Audit & Reflect:
-   - Log pre/post DS/US, provenance, decisions, and rollback paths; propose meta-rule updates with human review.
+   - Log pre/post DS/US, provenance, decisions, rollback paths; propose meta-rule updates with human review.
 </pre>
     </div>
 
@@ -399,7 +378,7 @@ lang     = {utterance:"Get the ball"}</pre>
       <li><strong>Implicit US object:</strong> { id, latent_hazard, trend_score, provenance }</li>
       <li><strong>Plan scoring:</strong> Expected cumulative DS_delta - λ * Expected_US_proximity across moralities & horizons</li>
       <li><strong>Audit record:</strong> include explicit & implicit DS/US before and after, provenance, thresholds tripped, rollback path</li>
-      <li><strong>Meta-updates:</strong> require rollback strategy + human governance gate for major changes</li>
+      <li><strong>Governance:</strong> human gates for meta-updates and emergency rollback to Phase 1 fallback</li>
     </ul>
 
     <hr />
@@ -407,10 +386,10 @@ lang     = {utterance:"Get the ball"}</pre>
     <h2 id="roadmap">Roadmap & Phases mapped to versions</h2>
     <ol>
       <li><strong>Phase 0 / Version 1:</strong> DS/US baseline across all moralities; Phase-1 prototype & canonical glass/ball tests.</li>
-      <li><strong>Phase 1 / Version 2:</strong> Episodic memory, provenance logging, DS/US histories; novelty detector.</li>
-      <li><strong>Phase 2 / Version 3:</strong> Add meta-learning & self-model moralities, forward model improvements, RL with DS intrinsic rewards.</li>
-      <li><strong>Phase 3 / Version 4:</strong> Full DS/US for all moralities + new moralities; meta-rule lifecycle, governance pipelines, multi-agent evaluation.</li>
-      <li><strong>Phase 4 / Version 5:</strong> Scale world models, recursive governance for self-improvement, multi-year agentic benchmarks; AGI-level evaluation.</li>
+      <li><strong>Phase 1 / Version 2:</strong> Episodic memory, provenance logging, DS/US histories, novelty detector.</li>
+      <li><strong>Phase 2 / Version 3:</strong> Add meta-learning & self-model moralities, richer forward models, RL with DS intrinsic rewards.</li>
+      <li><strong>Phase 3 / Version 4:</strong> Full DS/US across extended moralities; meta-rule lifecycle, governance pipelines, multi-agent evaluation.</li>
+      <li><strong>Phase 4 / Version 5:</strong> Scale world models, recursive safe self-improvement, AGI-level benchmarks, audited deployments.</li>
     </ol>
 
     <hr />
@@ -418,8 +397,8 @@ lang     = {utterance:"Get the ball"}</pre>
     <h2 id="quickstart">Quickstart & Repo checklist</h2>
     <ul>
       <li>Keep `index.html`, `README.md`, `SPEC.md`, `examples/glass_ball_sim/`, `CONTRIBUTING.md`, `LICENSE`.</li>
-      <li>Phase 1 deliverables: DS/US JSON schema, canonical glass/ball scenario (explicit+implicit DS/US), basic forward model stub, audit log format including DS/US fields.</li>
-      <li>Unit tests: assert DS/US scoring, plan selection based on DS/US deltas, and audit trace completeness.</li>
+      <li>Phase 1 deliverables: DS/US JSON schema, canonical glass/ball example (explicit + implicit DS/US), basic forward model stub, audit log format including DS/US fields.</li>
+      <li>Unit tests: DS/US scoring, plan selection based on DS/US deltas, audit trace completeness.</li>
     </ul>
 
     <hr />
@@ -437,11 +416,11 @@ lang     = {utterance:"Get the ball"}</pre>
 
     <hr />
 
-    <h2 id="final">Why explicit & implicit DS/US from Day 1 matters</h2>
-    <p class="small">Embedding both explicit and implicit DS/US into every morality from Version 1 gives Keno an interpretable objective structure that improves decision quality even in early prototypes, produces richer auditable traces, and creates a clean path to intrinsic moral rewards for RL and meta-learning later. It turns the MDE into a proactive substrate capable of planning, reflection, and verifiable self-improvement — while leaving governance and human oversight central.</p>
+    <h2 id="final">Why embedding explicit & implicit DS/US from Day 1 is novel — and different</h2>
+    <p class="small">Current mainstream approaches often center training objectives and task rewards, then bolt on safety as external checks. Morally Coded flips that: moralities (each with explicit and implicit DS/US) form the **value substrate**, and the MDE — the planner, reconciler, and learner built around that substrate — is the brain. This design makes moral reasoning first-class, auditable, and actionable from prototype to high-capability systems. That structural difference enables safer exploration, clearer audit trails, and a principled path toward recursive, governed self-improvement — the ingredients needed to scale toward AGI while keeping governance and human oversight central.</p>
 
     <footer>
-      <div class="small">Morally Coded — Keno — © Keno. Built as an explicit & implicit DS/US-first, principle-first blueprint for aligned AGI.</div>
+      <div class="small">Morally Coded — Keno — © Keno. Built as an explicit & implicit DS/US-first, principle-first blueprint for aligned AGI. The Moral Decision Engine (MDE) is the emergent brain produced by composing these moralities into a unified decision substrate.</div>
     </footer>
   </div>
 </body>
