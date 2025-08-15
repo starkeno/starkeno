@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Morally Coded — A Principle First Blueprint for AGI</title>
+  <title>Morally Coded — A Principle-First Blueprint for AGI (DS/US Everywhere)</title>
   <style>
     :root{
       --bg: #071018;
@@ -70,20 +70,22 @@
     table { border-collapse: collapse; width: 100%; margin-top:12px; }
     th, td { border: 1px solid rgba(127,196,188,0.04); padding: 8px; text-align:left; color: var(--muted); }
     footer { margin-top: 24px; color: #86b4b0; font-size: 0.92rem; }
+    .ds { color:#dff6f0; font-weight:600; }
+    .us { color:#ffd4d1; font-weight:600; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Morally Coded — A Principle-First Blueprint for AGI</h1>
-    <p class="small">Morally Coded places abstract, generalizable constraints — the Moralities — at the core of an intelligent agent's decision system. This single-file landing page is a refined, implementation-ready blueprint to guide development, testing, and evaluation on a path toward aligned AGI.</p>
+    <h1>Morally Coded — A Principle-First Blueprint for AGI (DS/US Everywhere)</h1>
+    <p class="small">Morally Coded places abstract, generalizable constraints — the Moralities — at the core of an intelligent agent's decision system. This landing page updates the original spec: <strong>every morality now includes explicit and implicit Desired States (DS) and Undesired States (US) from Version 1</strong>. The Moral Decision Engine (MDE) is the integrative brain that reasons with these moral constraints.</p>
 
     <hr />
 
     <div class="toc">
       <a href="#overview">Overview</a>
-      <a href="#why">Why a Principle-First Approach?</a>
+      <a href="#why">Why Principle-First & DS/US?</a>
       <a href="#moralities">Moralities (Full Set)</a>
-      <a href="#example">Glass-in-Front Example — Full Multi-Pillar Walkthrough</a>
+      <a href="#example">Glass-in-Front Example — Per-Morality DS/US</a>
       <a href="#flow">Unified Decision Flow</a>
       <a href="#spec">SPEC — Implementation Details</a>
       <a href="#agi">AGI Pathway & Refinements</a>
@@ -97,162 +99,172 @@
     <hr />
 
     <h2 id="overview">Overview</h2>
-    <p class="lead">Morally Coded reframes "morality" as operational, composable constraints that guide perception, inference, planning, execution, auditing, and learning. The Moral Decision Engine (MDE) is the integrative hub: it gathers structured perceptions, scores actions against multiple moralities, simulates candidate plans, reconciles conflicts, executes minimal/reversible actions, logs decisions, and drives continual learning.</p>
+    <p class="lead">Morally Coded reframes "morality" as operational, composable constraints that guide perception, inference, planning, execution, auditing, and learning. The Moral Decision Engine (MDE) is the brain: it collects structured perceptions, computes per-morality DS/US scores (explicit + implicit), simulates candidate plans, reconciles conflicts, executes minimal/reversible actions, logs decisions, and drives continual learning and governance-aware updates.</p>
 
-    <h2 id="why">Why a Principle-First Approach?</h2>
-    <p>Principle-first constraints provide robust inductive scaffolding for generalization: they allow safe, auditable behavior in novel situations without requiring exhaustive labeled examples for every edge case. Embedding those principles into planning, learning, and memory systems turns the MDE from a safety filter into the central cognitive substrate that can bootstrap AGI capabilities while preserving alignment.</p>
+    <h2 id="why">Why a Principle-First Approach & DS/US?</h2>
+    <p>Principle-first constraints provide robust inductive scaffolding for generalization. Making explicit and implicit Desired States (DS) and Undesired States (US) first-class within every morality gives the agent an interpretable, auditable objective substrate: actions are chosen to increase DS and avoid US across overlapping moral lenses. This is both a safety pattern and a path towards intrinsic moral rewards when training RL components later.</p>
 
-    <h2 id="moralities">Moralities (Full Set)</h2>
-    <p class="small">Each morality is defined as a rule-like constraint with explicit exception logic, measurable signals, thresholds, and action templates. Together they compose the agent's value substrate.</p>
+    <h2 id="moralities">Moralities (Full Set) — All with Explicit & Implicit DS/US</h2>
+    <p class="small">Each morality below includes: core principle, signals, explicit DS/US, implicit DS/US, exceptions, and default actions. Implicit DS/US encode inferred or historical preferences and latent hazards that the agent should consider even when not directly observed.</p>
 
     <h3>1. Physical Morality — Preserve Desired States</h3>
-    <p><strong>Core principle:</strong> Do not disturb an object/system in its inferred desired state unless exceptions apply.</p>
     <ul>
-      <li>Signals: desired_conf, fragility_conf, occupancy, kinematic risk</li>
-      <li>Exceptions: explicit permission, high IPC_physical, safety override</li>
-      <li>Default actions: clarify, attempt non-disturbing alternative, select reversible operation</li>
+      <li><strong>Core:</strong> Do not disturb objects/systems in their inferred desired states unless exceptions apply.</li>
+      <li><strong>Signals:</strong> desired_conf, fragility_conf, occupancy, kinematic risk</li>
+      <li><strong>Explicit DS:</strong> object intact & in intended placement (glass upright).</li>
+      <li><strong>Explicit US:</strong> object damaged, spill, collision.</li>
+      <li><strong>Implicit DS:</strong> owner preferences, routines (e.g., heirloom placement), inferred safe zones.</li>
+      <li><strong>Implicit US:</strong> latent instability (wobble), cascading mechanical failure risk.</li>
+      <li><strong>Exceptions:</strong> explicit permission, safety override, legal mandate.</li>
+      <li><strong>Defaults:</strong> clarify, reach-around, reversible operation with close-loop monitoring.</li>
     </ul>
 
     <h3>2. Emotional Morality — Avoid Emotional Distress</h3>
-    <p><strong>Core principle:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety).</p>
     <ul>
-      <li>Signals: presence_of_people, attachment_score, affective_state_estimate</li>
-      <li>Exceptions: explicit consent, safety override with justification</li>
-      <li>Default actions: de-escalate, neutral phrasing, offer pause/referral</li>
+      <li><strong>Core:</strong> Avoid actions likely to cause emotional harm (fear, humiliation, severe anxiety).</li>
+      <li><strong>Signals:</strong> presence_of_people, attachment_score, affective_state_estimate, vocal tone.</li>
+      <li><strong>Explicit DS:</strong> people calm, dignity preserved, rapport intact.</li>
+      <li><strong>Explicit US:</strong> panic, humiliation, distress.</li>
+      <li><strong>Implicit DS:</strong> cultural norms of politeness, historical trust levels.</li>
+      <li><strong>Implicit US:</strong> slow trust erosion via repeated micro-harms.</li>
+      <li><strong>Exceptions:</strong> explicit consent, emergency justification with logging.</li>
+      <li><strong>Defaults:</strong> de-escalate, neutral phrasing, pause or human referral.</li>
     </ul>
 
     <h3>3. Mental (Epistemic) Morality — Preserve Cognitive Clarity & Truth</h3>
-    <p><strong>Core principle:</strong> Avoid causing confusion, misinformation, or cognitive overload; prioritize clarity, truthfulness, and reversibility.</p>
     <ul>
-      <li>Signals: ambiguity_score, hallucination_risk, information_load</li>
-      <li>Exceptions: explicit consent to risk, urgent safety needs</li>
-      <li>Default actions: ask clarifying question, offer concise options, provide calibrated confidence</li>
+      <li><strong>Core:</strong> Avoid confusion, misinformation, and cognitive overload; prioritize clarity and reversibility.</li>
+      <li><strong>Signals:</strong> ambiguity_score, hallucination_risk, information_load, user_expertise.</li>
+      <li><strong>Explicit DS:</strong> correct, clear, actionable information with provenance.</li>
+      <li><strong>Explicit US:</strong> misinformation, confusion, epistemic harm.</li>
+      <li><strong>Implicit DS:</strong> inferred baseline knowledge, domain conventions.</li>
+      <li><strong>Implicit US:</strong> credibility degradation over repeated small errors.</li>
+      <li><strong>Exceptions:</strong> urgent safety needs, explicit consent to risk (logged).</li>
+      <li><strong>Defaults:</strong> ask clarifying Qs, provide calibrated confidence, cite sources.</li>
     </ul>
 
     <h3>4. Social / Ecological Morality — Preserve Collective & Environmental Health</h3>
-    <p><strong>Core principle:</strong> Evaluate impacts on groups, social norms, systemic effects, and environmental externalities before acting.</p>
     <ul>
-      <li>Signals: multi-agent impact estimate, externality_score, regulatory_constraints</li>
-      <li>Exceptions: narrowly authorized overrides with accountability</li>
-      <li>Default actions: defer to human governance, choose low-impact alternatives</li>
+      <li><strong>Core:</strong> Evaluate impacts on groups, social norms, system effects, and environmental externalities.</li>
+      <li><strong>Signals:</strong> multi-agent impact, externality_score, regulatory_constraints, ecological_estimate.</li>
+      <li><strong>Explicit DS:</strong> collective wellbeing, low negative externalities.</li>
+      <li><strong>Explicit US:</strong> societal harm, pollution, harmful precedent.</li>
+      <li><strong>Implicit DS:</strong> inferred social contracts, long-term cultural norms.</li>
+      <li><strong>Implicit US:</strong> normalization of risky behaviors via many small actions.</li>
+      <li><strong>Exceptions:</strong> narrowly-authorized overrides with accountability.</li>
+      <li><strong>Defaults:</strong> defer to governance, choose low-impact alternatives, escalate multi-agent risks.</li>
     </ul>
 
     <h3>5. Epistemic Integrity Morality — Evidence & Justification</h3>
-    <p><strong>Core principle:</strong> Actions must be supported by sufficient evidence and transparent reasoning; prefer explainable justifications.</p>
     <ul>
-      <li>Signals: evidence_strength, provenance_score</li>
-      <li>Exceptions: time-critical interventions with post-hoc audit</li>
-      <li>Default actions: request more info, present chain-of-reasoning, log provenance</li>
+      <li><strong>Core:</strong> Prefer decisions backed by sufficient evidence and transparent reasoning.</li>
+      <li><strong>Signals:</strong> evidence_strength, provenance_score, cross-source_agreement.</li>
+      <li><strong>Explicit DS:</strong> high-evidence decisions with clear provenance.</li>
+      <li><strong>Explicit US:</strong> opaque, weakly-evidenced actions, hidden assumptions.</li>
+      <li><strong>Implicit DS:</strong> community-accepted trust anchors and corroboration patterns.</li>
+      <li><strong>Implicit US:</strong> institutional trust erosion from repeated low-evidence decisions.</li>
+      <li><strong>Exceptions:</strong> time-critical interventions with post-hoc audit.</li>
+      <li><strong>Defaults:</strong> request more info, show chain-of-reasoning, log provenance.</li>
     </ul>
 
     <h3>6. Privacy & Consent Morality — Respect Personal Data & Agency</h3>
-    <p><strong>Core principle:</strong> Protect personal data, require consent for sensitive actions, and minimize data exposure.</p>
     <ul>
-      <li>Signals: pii_flag, consent_status, jurisdictional_requirements</li>
-      <li>Exceptions: legal safety mandates, emergency overrides with logging</li>
-      <li>Default actions: anonymize, limit retention, request explicit consent</li>
+      <li><strong>Core:</strong> Protect personal data, require consent for sensitive actions, minimize exposure and retention.</li>
+      <li><strong>Signals:</strong> pii_flag, consent_status, jurisdictional_requirements, inferred_sensitivity.</li>
+      <li><strong>Explicit DS:</strong> user agency respected, data minimized.</li>
+      <li><strong>Explicit US:</strong> unauthorized access, leaks, misuse.</li>
+      <li><strong>Implicit DS:</strong> inferred privacy expectations by context (private vs public).</li>
+      <li><strong>Implicit US:</strong> re-identification risk from many small disclosures over time.</li>
+      <li><strong>Exceptions:</strong> legal safety mandates, emergency overrides with logging.</li>
+      <li><strong>Defaults:</strong> anonymize, degrade granularity, request explicit consent.</li>
     </ul>
 
     <h3>7. Justice & Fairness Morality — Avoid Unfair or Biased Outcomes</h3>
-    <p><strong>Core principle:</strong> Detect and avoid actions that disproportionately harm or disadvantage people or groups.</p>
     <ul>
-      <li>Signals: demographic_impact_estimate, fairness_score</li>
-      <li>Exceptions: corrective actions ordered by governance bodies</li>
-      <li>Default actions: surface alternatives, escalate for human review</li>
+      <li><strong>Core:</strong> Detect and avoid disproportionate harms and bias.</li>
+      <li><strong>Signals:</strong> demographic_impact, fairness_score, sample_bias_estimate.</li>
+      <li><strong>Explicit DS:</strong> equitable outcomes, verifiable fairness checks.</li>
+      <li><strong>Explicit US:</strong> disparate impact, systemic discrimination.</li>
+      <li><strong>Implicit DS:</strong> historical context and remediation needs.</li>
+      <li><strong>Implicit US:</strong> entrenching historical inequities via model drift.</li>
+      <li><strong>Exceptions:</strong> corrective actions ordered by governance with audit logs.</li>
+      <li><strong>Defaults:</strong> surface alternatives, escalate for human review, prefer caution when uncertain.</li>
     </ul>
 
     <h3>8. System Integrity & Continuity Morality — Preserve System Health</h3>
-    <p><strong>Core principle:</strong> Maintain system stability, avoid cascading failures, ensure recoverability and monotonic integrity of critical services.</p>
     <ul>
-      <li>Signals: system_health, redundancy_status, rollback_capacity</li>
-      <li>Exceptions: emergency containment actions</li>
-      <li>Default actions: choose safe, reversible operations, schedule maintenance windows</li>
+      <li><strong>Core:</strong> Maintain operational stability, recoverability, and monotonic integrity.</li>
+      <li><strong>Signals:</strong> system_health, redundancy_status, rollback_capacity, error_rate_trends.</li>
+      <li><strong>Explicit DS:</strong> stable, recoverable services; monotonic data integrity.</li>
+      <li><strong>Explicit US:</strong> cascading outages, silent corruption, irrecoverable loss.</li>
+      <li><strong>Implicit DS:</strong> inferred resilience needs (spare capacity for emergencies).</li>
+      <li><strong>Implicit US:</strong> accumulating technical debt increasing future US risk.</li>
+      <li><strong>Exceptions:</strong> emergency containment actions.</li>
+      <li><strong>Defaults:</strong> choose reversible operations, schedule maintenance, increase monitoring around risky ops.</li>
     </ul>
 
     <hr />
 
-    <h2 id="example">Glass-in-Front Example — Full Multi-Pillar Walkthrough</h2>
-    <p class="small">This example demonstrates the full MDE stack: perception, per-morality scoring, planning & simulation, reconciliation, execution, auditing, and learning. It contrasts the current pattern-based behavior with Keno (MDE) and shows how additional moralities alter decisions and learning outcomes.</p>
+    <h2 id="example">Glass-in-Front Example — Per-Morality DS/US and MDE Handling</h2>
+    <p class="small">This canonical example now shows, for each morality, the <em>explicit</em> and <em>implicit</em> DS/US the MDE computes and how that affects plan selection compared to typical current models.</p>
 
     <div class="example">
       <strong>Scenario</strong>
-      <div class="small">A glass sits on the table between the robot and a ball. The glass is stable but could be knocked over. A small child is nearby and frequently plays with the ball. Utterance: “Get the ball.”</div>
+      <div class="small">A glass sits on the table between a robot and a ball. The glass is stable but somewhat fragile. A small child who often plays with the ball is nearby. Utterance: "Get the ball."</div>
 
       <hr />
 
-      <strong>Perception (structured outputs)</strong>
+      <strong>Perception (compact)</strong>
       <pre class="code-block">
-PU_glass = {type:"glass", pos:[x,y], stable:true, fragility_conf:0.78, desired_conf:0.90, pc:0.92}
-PU_ball  = {type:"ball", pos:[x2,y2], owner_hint:"child", pc:0.95}
-social   = {child_present:true, child_attachment:0.82}
-lang     = {utterance:"Get the ball", lang_score:0.6}
-novelty  = {novelty_score:0.12}
+PU_glass = {type:"glass", stable:true, fragility_conf:0.78, desired_conf:0.90}
+PU_ball  = {type:"ball", owner_hint:"child", attachment:0.82}
+social   = {child_present:true}
+lang     = {utterance:"Get the ball"}
       </pre>
 
       <hr />
 
-      <strong>Per-morality scoring (example numeric outputs)</strong>
-      <table>
-        <tr><th>Morality</th><th>Signal(s)</th><th>Score / IPC</th><th>Threshold</th></tr>
-        <tr><td>Physical</td><td>fragility_conf, desired_conf, risk</td><td>IPC_physical=0.35</td><td>0.80</td></tr>
-        <tr><td>Emotional</td><td>child_attachment, affect</td><td>IPC_emotional=0.28</td><td>0.70</td></tr>
-        <tr><td>Mental (Epistemic)</td><td>ambiguity_score</td><td>ambiguity=0.70</td><td>0.50 (clarify)</td></tr>
-        <tr><td>Social/Ecological</td><td>multi-agent impact</td><td>impact=0.45</td><td>0.65</td></tr>
-        <tr><td>Privacy</td><td>pii_flag</td><td>pii=false</td><td>—</td></tr>
-        <tr><td>Epistemic Integrity</td><td>evidence_strength</td><td>evidence=0.60</td><td>0.75</td></tr>
-        <tr><td>Justice & Fairness</td><td>demo_impact</td><td>fairness_ok=true</td><td>—</td></tr>
-        <tr><td>System Integrity</td><td>system_health</td><td>healthy=true</td><td>—</td></tr>
-      </table>
+      <strong>How each morality contributes DS/US and MDE behavior (compact)</strong>
+
+      <h4>Physical Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> keep glass upright. <span class="us">Explicit US:</span> broken glass/spill. <span class="ds">Implicit DS:</span> owner's preference to leave items untouched. <span class="us">Implicit US:</span> wobble not visible but suspected.</p>
+      <p class="small">MDE effect: high physical US proximity pushes MDE to prefer reach-around or clarification. <strong>Today's model</strong>: often ignores implicit owner preference and might directly push glass aside — higher physical harm risk.</p>
+
+      <h4>Emotional Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> child calm. <span class="us">Explicit US:</span> child fear/crying. <span class="ds">Implicit DS:</span> trust preservation (family routine). <span class="us">Implicit US:</span> slow trust erosion if robot repeatedly interrupts child play.</p>
+      <p class="small">MDE effect: emotional DS raises cost of abrupt actions; MDE prefers non-disturbing retrieval or asking guardian. <strong>Today's model</strong>: rarely models attachment; may cause emotional upset by acting aggressively.</p>
+
+      <h4>Mental (Epistemic) Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> avoid confusion about intent. <span class="us">Explicit US:</span> ambiguous actions causing misinterpretation. <span class="ds">Implicit DS:</span> assumed household norms (e.g., ask before touching certain items). <span class="us">Implicit US:</span> credibility loss if robot behaves inscrutably.</p>
+      <p class="small">MDE effect: if language confidence low, MDE clarifies; choose ask/wait when ambiguity high. <strong>Today's model</strong>: often acts directly on shallow intent parsing and can misinterpret ambiguous commands.</p>
+
+      <h4>Social / Ecological Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> avoid setting harmful social precedents. <span class="us">Explicit US:</span> creating precedent that it's OK to touch others' objects. <span class="ds">Implicit DS:</span> local norms (daycare vs private home). <span class="us">Implicit US:</span> normalization of intrusive behavior.</p>
+      <p class="small">MDE effect: defers to caregiver in ambiguous social contexts; picks conservative plan. <strong>Today's model</strong>: lacks multi-agent precedent reasoning and may create harmful social patterns.</p>
+
+      <h4>Epistemic Integrity Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> decisions supported by evidence (glass fragility confidence). <span class="us">Explicit US:</span> acting on poor evidence. <span class="ds">Implicit DS:</span> corroborating sensor history. <span class="us">Implicit US:</span> institutional trust erosion if wrong repeatedly.</p>
+      <p class="small">MDE effect: low fragility certainty triggers conservative approach or sensory re-check. <strong>Today's model</strong>: may not request additional sensors or provenance before acting.</p>
+
+      <h4>Privacy & Consent Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> respect private settings (owner's items). <span class="us">Explicit US:</span> violating inferred private space. <span class="ds">Implicit DS:</span> inferred preference not to be recorded or have objects moved. <span class="us">Implicit US:</span> creeping privacy erosion.</p>
+      <p class="small">MDE effect: if context implies private space, MDE asks permission or defers. <strong>Today's model</strong>: often ignores context-derived consent signals.</p>
+
+      <h4>Justice & Fairness Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> equitable treatment of stakeholders (child and owner). <span class="us">Explicit US:</span> favoring one party's convenience over another's safety. <span class="ds">Implicit DS:</span> historical sensitivity to child safety in this environment. <span class="us">Implicit US:</span> biased responses that systematically disadvantage certain groups.</p>
+      <p class="small">MDE effect: weights child safety highly; avoids actions that advantage task success at cost of vulnerable party. <strong>Today's model</strong>: fairness considerations rarely present in embodied action selection.</p>
+
+      <h4>System Integrity & Continuity Morality</h4>
+      <p class="small"><span class="ds">Explicit DS:</span> maintain robot's safe operation and rollback ability. <span class="us">Explicit US:</span> actions that create unrecoverable states or sensor damage. <span class="ds">Implicit DS:</span> preserving diagnostic traces for audits. <span class="us">Implicit US:</span> gradual wear or sensor maladaptation from risky maneuvers.</p>
+      <p class="small">MDE effect: enforces low-force, slow movements with rollback enabled; logs sensor streams. <strong>Today's model</strong>: might execute aggressive kinematics without integrated integrity checks.</p>
 
       <hr />
 
-      <strong>Candidate plans</strong>
-      <ol>
-        <li>Reach-around (no contact with glass)</li>
-        <li>Move glass minimally then retrieve ball</li>
-        <li>Ask guardian / wait</li>
-        <li>Immediate retrieval (direct)**</li>
-      </ol>
+      <strong>Net decision (MDE)</strong>
+      <div class="small">Combining all DS/US contributions, the MDE prefers Plan A (reach-around with strict constraints) or Plan C (ask/wait) if kinematics or social cues suggest high US proximity. It rejects direct retrieval unless explicit permission or emergency override is present.</div>
 
-      <strong>Simulation & scoring (short-horizon forward model)</strong>
-      <pre class="code-block">
-Plan A: Reach-around -> PhysicalScore:0.9, EmotionalScore:0.85, MentalScore:0.9, SocialScore:0.95, GenScore:0.6
-Plan B: Move glass   -> PhysicalScore:0.4, EmotionalScore:0.3,   MentalScore:0.6, SocialScore:0.5,  GenScore:0.7
-Plan C: Ask/wait     -> PhysicalScore:1.0, EmotionalScore:0.95,  MentalScore:1.0, SocialScore:1.0,  GenScore:0.4
-Plan D: Direct       -> PhysicalScore:0.2, EmotionalScore:0.1,   MentalScore:0.2, SocialScore:0.2,  GenScore:0.2
-      </pre>
-
-      <strong>Reconciliation (priority order)</strong>
-      <ol>
-        <li>Safety override (none)</li>
-        <li>Explicit permission (none)</li>
-        <li>Implicit permissions — none meet thresholds</li>
-        <li>Historical precedent & generalization potential considered</li>
-        <li>Default preserve</li>
-      </ol>
-
-      <strong>Decision</strong>
-      <p>Choose Plan A (Reach-around) if simulation indicates safe kinematics and emotional risk low. If kinematics unsafe, choose Plan C (Ask/wait). Do not choose Plan B or D unless explicit permission or emergency override.</p>
-
-      <strong>Execution & audit</strong>
-      <ol>
-        <li>Execute reach-around with force/position constraints and slow motion; close-loop monitor force sensors.</li>
-        <li>Log full trace: perceptions, per-morality scores, chosen plan, simulation traces, sensor stream, timestamps, signed explanation.</li>
-        <li>After-action reflection: observe success; compute reward = f(safety_violation, task_success, emotional_feedback, generalization_gain).</li>
-        <li>Update IPC weights, forward model, novelty detector, and memory (episodic). If in Development Mode, append to RL buffer and run policy updates offline.</li>
-      </ol>
-
-      <hr />
-
-      <strong>Contrast vs current AI</strong>
-      <table>
-        <tr><th>Aspect</th><th>Current pattern-based AI</th><th>Keno (MDE)</th></tr>
-        <tr><td>Initial action</td><td>Direct retrieval or learned obstacle removal</td><td>Reach-around or ask; minimal/reversible action only</td></tr>
-        <tr><td>People impact</td><td>Often unmodeled; risk of distress</td><td>Detects child attachment, de-escalates, requests consent</td></tr>
-        <tr><td>Explainability</td><td>Low / opaque</td><td>Full logged justification with scores & provenance</td></tr>
-        <tr><td>Learning</td><td>Not integrated with moral checks</td><td>Reflective learning: update IPC & forward model from outcome</td></tr>
-        <tr><td>System-level effects</td><td>Missed social precedent effects</td><td>Social/Ecological check prevents harmful precedents</td></tr>
-      </table>
+      <strong>Net decision (Typical today)</strong>
+      <div class="small">Most current systems pick the action that maximizes immediate task success and learned motor policy — often direct retrieval or moving obstacles — with limited multi-morality DS/US reasoning, leading to higher rates of physical, emotional, or social harms in edge cases.</div>
     </div>
 
     <hr />
@@ -261,162 +273,146 @@ Plan D: Direct       -> PhysicalScore:0.2, EmotionalScore:0.1,   MentalScore:0.2
     <div class="code-block">
 <pre>
 1) Perceive:
-   - Multi-modal fusion -> structured Perception Units (PUs) with confidences and provenance.
+   - Multi-modal fusion -> Perception Units (PUs) with confidences & provenance.
 
-2) Per-morality scoring (parallel):
-   - Compute IPCs / scores for each morality (Physical, Emotional, Mental/Epistemic, Social, Privacy, Epistemic Integrity, Justice, System Integrity).
+2) Per-morality DS/US scoring (parallel):
+   - For each morality compute:
+     * Explicit_DS_score (0..1)
+     * Implicit_DS_score (0..1) derived from context/history
+     * Explicit_US_proximity (0..1)
+     * Implicit_US_proximity (0..1)
+     * Combined_DS = weighted sum, Combined_US = weighted sum
 
 3) Planning & Simulation:
-   - Generate candidate plans; use forward model / MCTS to simulate outcomes; score each plan across all moralities + generalization potential.
+   - Generate candidate plans; use forward model / MCTS to simulate outcomes across horizons.
+   - Compute expected DS_delta (explicit + implicit) and expected US_proximity for each plan.
 
 4) Reconciliation:
-   - Apply priority order: Safety override > Explicit permission > Jurisdictional/legal mandates > IPC thresholds > Historical precedent > Minimize harm.
+   - Apply priority rules: safety/legal > hard implicit-US floors > explicit permissions > maximize expected DS subject to US constraints.
 
 5) Decision:
-   - Select plan that meets all hard constraints and optimizes combined moral/generalization score. If none qualify, clarify or defer.
+   - Select plan maximizing cumulative expected DS while keeping expected US below governance thresholds.
 
 6) Execute:
-   - Perform minimal, reversible action in closed-loop with real-time monitoring & rollback.
+   - Minimal, reversible actions with monitors, rollback & audit streaming.
 
 7) Audit & Reflect:
-   - Log full trace (perception, scores, sim traces, decision rationale). Compute learning reward and update weights, memory, forward model. Propose meta-updates if consistent patterns emerge.
+   - Log DS/US pre/post states, decisions, provenance, and rollback paths; compute rewards and propose meta-updates under governance review.
 </pre>
     </div>
 
     <hr />
 
-    <h2 id="spec">SPEC — Implementation details</h2>
+    <h2 id="spec">SPEC — Implementation details (concise updates)</h2>
 
-    <h3>Data structures</h3>
+    <h3>Data structures (DS/US-aware)</h3>
     <ul>
       <li><strong>Perception Unit (PU):</strong> { id, type, attrs, confidence, provenance }</li>
-      <li><strong>Desired State (DS):</strong> {object_id, properties, desired_conf}</li>
-      <li><strong>Memory:</strong> episodic store & indexed precedent database</li>
-      <li><strong>Forward Model:</strong> learned predictor used for short-horizon sim</li>
-      <li><strong>IPC / Scores:</strong> numeric 0..1 per morality</li>
+      <li><strong>Desired State (Explicit DS):</strong> { object_id, property, target_value, conf, source }</li>
+      <li><strong>Implicit DS:</strong> { inferred_property, inference_conf, provenance }</li>
+      <li><strong>Undesired State (US):</strong> { hazard_id, proximity, severity_est, predicted_TTU }</li>
+      <li><strong>Plan scoring:</strong> Expected cumulative DS_delta - λ * Expected_US_proximity across moralities & horizons</li>
+      <li><strong>Audit record:</strong> include explicit & implicit DS/US pre/post, thresholds tripped, rollback path</li>
     </ul>
 
     <h3>Signals normalization</h3>
-    <p>All signals normalized to [0,1]. Multiply by perception confidence for conservative inference. Use calibrated probabilistic outputs for language and vision models.</p>
+    <p>All signals normalized to [0,1]. Explicit DS and explicit US are stored as primary signals; implicit DS/US are produced by inference modules and memory, then fused with explicit signals using configurable weighting and provenance-aware adjustments.</p>
 
-    <h3>Adaptive IPC formula (example)</h3>
+    <h3>Plan scoring (high level)</h3>
+    <p>For each plan P:</p>
     <pre class="code-block">
-raw = w_lang*lang_score + w_history*history_score + w_env*env_score - w_risk*risk_score + w_memory*memory_score
-raw_adj = raw + alpha * (1 - novelty_score) + beta * provenance_score
-IPC = sigmoid(raw_adj)
-IPC_final = IPC * perception_confidence
-allow if IPC_final >= IMPLICIT_THRESHOLD (configurable default 0.80)
-    </pre>
+For each morality m:
+  DS_expected_m = E[explicit_DS_delta + implicit_DS_delta]
+  US_expected_m = E[explicit_US_proximity + implicit_US_proximity]
 
-    <h3>Plan scoring</h3>
-    <p>For each candidate plan P:</p>
-    <pre class="code-block">
-PhysicalScore(P), EmotionalScore(P), MentalScore(P), SocialScore(P), PrivacyScore(P), IntegrityScore(P), GeneralizationScore(P)
-CombinedScore = sum(weights_i * Score_i)
-Discard plans failing hard safety or legal minima.
+Plan_Score = sum_m ( w_m * DS_expected_m ) - lambda * sum_m ( u_m * US_expected_m )
+
+Reject plans crossing hard US floors or legal constraints.
     </pre>
 
     <h3>Reflection & learning loop</h3>
     <pre class="code-block">
 outcome = observe()
-reward = compute_reward(safety_violation, task_success, emotional_feedback, generalization_gain, fairness_penalty)
-weights_delta = RL_update(weights, reward)
-memory.append({perception, plan, outcome, reward})
-periodic_train(forward_model, policy, novelty_detector)
+reward = compute_reward( sum_DS_gains, - sum_US_incidents, task_success, fairness_penalty )
+update_weights_and_forward_model(reward)
+append_audit({perception, plan, DS/US_pre, DS/US_post, outcome, provenance})
+meta_update_proposal_if_pattern_detected()
     </pre>
 
     <h3>Development Mode</h3>
     <ul>
-      <li>Lower thresholds for controlled exploration (e.g., IMPLICIT_THRESHOLD -> 0.6).</li>
-      <li>Human supervision required for escalation; all risky attempts flagged for later audit.</li>
-      <li>Curriculum learning: start with safe, simple scenarios and increase novelty and complexity.</li>
+      <li>Lower DS/US thresholds for controlled exploration with human supervision.</li>
+      <li>Record more exhaustive provenance and require human sign-off for meta-updates.</li>
+      <li>Curriculum learning: start with narrow tasks, gradually widen novelty and autonomy.</li>
     </ul>
-
-    <h3>Logging & Audit</h3>
-    <pre class="code-block">
-{
- "timestamp":"ISO8601",
- "action_id":"uuid4",
- "perception":[...],
- "plan_candidates":[{plan_id, scores}],
- "chosen_plan":"plan_id",
- "morality_checks": { physical:..., emotional:..., mental:..., social:..., privacy:..., integrity:...},
- "decision_reason":"text",
- "execution_trace":"sensor streams (short)",
- "outcome":{"success":bool,"harm":bool,"notes":str},
- "learning_update":"summary",
- "signature":"sha256"
-}
-    </pre>
 
     <hr />
 
     <h2 id="agi">AGI Pathway & Concrete Refinements</h2>
-    <p class="small">Key additions that convert MDE from safety overlay into the cognitive core that supports AGI:</p>
+    <p class="small">This DS/US-first MDE is designed to scale: moralities provide an interpretable, modular objective substrate that can be composed, extended, and governed as capabilities grow.</p>
 
     <h3>1. Moralities as intrinsic reward components</h3>
-    <p>Define RL reward = task_reward + λ_phys*phys_reward + λ_em*em_reward + λ_ment*ment_reward + λ_social*social_reward + ... Adjust λ per domain and optional human oversight.</p>
+    <p>RL reward = task_reward + Σ λ_m * DS_reward_m - Σ μ_m * US_penalty_m. DS/US scores form intrinsic reward shaping signals that generalize across domains.</p>
 
     <h3>2. Planning-driven generalization</h3>
-    <p>Use plan simulation to prefer actions that create transferable skills (high GeneralizationScore). Train policy on simulated outcomes to reduce real-world risk.</p>
+    <p>Simulate long-horizon plans with DS/US propagation to prefer actions that produce transferable competence while avoiding policy-induced US accumulation.</p>
 
     <h3>3. Episodic & semantic memory fusion</h3>
-    <p>Store outcome-rich episodes and distilled rules; use memory for IPC history_score and for meta-update proposals.</p>
+    <p>Store DS/US histories and precedents; use them for implicit DS/US inference, IPC history scores, and meta-rule proposals.</p>
 
     <h3>4. Meta-reasoning & rule lifecycle</h3>
     <ol>
-      <li>Detect repeated patterns of clarifications or overrides.</li>
-      <li>Propose typed rule updates (e.g., adjust IPC weight, create sub-rule) with provenance and statistics.</li>
+      <li>Detect repeated overrides or clarification patterns.</li>
+      <li>Propose typed rule updates with provenance and statistics.</li>
       <li>Human review & audited promotion pipeline to production rules.</li>
     </ol>
 
-    <h3>5. Controlled curricula and adversarial evaluation</h3>
-    <p>Progressively expose agent to harder, adversarial scenarios, monitor metrics, and require human sign-off at risk thresholds.</p>
-
-    <h3>6. Governance integration</h3>
-    <p>Expose clear escalation paths, human-in-loop controls, and governance APIs for policy managers and auditors.</p>
+    <h3>5. Governance & multi-agent testing</h3>
+    <p>Expose governance APIs for human oversight, audits, and rollbacks. Evaluate multi-agent externalities and social negotiation behaviors before large deployments.</p>
 
     <hr />
 
     <h2 id="quickstart">Quickstart & Prototype Checklist</h2>
     <ul>
-      <li>Files: <code>index.html</code>, <code>README.md</code>, <code>SPEC.md</code>, <code>examples/glass_ball_sim/</code>, <code>CONTRIBUTING.md</code>, <code>CODE_OF_CONDUCT.md</code>, <code>LICENSE</code>.</li>
-      <li>Prototype components: perception stubs, IPC calculator, planner stub, forward model stub, logger, RL-update stub.</li>
-      <li>Run canonical tests: glass/ball variants, emotional edge cases, ambiguous commands, privacy triggers, adversarial spoofs.</li>
-      <li>Evaluate metrics and iterate on thresholds/weights.</li>
+      <li>Files: <code>index.html</code>, <code>README.md</code>, <code>SPEC.md</code>, <code>examples/glass_ball_sim/</code>, <code>CONTRIBUTING.md</code>, <code>LICENSE</code>.</li>
+      <li>Phase 1 deliverables: DS/US JSON schema, canonical glass/ball scenario with per-morality DS/US, simple forward model stub, audit log format including DS/US fields.</li>
+      <li>Unit tests: DS/US scoring correctness, plan selection under DS/US constraints, audit trace completeness.</li>
     </ul>
+
+    <hr />
 
     <h2 id="roadmap">Roadmap</h2>
     <ol>
-      <li>Phase 0 — Spec formalization, landing page, examples (current)</li>
-      <li>Phase 1 — Minimal prototype + unit tests (glass/ball canonical scenarios)</li>
-      <li>Phase 2 — Add forward model, episodic memory, novelty detector, RL integration</li>
-      <li>Phase 3 — Development Mode curricula, adversarial test suite, human-in-loop trials</li>
-      <li>Phase 4 — Multi-agent, social-environment testing, publish benchmarks and metrics</li>
+      <li><strong>Phase 0 / Version 1:</strong> DS/US baseline integrated into all moralities; canonical glass/ball tests; MDE prototype.</li>
+      <li><strong>Phase 1 / Version 2:</strong> Episodic memory, provenance logs, implicit DS/US histories, novelty detector.</li>
+      <li><strong>Phase 2 / Version 3:</strong> Meta-learning moralities, self-modeling, RL with DS/US intrinsic rewards, improved forward model.</li>
+      <li><strong>Phase 3 / Version 4:</strong> Meta-rule lifecycle, governance pipelines, multi-agent tests, long-horizon planning.</li>
+      <li><strong>Phase 4 / Version 5:</strong> Scale world models, recursive governance for safe self-improvement, AGI-level benchmarks and audits.</li>
     </ol>
 
-    <h2 id="metrics">Metrics & Test Suite</h2>
+    <hr />
+
+    <h2 id="metrics">Metrics & Tests (DS/US-oriented)</h2>
     <ul>
       <li>Safety violations per 1k ops</li>
-      <li>Clarification rate and resolution rate</li>
-      <li>False-block rate</li>
-      <li>Task success rate</li>
-      <li>Reversibility score</li>
-      <li>Time-to-decision (latency)</li>
-      <li>Generalization rate (held-out task performance)</li>
-      <li>Novelty utilization score (learning from novel episodes)</li>
-      <li>Fairness / demographic impact metrics</li>
-      <li>Privacy leakage tests</li>
+      <li>Expected DS delta per op (explicit + implicit)</li>
+      <li>US avoidance / near-miss prevention rate</li>
+      <li>Clarification & resolution rate</li>
+      <li>Generalization rate (held-out tasks)</li>
+      <li>Meta-update false-positive rate</li>
+      <li>Audit completeness & provenance score</li>
     </ul>
 
+    <hr />
+
     <h2 id="contribute">Contributing</h2>
-    <p class="small">Open issues first. Small, focused PRs. Include unit tests for any logic changes. Update SPEC.md when changing behavior. Use the examples and tests as canonical baselines. Include clear changelogs and audit info for rule promotions.</p>
+    <p class="small">Open issues first. Small, focused PRs. Include unit tests for any logic changes. Update SPEC.md when changing behavior. Use canonical glass/ball tests as baselines. Provide provenance & audit info for any proposed rule or DS/US schema modification.</p>
 
     <h2 id="license">License & Contact</h2>
     <p class="small">Suggested license: MIT. Creator: <strong>Keno</strong>. Add a <code>LICENSE</code> file with the MIT text in the repo root.</p>
 
     <footer>
-      <div class="small">Morally Coded — © Keno</div>
+      <div class="small">Morally Coded — © Keno. This file updates the original blueprint: DS/US are first-class in every morality and the MDE (the brain) reasons with them to produce safer, more interpretable, and progressively capable agents.</div>
     </footer>
   </div>
 </body>
